@@ -1,44 +1,54 @@
 @startuml
 
-abstract class AbstractList
-abstract AbstractCollection
-interface List
-interface Collection
+skinparam packageStyle folder
 
-List <|-- AbstractList
-Collection <|-- AbstractCollection
+'abstract class AbstractList
+'abstract AbstractCollection
+'interface List
+'interface Collection
+'
+'List <|-- AbstractList
+'Collection <|-- AbstractCollection
+'
+'Collection <|- List
+'AbstractCollection <|- AbstractList
+'AbstractList <|-- ArrayList
 
-Collection <|- List
-AbstractCollection <|- AbstractList
-AbstractList <|-- ArrayList
-
-class ArrayList {
-Object[] elementData
-size()
+package se.hig.oodp.lab.model {
+    class Vertex2D {
+        -x: double
+        -y: double
+        +Vertex2D(x:double, y:double)
+        +getX(): double
+        +getY(): double
+        +moveBy(dx:double, dy:double): Vertex2D
+        +rotate(ref:Vertex2D, angle:double): Vertex2D
+        +scale(ref:Vertex2D, x_factor:double, y_factor:double): Vertex2D
+    }
 }
 
-enum TimeUnit {
-DAYS
-HOURS
-MINUTES
+package se.hig.oodp.lab.model.figure {
+    class Point {
+        -center: Vertex2D
+        +Point(center:Vertex2D)
+        +moveBy(dx:double, dy:double): Vertex2D
+        +getCenter(): Vertex2D
+    }
+
+    class Line {
+        -center: Vertex2D
+        -v0: Vertex2D
+        -v1: Vertex2D
+        +Line(v0:Vertex2D,v1:Vertex2D)
+        +moveBy(dx:double, dy:double): Vertex2D
+        +rotate(ref:Vertex2D, angle:double): Vertex2D
+        +scale(ref:Vertex2D, x_factor:double, y_factor:double): Vertex2D
+        +getCenter(): Vertex2D
+    }
 }
 
-class Point {
-    -x: double
-    -y: double
-    +Vertex2D(x:double,y:double)
-}
+se.hig.oodp.lab.model +-- se.hig.oodp.lab.model.figure
 
-class Vertex2D {
-    -x: double
-    -y: double
-    +Vertex2D(x:double, y:double)
-    +getX(): double
-    +getY(): double
-    +moveBy(dx:double, dy:double): Vertex2D
-    +rotate(ref:Vertex2D, angle:double): Vertex2D
-    +scale(ref:Vertex2D, x_factor:double, y_factor:double): Vertex2D
-}
 
 
 
