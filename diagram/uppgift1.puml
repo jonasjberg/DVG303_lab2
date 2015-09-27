@@ -20,15 +20,17 @@ package se.hig.oodp.lab.model {
         +moveBy(dx:double, dy:double): Vertex2D
         +rotate(ref:Vertex2D, angle:double): Vertex2D
         +scale(ref:Vertex2D, x_factor:double, y_factor:double): Vertex2D
+        +toString(): String
     }
 }
 
 package se.hig.oodp.lab.model.figure {
     class Point {
         -center: Vertex2D
-        +Point(center:Vertex2D) ..
-        +moveBy(dx:double, dy:double): Vertex2D
+        +Point(center:Vertex2D)
+        +moveBy(dx:double, dy:double)
         +getCenter(): Vertex2D
+        +toString(): String
     }
 
     class Line {
@@ -37,9 +39,10 @@ package se.hig.oodp.lab.model.figure {
         -v1: Vertex2D
         +Line(v0:Vertex2D, v1:Vertex2D)
         +moveBy(dx:double, dy:double): Vertex2D
-        +rotate(ref:Vertex2D, angle:double): Vertex2D
-        +scale(ref:Vertex2D, x_factor:double, y_factor:double): Vertex2D
+        +rotate(reference:Vertex2D, angle:double)
+        +scale(reference:Vertex2D, xFactor:double, yFactor:double)
         +getCenter(): Vertex2D
+        +toString(): String
     }
 
     class Triangle {
@@ -50,10 +53,11 @@ package se.hig.oodp.lab.model.figure {
         -bounds: Rectangle
 
         +Triangle(v0:Vertex2D, v1:Vertex2D, v2:Vertex2D)
-        +moveBy(dx:double, dy:double): Vertex2D
-        +rotate(ref:Vertex2D, angle:double): Vertex2D
-        +scale(ref:Vertex2D, x_factor:double, y_factor:double): Vertex2D
+        +moveBy(dx:double, dy:double)
+        +rotate(reference:Vertex2D, angle:double)
+        +scale(reference:Vertex2D, xFactor:double, yFactor:double)
         +getCenter(): Vertex2D
+        +toString(): String
     }
 
     class Circle {
@@ -61,11 +65,12 @@ package se.hig.oodp.lab.model.figure {
         -radius: double
 
         +Circle(center:Vertex2D, radius:double)
-        +moveBy(dx:double, dy:double): Vertex2D
-        +rotate(ref:Vertex2D, angle:double): Vertex2D
-        +scale(ref:Vertex2D, x_factor:double, y_factor:double): Vertex2D
+        +moveBy(dx:double, dy:double)
+        +rotate(reference:Vertex2D, angle:double)
+        +scale(reference:Vertex2D, xFactor:double, yFactor:double)
         +getCenter(): Vertex2D
         +getRadius(): double
+        +toString(): String
     }
 
     class Rectangle {
@@ -75,12 +80,12 @@ package se.hig.oodp.lab.model.figure {
         -v3: Vertex2D
         -v3: Vertex2D
 
-        +Circle(center:Vertex2D, radius:double)
-        +moveBy(dx:double, dy:double): Vertex2D
-        +rotate(ref:Vertex2D, angle:double): Vertex2D
-        +scale(ref:Vertex2D, x_factor:double, y_factor:double): Vertex2D
+        +Rectangle(v0:Vertex2D, v1:Vertex2D, v2:Vertex2D, v3:Vertex2D)
+        +moveBy(dx:double, dy:double)
+        +rotate(reference:Vertex2D, angle:double)
+        +scale(reference:Vertex2D, xFactor:double, yFactor:double)
         +getCenter(): Vertex2D
-        +getRadius(): double
+        +toString(): String
     }
 }
 
