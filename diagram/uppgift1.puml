@@ -1,19 +1,15 @@
 @startuml
+' ____________________________________________________________________________
+' ____ CONFIGURATION OPTIONS __________________________________________________
 
 skinparam packageStyle folder
 
-'abstract class AbstractList
-'abstract AbstractCollection
-'interface List
-'interface Collection
-'
-'List <|-- AbstractList
-'Collection <|-- AbstractCollection
-'
-'Collection <|- List
-'AbstractCollection <|- AbstractList
-'AbstractList <|-- ArrayList
+' don't use characters to indicate visibility
+skinparam classAttributeIconsize 0
 
+
+' ____________________________________________________________________________
+' ____ CLASS DEFINITIONS ______________________________________________________
 package se.hig.oodp.lab.model {
     class Vertex2D {
         -x: double
@@ -30,7 +26,7 @@ package se.hig.oodp.lab.model {
 package se.hig.oodp.lab.model.figure {
     class Point {
         -center: Vertex2D
-        +Point(center:Vertex2D)
+        +Point(center:Vertex2D) ..
         +moveBy(dx:double, dy:double): Vertex2D
         +getCenter(): Vertex2D
     }
@@ -39,15 +35,63 @@ package se.hig.oodp.lab.model.figure {
         -center: Vertex2D
         -v0: Vertex2D
         -v1: Vertex2D
-        +Line(v0:Vertex2D,v1:Vertex2D)
+        +Line(v0:Vertex2D, v1:Vertex2D)
         +moveBy(dx:double, dy:double): Vertex2D
         +rotate(ref:Vertex2D, angle:double): Vertex2D
         +scale(ref:Vertex2D, x_factor:double, y_factor:double): Vertex2D
         +getCenter(): Vertex2D
     }
+
+    class Triangle {
+        -center: Vertex2D
+        -v0: Vertex2D
+        -v1: Vertex2D
+        -v2: Vertex2D
+        -bounds: Rectangle
+
+        +Triangle(v0:Vertex2D, v1:Vertex2D, v2:Vertex2D)
+        +moveBy(dx:double, dy:double): Vertex2D
+        +rotate(ref:Vertex2D, angle:double): Vertex2D
+        +scale(ref:Vertex2D, x_factor:double, y_factor:double): Vertex2D
+        +getCenter(): Vertex2D
+    }
+
+    class Circle {
+        -center: Vertex2D
+        -radius: double
+
+        +Circle(center:Vertex2D, radius:double)
+        +moveBy(dx:double, dy:double): Vertex2D
+        +rotate(ref:Vertex2D, angle:double): Vertex2D
+        +scale(ref:Vertex2D, x_factor:double, y_factor:double): Vertex2D
+        +getCenter(): Vertex2D
+        +getRadius(): double
+    }
+
+    class Rectangle {
+        -center: Vertex2D
+        -v0: Vertex2D
+        -v1: Vertex2D
+        -v3: Vertex2D
+        -v3: Vertex2D
+
+        +Circle(center:Vertex2D, radius:double)
+        +moveBy(dx:double, dy:double): Vertex2D
+        +rotate(ref:Vertex2D, angle:double): Vertex2D
+        +scale(ref:Vertex2D, x_factor:double, y_factor:double): Vertex2D
+        +getCenter(): Vertex2D
+        +getRadius(): double
+    }
 }
 
+
+' ____________________________________________________________________________
+' ____ PACKAGE HIERARCHY _____________________________________________________
 se.hig.oodp.lab.model +-- se.hig.oodp.lab.model.figure
+
+
+' ____________________________________________________________________________
+' ____ RELATIONS BETWEEN CLASSES _____________________________________________
 
 
 
