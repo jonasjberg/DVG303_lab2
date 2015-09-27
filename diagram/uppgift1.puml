@@ -1,0 +1,46 @@
+@startuml
+
+abstract class AbstractList
+abstract AbstractCollection
+interface List
+interface Collection
+
+List <|-- AbstractList
+Collection <|-- AbstractCollection
+
+Collection <|- List
+AbstractCollection <|- AbstractList
+AbstractList <|-- ArrayList
+
+class ArrayList {
+Object[] elementData
+size()
+}
+
+enum TimeUnit {
+DAYS
+HOURS
+MINUTES
+}
+
+class Point {
+    -x: double
+    -y: double
+    +Vertex2D(x:double,y:double)
+}
+
+class Vertex2D {
+    -x: double
+    -y: double
+    +Vertex2D(x:double, y:double)
+    +getX(): double
+    +getY(): double
+    +moveBy(dx:double, dy:double): Vertex2D
+    +rotate(ref:Vertex2D, angle:double): Vertex2D
+    +scale(ref:Vertex2D, x_factor:double, y_factor:double): Vertex2D
+}
+
+
+
+
+@enduml

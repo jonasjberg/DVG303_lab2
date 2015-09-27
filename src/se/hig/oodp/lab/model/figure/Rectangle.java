@@ -7,14 +7,14 @@
  * Labb #1    Uppgift 1
  */
 
-package se.hig.oodp.lab.model;
+package se.hig.oodp.lab.model.figure;
 
 /**
  * @author  Jonas Sjöberg
  *		    tel12jsg@student.hig.se
  * @date	Sep 27, 2015
  */
-public class Triangle
+public class Rectangle
 {
 
 }
