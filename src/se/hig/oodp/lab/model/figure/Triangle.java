@@ -21,8 +21,8 @@ import java.util.ArrayList;
  */
 public class Triangle
 {
-    private static final int DEFAULT_X_COORD = 0;
-    private static final int DEFAULT_Y_COORD = 0;
+    private static final int DEFAULT_X_COORD = Constants.DEFAULT_X_COORD;
+    private static final int DEFAULT_Y_COORD = Constants.DEFAULT_Y_COORD;
     private Vertex2D v0, v1, v2, center;
     private ArrayList<Vertex2D> vertices = new ArrayList<Vertex2D>();
 

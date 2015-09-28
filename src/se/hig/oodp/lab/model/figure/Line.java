@@ -21,6 +21,8 @@ import java.util.ArrayList;
  */
 public class Line
 {
+    private static final int DEFAULT_X_COORD = Constants.DEFAULT_X_COORD;
+    private static final int DEFAULT_Y_COORD = Constants.DEFAULT_Y_COORD;
     private Vertex2D v0, v1, center;
     private ArrayList<Vertex2D> vertices = new ArrayList<Vertex2D>();
 
@@ -54,8 +56,8 @@ public class Line
             Vertex2D temp = getVertex(i).moveBy(dx, dy);
             vertices.set(i, temp);
         }
-//        v0 = v0.moveBy(dx, dy);
-//        v1 = v1.moveBy(dx, dy);
+        // v0 = v0.moveBy(dx, dy);
+        // v1 = v1.moveBy(dx, dy);
         updateCenterPoint();
     }
 
@@ -104,7 +106,7 @@ public class Line
      */
     public Vertex2D getCenter()
     {
-        updateCenterPoint();
+//        updateCenterPoint();
         return center;
     }
 
@@ -113,23 +115,41 @@ public class Line
      */
     private void updateCenterPoint()
     {
-        double v0X = getVertex(0).getX();
-        double v0Y = getVertex(0).getY();
-        double v1X = getVertex(1).getX();
-        double v1Y = getVertex(1).getY();
+        double v0X, v0Y, v1X, v1Y;
+        v0X = getVertex(0).getX();
+        v0Y = getVertex(0).getY();
+        v1X = getVertex(1).getX();
+        v1Y = getVertex(1).getY();
 
         double xMid = v0X + ((v1X - v0X) / 2);
-        double yMid = v0Y + ((v1Y - v0Y)/ 2);
+        double yMid = v0Y + ((v1Y - v0Y) / 2);
 
         DebugLogger.log.finer("calculated midpoint (" + xMid + ", " + yMid + ")");
+
+        if (center == null) {
+            center = new Vertex2D(DEFAULT_X_COORD, DEFAULT_Y_COORD);
+            DebugLogger.log.fine("Created new 'center' (was null) ..");
+        }
+        // center = new Vertex2D(xMid, yMid);
         center = center.moveTo(xMid, yMid);
     }
 
     @Override
     public String toString()
     {
-        /* TODO: */
-        return null;
+        final String NEWLINE = Constants.NEWLINE;
+        StringBuilder str = new StringBuilder();
+
+        /* Anropa först superklassens 'toString()'-metod. */
+        // str.append(super.toString());
+
+        /* Utöka sedan med 'Point'-objektets data. */
+        str.append("Line:  " + this.hashCode() + NEWLINE);
+        str.append("center: (" + getCenter().getX() + ", " + getCenter().getY() + ")" + NEWLINE);
+        str.append("    v0: (" + v0.getX() + ", " + v0.getY() + ")" + NEWLINE);
+        str.append("    v1: (" + v1.getX() + ", " + v1.getY() + ")" + NEWLINE);
+        str.append(NEWLINE);
+        return str.toString();
     }
 
     /**

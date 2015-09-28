@@ -39,7 +39,7 @@ package se.hig.oodp.lab.model.figure {
         -v1: Vertex2D
         -vertices: ArrayList<Vertex2D>
         +Line(v0:Vertex2D, v1:Vertex2D)
-        +moveBy(dx:double, dy:double): Vertex2D
+        +moveBy(dx:double, dy:double)
         +rotate(angle:double)
         +scale(xFactor:double, yFactor:double)
         +getCenter(): Vertex2D
