@@ -85,11 +85,11 @@ public class LineTest extends TestCase
         assertEquals("Wrong X-position!", 2.0, line.getCenter().getX(), PRECISION);
         assertEquals("Wrong Y-position!", 1.0, line.getCenter().getY(), PRECISION);
 
-        /* Test v0*/
+        /* Test v0 */
         assertEquals("v0 X-position is wrong!", 0.768, line.getVertex(0).getX(), PRECISION);
         assertEquals("v0 Y-position is wrong!", -0.866, line.getVertex(0).getY(), PRECISION);
 
-        /* Test v1*/
+        /* Test v1 */
         assertEquals("v1 X-position is wrong!", 3.232, line.getVertex(1).getX(), PRECISION);
         assertEquals("v1 Y-position is wrong!", 2.866, line.getVertex(1).getY(), PRECISION);
     }

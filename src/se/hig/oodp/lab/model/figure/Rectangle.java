@@ -11,6 +11,7 @@ package se.hig.oodp.lab.model.figure;
 
 import se.hig.oodp.lab.model.Utility.DebugLogger;
 import se.hig.oodp.lab.model.Vertex2D;
+import sun.security.ssl.Debug;
 
 import java.util.ArrayList;
 
@@ -32,6 +33,14 @@ public class Rectangle
     public Rectangle(Vertex2D center, double width, double height)
     {
         this.center = center;
+        this.width = width;
+        this.height = height;
+        calculateVerticesFromCenter();
+        addVerticesToList(v0, v1, v2, v3);
+    }
+
+    private void calculateVerticesFromCenter()
+    {
         /*        |
          *   v3 o~|~~~~~~~~~o v2
          *      | |         |
@@ -42,12 +51,12 @@ public class Rectangle
 
         double halfHeight = height / 2;
         double halfWidth = width / 2;
-        v0 = new Vertex2D(center.getX() - halfWidth, center.getY() - halfHeight);
-        v1 = new Vertex2D(center.getX() + halfWidth, center.getY() - halfHeight);
-        v2 = new Vertex2D(center.getX() + halfWidth, center.getY() + halfHeight);
-        v3 = new Vertex2D(center.getX() - halfWidth, center.getY() - halfHeight);
-
-        addVerticesToList(v0, v1, v2, v3);
+        double xCenter = center.getX();
+        double yCenter = center.getY();
+        v0 = new Vertex2D(xCenter - halfWidth, yCenter - halfHeight);
+        v1 = new Vertex2D(xCenter + halfWidth, yCenter - halfHeight);
+        v2 = new Vertex2D(xCenter + halfWidth, yCenter + halfHeight);
+        v3 = new Vertex2D(xCenter - halfWidth, yCenter + halfHeight);
     }
 
     /**
@@ -87,7 +96,8 @@ public class Rectangle
             vertices.set(i, temp);
         }
 
-        calculateCenter();
+        center = center.moveBy(dx, dy);
+//        calculateCenter();
     }
 
     /**
@@ -120,10 +130,8 @@ public class Rectangle
                 continue;
             }
 
-            System.out.println("scale got " + vertices.get(i).toString());
             Vertex2D temp = getVertex(i).scale(center, xFactor, yFactor);
             vertices.set(i, temp);
-            System.out.println("after scale: " + vertices.get(i).toString());
             calculateCenter();
         }
     }
@@ -141,20 +149,21 @@ public class Rectangle
      */
     private void calculateCenter()
     {
-        double xMin, xMax, yMin, yMax;
-        xMin = xMax = yMin = yMax = Double.MIN_VALUE;
+        double xMin, yMin, xMax, yMax;
+        xMin = yMin = xMax = yMax = Double.MIN_VALUE;
 
         for (Vertex2D v : vertices) {
             xMin = Math.min(xMin, v.getX());
-            xMax = Math.max(xMax, v.getX());
             yMin = Math.min(yMin, v.getY());
+            xMax = Math.max(xMax, v.getX());
             yMax = Math.max(yMax, v.getY());
         }
 
-        double xMid = xMax + xMin / 2;
-        double yMid = yMax + yMin / 2;
+        double xMid = xMin + xMax / 2;
+        double yMid = yMin + yMax / 2;
         DebugLogger.log.finer("calculated midpoint (" + xMid + ", " + yMid + ")");
-        center = new Vertex2D(xMid, yMid);
+//        center = new Vertex2D(xMid, yMid);
+        center.moveTo(xMid, yMid);
     }
 
     /**
@@ -163,13 +172,17 @@ public class Rectangle
      */
     private void addVerticesToList(Vertex2D... newVertices)
     {
-        for (Vertex2D v : newVertices) {
-            if (v == null)
+        for (int i = 0; i < newVertices.length; i++) {
+            if (newVertices[i] == null)
                 continue;
-            vertices.add(v);
-            DebugLogger.log.fine("Added Vertex2D: " + v.toString());
-            System.out.println("Added Vertex2D: " + v.toString());
+
+            vertices.add(newVertices[i]);
+            DebugLogger.log.finer("Added to list: " + newVertices[i].toString());
         }
+//            vertices.add(v);
+//            System.out.println("Added to list: " + v.toString());
+//            DebugLogger.log.fine("Added to list: " + v.toString());
+
     }
 
     /**
@@ -195,7 +208,8 @@ public class Rectangle
         /* "Belt and suspenders" checking. Most probably not necessary.. */
         double checkWidth = v3.getX() - v2.getX();
         if (width != checkWidth) {
-            System.out.println("WARNING: Width calculation is acting up ..");
+            DebugLogger.log.warning(
+                    "WARNING: Width calculation is acting up ..");
         }
     }
 
@@ -207,7 +221,8 @@ public class Rectangle
         /* "Belt and suspenders" checking. Most probably not necessary.. */
         double checkHeight = v3.getY() - v1.getY();
         if (height != checkHeight) {
-            System.out.println("WARNING: Height calculation is acting up ..");
+            DebugLogger.log.warning(
+                    "WARNING: Height calculation is acting up ..");
         }
     }
 
@@ -217,7 +232,7 @@ public class Rectangle
      */
     public Vertex2D getCenter()
     {
-        calculateCenter();
+//        calculateCenter();
         return center;
     }
 }

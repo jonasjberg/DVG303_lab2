@@ -28,7 +28,7 @@ public class RectangleTest extends TestCase
     @Before
     public void setUp() throws Exception
     {
-        rectangle = new Rectangle(new Vertex2D(-1.0, 3.0), 6, 4);
+        rectangle = new Rectangle(new Vertex2D(2.0, 1.0), 6, 4);
     }
 
     @After
@@ -48,8 +48,12 @@ public class RectangleTest extends TestCase
          *        |                     center: (2.0, 1.0)
          */
 
+//        System.out.println("center: " + rectangle.getCenter().toString());
+//        System.out.println("v0: " + rectangle.getVertex(0).toString());
+//        System.out.println("v1: " + rectangle.getVertex(1).toString());
+//        System.out.println("v2: " + rectangle.getVertex(2).toString());
+//        System.out.println("v3: " + rectangle.getVertex(3).toString());
         /* Test center */
-        System.out.println("center: " + rectangle.getCenter().toString());
         assertEquals("Wrong X-position!", 2.0, rectangle.getCenter().getX(), PRECISION);
         assertEquals("Wrong Y-position!", 1.0, rectangle.getCenter().getY(), PRECISION);
 
