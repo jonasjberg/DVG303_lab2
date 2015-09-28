@@ -9,6 +9,7 @@
 
 package se.hig.oodp.lab.model.figure;
 
+import se.hig.oodp.lab.model.Utility.DebugLogger;
 import se.hig.oodp.lab.model.Vertex2D;
 
 import java.util.ArrayList;
@@ -26,23 +27,164 @@ public class Rectangle
 
     /**
      * Creates a new instance of a 'Rectangle'.
-     * @param v0    upper left corner
-     * @param v1    upper right corner
-     * @param v2    lower left corner
-     * @param v3    lower right corner
+     * @param center    center point
      */
-    public Rectangle(Vertex2D v0, Vertex2D v1, Vertex2D v2, Vertex2D v3)
+    public Rectangle(Vertex2D center, double width, double height)
     {
-        this.v0 = v0;
-        this.v1 = v1;
-        this.v2 = v2;
-        this.v3 = v3;
+        this.center = center;
+        /*        |
+         *   v3 o~|~~~~~~~~~o v2
+         *      | |         |
+         * -----|-+---------|-----
+         *   v0 o~|~~~~~~~~~o v1
+         *        |
+         */
+
+        double halfHeight = height / 2;
+        double halfWidth = width / 2;
+        v0 = new Vertex2D(center.getX() - halfWidth, center.getY() - halfHeight);
+        v1 = new Vertex2D(center.getX() + halfWidth, center.getY() - halfHeight);
+        v2 = new Vertex2D(center.getX() + halfWidth, center.getY() + halfHeight);
+        v3 = new Vertex2D(center.getX() - halfWidth, center.getY() - halfHeight);
 
         addVerticesToList(v0, v1, v2, v3);
+    }
+
+    /**
+     * Creates a new instance of a 'Rectangle'
+     * @param v0        upper left corner
+     * @param width     the width of this Rectangle
+     * @param height    the height of this Rectangle
+     */
+//    public Rectangle(Vertex2D v0, double width, double height)
+//    {
+//        this.v0 = v0;
+//        v1 = new Vertex2D(v0.getX() + width, v0.getY());
+//        v2 = new Vertex2D(v0.getX(), v0.getY() - height);
+//        v3 = new Vertex2D(v0.getX() + width, v0.getY() - height);
+//
+//        addVerticesToList(v0, v1, v2, v3);
+//
+//        calculateCenter();
+//        calculateWidth();
+//        calculateHeight();
+//    }
+
+    /**
+     * Move (translate) the Rectangle by [dx, dy] from its current position.
+     * @param dx    the distance to move along the X-axis
+     * @param dy    the distance to move along the Y-axis
+     */
+    public void moveBy(double dx, double dy)
+    {
+        for (int i = 0; i < vertices.size(); i++) {
+            if (vertices.get(i) == null) {
+                DebugLogger.log.warning("Got null value!");
+                continue;
+            }
+
+            Vertex2D temp = getVertex(i).moveBy(dx, dy);
+            vertices.set(i, temp);
+        }
 
         calculateCenter();
-        calculateWidth();
-        calculateHeight();
+    }
+
+    /**
+     * Rotate the Rectangle by 'angle' degrees clockwise from a reference point.
+     * @param angle         rotate clockwise by this angle in degrees
+     */
+    public void rotate(double angle)
+    {
+        for (int i = 0; i < vertices.size(); i++) {
+            if (vertices.get(i) == null) {
+                DebugLogger.log.warning("Got null value!");
+                continue;
+            }
+
+            Vertex2D temp = getVertex(i).rotate(center, angle);
+            vertices.set(i, temp);
+        }
+    }
+
+    /**
+     * Scale the Rectangle by 'xFactor' and 'yFactor' from a reference point.
+     * @param xFactor       amount to scale in the X-axis
+     * @param yFactor       amount to scale in the Y-axis
+     */
+    public void scale(double xFactor, double yFactor)
+    {
+        for (int i = 0; i < vertices.size(); i++) {
+            if (vertices.get(i) == null) {
+                DebugLogger.log.warning("Got null value!");
+                continue;
+            }
+
+            System.out.println("scale got " + vertices.get(i).toString());
+            Vertex2D temp = getVertex(i).scale(center, xFactor, yFactor);
+            vertices.set(i, temp);
+            System.out.println("after scale: " + vertices.get(i).toString());
+            calculateCenter();
+        }
+    }
+
+    @Override
+    public String toString()
+    {
+        /* TODO: */
+        return null;
+    }
+
+    /**
+     * Calculate the center point of this Rectangle using the bounding box
+     * method outlined in the lab instructions (oodp_instruktioner_ht15v4.pdf, page 5)
+     */
+    private void calculateCenter()
+    {
+        double xMin, xMax, yMin, yMax;
+        xMin = xMax = yMin = yMax = Double.MIN_VALUE;
+
+        for (Vertex2D v : vertices) {
+            xMin = Math.min(xMin, v.getX());
+            xMax = Math.max(xMax, v.getX());
+            yMin = Math.min(yMin, v.getY());
+            yMax = Math.max(yMax, v.getY());
+        }
+
+        double xMid = xMax + xMin / 2;
+        double yMid = yMax + yMin / 2;
+        DebugLogger.log.finer("calculated midpoint (" + xMid + ", " + yMid + ")");
+        center = new Vertex2D(xMid, yMid);
+    }
+
+    /**
+     * Convenience-method for adding a bunch of vertices to list 'vertices'.
+     * @param vertices      Vertex2D vertices to add to the list 'vertices'
+     */
+    private void addVerticesToList(Vertex2D... newVertices)
+    {
+        for (Vertex2D v : newVertices) {
+            if (v == null)
+                continue;
+            vertices.add(v);
+            DebugLogger.log.fine("Added Vertex2D: " + v.toString());
+            System.out.println("Added Vertex2D: " + v.toString());
+        }
+    }
+
+    /**
+     * Get vertex number 'n' from the vertices list.
+     * @param n     vertex to return
+     * @return      vertex at index 'n'
+     */
+    public Vertex2D getVertex(int n)
+    {
+        if (n < 0 || n > vertices.size()) {
+            DebugLogger.log.warning("Index out of bounds!");
+            return null;
+        }
+
+        return vertices.get(n);
     }
 
     private void calculateWidth()
@@ -70,90 +212,13 @@ public class Rectangle
     }
 
     /**
-     * Creates a new instance of a 'Rectangle'
-     * @param v0        upper left corner
-     * @param width     the width of this Rectangle
-     * @param height    the height of this Rectangle
+     * Calculates and returns the center point of this Rectangle.
+     * @return      the center point of this Rectangle
      */
-    public Rectangle(Vertex2D v0, double width, double height)
+    public Vertex2D getCenter()
     {
-        this.v0 = v0;
-        v1 = new Vertex2D(v0.getX() + width, v0.getY());
-        v2 = new Vertex2D(v0.getX(), v0.getY() - height);
-        v3 = new Vertex2D(v0.getX() + width, v0.getY() - height);
-    }
-
-    /**
-     * Move (translate) the Rectangle by [dx, dy] from its current position.
-     * @param dx    the distance to move along the X-axis
-     * @param dy    the distance to move along the Y-axis
-     */
-    public void moveBy(double dx, double dy)
-    {
-        for (Vertex2D v : vertices) {
-            if (v == null)
-                continue;
-            v = v.moveBy(dx, dy);
-        }
-    }
-
-    /**
-     * Rotate the Rectangle by 'angle' degrees clockwise from a reference point.
-     * @param angle         rotate clockwise by this angle in degrees
-     */
-    public void rotate(double angle)
-    {
-        for (Vertex2D v : vertices) {
-            if (v == null)
-                continue;
-            v.rotate(center, angle);
-        }
-    }
-
-    /**
-     * Scale the Rectangle by 'xFactor' and 'yFactor' from a reference point.
-     * @param xFactor       amount to scale in the X-axis
-     * @param yFactor       amount to scale in the Y-axis
-     */
-    public void scale(double xFactor, double yFactor)
-    {
-        for (Vertex2D v : vertices) {
-            if (v == null) {
-                continue;
-            }
-            v.scale(center, xFactor, yFactor);
-        }
-    }
-
-    @Override
-    public String toString()
-    {
-        /* TODO: */
-        return null;
-    }
-
-    /**
-     * Calculate the center point of this Rectangle using the "distance formula".
-     */
-    private void calculateCenter()
-    {
-        /* TODO: Look into using width and/or height instead.. */
-        double xMid = v0.getX() + ((v0.getX() + v1.getX()) / 2);
-        double yMid = v0.getY() + ((v2.getY() - v0.getY()) / 2);
-        center = center.moveTo(xMid, yMid);
-    }
-
-    /**
-     * Convenience-method for adding a bunch of vertices to list 'vertices'.
-     * @param vertices      Vertex2D vertices to add to the list 'vertices'
-     */
-    private void addVerticesToList(Vertex2D... vertices)
-    {
-        for (Vertex2D v : vertices) {
-            if (v == null)
-                continue;
-            this.vertices.add(v);
-        }
+        calculateCenter();
+        return center;
     }
 }
 

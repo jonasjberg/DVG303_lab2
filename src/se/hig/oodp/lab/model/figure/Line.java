@@ -121,14 +121,9 @@ public class Line
 
         double xMid = v0X + ((v1X - v0X) / 2);
         double yMid = v0Y + ((v1Y - v0Y)/ 2);
-
         DebugLogger.log.finer("calculated midpoint (" + xMid + ", " + yMid + ")");
 
-//        if (center == null) {
-            center = new Vertex2D(xMid, yMid);
-//        } else {
-//            center = center.moveTo(xMid, yMid);
-//        }
+        center = new Vertex2D(xMid, yMid);
     }
 
     @Override
