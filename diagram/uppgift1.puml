@@ -37,6 +37,7 @@ package se.hig.oodp.lab.model.figure {
         -center: Vertex2D
         -v0: Vertex2D
         -v1: Vertex2D
+        -vertices: ArrayList<Vertex2D>
         +Line(v0:Vertex2D, v1:Vertex2D)
         +moveBy(dx:double, dy:double): Vertex2D
         +rotate(angle:double)
@@ -50,13 +51,14 @@ package se.hig.oodp.lab.model.figure {
         -v0: Vertex2D
         -v1: Vertex2D
         -v2: Vertex2D
-        -bounds: Rectangle
+        -vertices: ArrayList<Vertex2D>
 
         +Triangle(v0:Vertex2D, v1:Vertex2D, v2:Vertex2D)
         +moveBy(dx:double, dy:double)
         +rotate(angle:double)
         +scale(xFactor:double, yFactor:double)
         +getCenter(): Vertex2D
+        +getVertex(n:int): Vertex2D
         +toString(): String
     }
 
@@ -79,12 +81,16 @@ package se.hig.oodp.lab.model.figure {
         -v1: Vertex2D
         -v3: Vertex2D
         -v3: Vertex2D
+        -vertices: ArrayList<Vertex2D>
+        -width: double
+        -height: double
 
-        +Rectangle(v0:Vertex2D, v1:Vertex2D, v2:Vertex2D, v3:Vertex2D)
+        +Rectangle(center:Vertex2D, width:double, height:double)
         +moveBy(dx:double, dy:double)
         +rotate(angle:double)
         +scale(xFactor:double, yFactor:double)
         +getCenter(): Vertex2D
+        +getVertex(n:int): Vertex2D
         +toString(): String
     }
 }

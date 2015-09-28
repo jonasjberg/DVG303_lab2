@@ -11,7 +11,6 @@ package se.hig.oodp.lab.model.figure;
 
 import se.hig.oodp.lab.model.Utility.DebugLogger;
 import se.hig.oodp.lab.model.Vertex2D;
-import sun.security.ssl.Debug;
 
 import java.util.ArrayList;
 
@@ -28,7 +27,9 @@ public class Rectangle
 
     /**
      * Creates a new instance of a 'Rectangle'.
-     * @param center    center point
+     * @param center    center point of Rectangle
+     * @param width     width of the Rectangle
+     * @param height    height of the Rectangle
      */
     public Rectangle(Vertex2D center, double width, double height)
     {
@@ -60,26 +61,6 @@ public class Rectangle
     }
 
     /**
-     * Creates a new instance of a 'Rectangle'
-     * @param v0        upper left corner
-     * @param width     the width of this Rectangle
-     * @param height    the height of this Rectangle
-     */
-//    public Rectangle(Vertex2D v0, double width, double height)
-//    {
-//        this.v0 = v0;
-//        v1 = new Vertex2D(v0.getX() + width, v0.getY());
-//        v2 = new Vertex2D(v0.getX(), v0.getY() - height);
-//        v3 = new Vertex2D(v0.getX() + width, v0.getY() - height);
-//
-//        addVerticesToList(v0, v1, v2, v3);
-//
-//        calculateCenter();
-//        calculateWidth();
-//        calculateHeight();
-//    }
-
-    /**
      * Move (translate) the Rectangle by [dx, dy] from its current position.
      * @param dx    the distance to move along the X-axis
      * @param dy    the distance to move along the Y-axis
@@ -97,7 +78,7 @@ public class Rectangle
         }
 
         center = center.moveBy(dx, dy);
-//        calculateCenter();
+//        updateCenterPoint();
     }
 
     /**
@@ -132,7 +113,7 @@ public class Rectangle
 
             Vertex2D temp = getVertex(i).scale(center, xFactor, yFactor);
             vertices.set(i, temp);
-            calculateCenter();
+            updateCenterPoint();
         }
     }
 
@@ -147,7 +128,7 @@ public class Rectangle
      * Calculate the center point of this Rectangle using the bounding box
      * method outlined in the lab instructions (oodp_instruktioner_ht15v4.pdf, page 5)
      */
-    private void calculateCenter()
+    private void updateCenterPoint()
     {
         double xMin, yMin, xMax, yMax;
         xMin = yMin = xMax = yMax = Double.MIN_VALUE;
@@ -232,7 +213,7 @@ public class Rectangle
      */
     public Vertex2D getCenter()
     {
-//        calculateCenter();
+//        updateCenterPoint();
         return center;
     }
 }

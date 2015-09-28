@@ -9,10 +9,11 @@
 
 package se.hig.oodp.lab.model.figure;
 
-import junit.framework.TestCase;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
+import org.junit.Assert;
+import static org.junit.Assert.*;
 import se.hig.oodp.lab.model.Vertex2D;
 
 /**
@@ -20,7 +21,7 @@ import se.hig.oodp.lab.model.Vertex2D;
  *		    tel12jsg@student.hig.se
  * @date	Sep 28, 2015
  */
-public class RectangleTest extends TestCase
+public class RectangleTest
 {
     private static final double PRECISION = TestConstants.PRECISION;
     private static Rectangle rectangle;
@@ -41,10 +42,10 @@ public class RectangleTest extends TestCase
     public void testRectangle() throws Exception
     {
         /*        |
-         *   v3 o~|~~~~~~~~~o v2            v0: (-1.0, -1.0)
+         *   v3 o~~~~~~~~~~~o v2            v0: (-1.0, -1.0)
          *      | |         |               v1: (5.0, -1.0)
          * -----|-+---------|-----          v2: (5.0, 3.0)
-         *   v0 o~|~~~~~~~~~o v1            v3: (-1.0, 3.0)
+         *   v0 o~~~~~~~~~~~o v1            v3: (-1.0, 3.0)
          *        |                     center: (2.0, 1.0)
          */
 

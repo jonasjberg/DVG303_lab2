@@ -36,7 +36,7 @@ public class Line
         this.v1 = v1;
 
         addVerticesToList(v0, v1);
-        calculateCenter();
+        updateCenterPoint();
     }
 
     /**
@@ -57,7 +57,7 @@ public class Line
         }
 //        v0 = v0.moveBy(dx, dy);
 //        v1 = v1.moveBy(dx, dy);
-        calculateCenter();
+        updateCenterPoint();
     }
 
     /**
@@ -105,14 +105,14 @@ public class Line
      */
     public Vertex2D getCenter()
     {
-        calculateCenter();
+        updateCenterPoint();
         return center;
     }
 
     /**
      * Calculate the center point of this Line using the "distance formula".
      */
-    private void calculateCenter()
+    private void updateCenterPoint()
     {
         double v0X = getVertex(0).getX();
         double v0Y = getVertex(0).getY();
@@ -121,9 +121,9 @@ public class Line
 
         double xMid = v0X + ((v1X - v0X) / 2);
         double yMid = v0Y + ((v1Y - v0Y)/ 2);
-        DebugLogger.log.finer("calculated midpoint (" + xMid + ", " + yMid + ")");
 
-        center = new Vertex2D(xMid, yMid);
+        DebugLogger.log.finer("calculated midpoint (" + xMid + ", " + yMid + ")");
+        center = center.moveTo(xMid, yMid);
     }
 
     @Override
