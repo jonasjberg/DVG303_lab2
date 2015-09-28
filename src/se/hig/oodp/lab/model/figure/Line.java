@@ -9,7 +9,10 @@
 
 package se.hig.oodp.lab.model.figure;
 
+import se.hig.oodp.lab.model.Utility.DebugLogger;
 import se.hig.oodp.lab.model.Vertex2D;
+
+import java.util.ArrayList;
 
 /**
  * @author  Jonas Sjöberg
@@ -19,6 +22,7 @@ import se.hig.oodp.lab.model.Vertex2D;
 public class Line
 {
     private Vertex2D v0, v1, center;
+    private ArrayList<Vertex2D> vertices = new ArrayList<Vertex2D>();
 
     /**
      * Creates a new instance of 'Line' consisting of vertices 'v0' and 'v1'.
@@ -29,6 +33,9 @@ public class Line
     {
         this.v0 = v0;
         this.v1 = v1;
+
+        addVerticesToList(v0, v1);
+
         calculateCenter();
     }
 
@@ -39,33 +46,46 @@ public class Line
      */
     public void moveBy(double dx, double dy)
     {
-        v0 = v0.moveBy(dx, dy);
-        v1 = v1.moveBy(dx, dy);
+        for (Vertex2D v : vertices) {
+            if (v == null)
+                continue;
+            v = v.moveBy(dx, dy);
+        }
+//        v0 = v0.moveBy(dx, dy);
+//        v1 = v1.moveBy(dx, dy);
         calculateCenter();
     }
 
     /**
      * Rotate the Line by 'angle' degrees clockwise from a reference point.
-     * @param reference
      * @param angle
      */
-    public void rotate(Vertex2D reference, double angle)
+    public void rotate(double angle)
     {
-        if (reference == null) return;
-        v0 = v0.rotate(reference, angle);
-        v1 = v1.rotate(reference, angle);
+        for (Vertex2D v : vertices) {
+            if (v == null)
+                continue;
+            v = v.rotate(center, angle);
+        }
+//        v0 = v0.rotate(center, angle);
+//        v1 = v1.rotate(center, angle);
     }
 
     /**
      * Scale the Line by 'xFactor' and 'yFactor' from a reference point.
-     * @param reference     reference point
      * @param xFactor       amount to scale in the X-axis
      * @param yFactor       amount to scale in the Y-axis
      */
-    public void scale(Vertex2D reference, double xFactor, double yFactor)
+    public void scale(double xFactor, double yFactor)
     {
-        v0 = v0.scale(center, xFactor, yFactor);
-        v1 = v1.scale(center, xFactor, yFactor);
+        for (Vertex2D v : vertices) {
+            if (v == null) {
+                continue;
+            }
+            v.scale(center, xFactor, yFactor);
+        }
+//        v0 = v0.scale(center, xFactor, yFactor);
+//        v1 = v1.scale(center, xFactor, yFactor);
     }
 
     /**
@@ -86,5 +106,35 @@ public class Line
         double xMid = v0.getX() + ((v1.getX() - v0.getX()) / 2);
         double yMid = v0.getY() + ((v1.getY() - v0.getY()) / 2);
         center = center.moveTo(xMid, yMid);
+    }
+
+    @Override
+    public String toString()
+    {
+        /* TODO: */
+        return null;
+    }
+
+    /**
+     * Convenience-method for adding a bunch of vertices to list 'vertices'.
+     * @param vertices      Vertex2D vertices to add to the list 'vertices'
+     */
+    private void addVerticesToList(Vertex2D... vertices)
+    {
+        for (Vertex2D v : vertices) {
+            if (v == null)
+                continue;
+            this.vertices.add(v);
+        }
+    }
+
+    public Vertex2D getVertex(int n)
+    {
+        if (n < 0 || n > vertices.size()) {
+            DebugLogger.log.warning("Index out of bounds!");
+            return null;
+        }
+
+        return vertices.get(n);
     }
 }
