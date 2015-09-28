@@ -48,10 +48,23 @@ public class Point
         return center;
     }
 
+    /**
+     * Skriv ut en någorlunda "human readable" sammanfattning av objektets data.
+     * @return      objektets data som textsträng
+     */
     @Override
     public String toString()
     {
-        /* TODO: */
-        return null;
+        final String NEWLINE = Constants.NEWLINE;
+        StringBuilder str = new StringBuilder();
+
+        /* Anropa först superklassens 'toString()'-metod. */
+        // str.append(super.toString());
+
+        /* Utöka sedan med 'Point'-objektets data. */
+        str.append("Point:  " + this.hashCode() + NEWLINE);
+        str.append("  pos: (" + getCenter().getX() + ", " + getCenter().getY() + ")" + NEWLINE);
+        str.append(NEWLINE);
+        return str.toString();
     }
 }

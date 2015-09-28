@@ -5,7 +5,7 @@
 skinparam packageStyle folder
 
 ' don't use characters to indicate visibility
-skinparam classAttributeIconsize 0
+' skinparam classAttributeIconsize 0
 
 
 ' ____________________________________________________________________________

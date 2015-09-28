@@ -9,7 +9,7 @@
 
 package se.hig.oodp.lab.model.figure;
 
-import se.hig.oodp.lab.model.Utility.DebugLogger;
+import se.hig.oodp.lab.model.utility.DebugLogger;
 import se.hig.oodp.lab.model.Vertex2D;
 
 /**

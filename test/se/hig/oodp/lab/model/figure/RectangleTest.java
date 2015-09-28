@@ -49,12 +49,7 @@ public class RectangleTest
          *        |                     center: (2.0, 1.0)
          */
 
-//        System.out.println("center: " + rectangle.getCenter().toString());
-//        System.out.println("v0: " + rectangle.getVertex(0).toString());
-//        System.out.println("v1: " + rectangle.getVertex(1).toString());
-//        System.out.println("v2: " + rectangle.getVertex(2).toString());
-//        System.out.println("v3: " + rectangle.getVertex(3).toString());
-        /* Test center */
+        /* test center */
         assertEquals("Wrong X-position!", 2.0, rectangle.getCenter().getX(), PRECISION);
         assertEquals("Wrong Y-position!", 1.0, rectangle.getCenter().getY(), PRECISION);
 
