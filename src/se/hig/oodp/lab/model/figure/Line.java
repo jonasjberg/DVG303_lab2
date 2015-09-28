@@ -148,7 +148,7 @@ public class Line
             if (v == null)
                 continue;
             vertices.add(v);
-            DebugLogger.log.info("Added Vertex2D: " + v.toString());
+            DebugLogger.log.fine("Added Vertex2D: " + v.toString());
         }
     }
 

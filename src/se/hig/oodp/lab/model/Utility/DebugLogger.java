@@ -29,7 +29,7 @@ public class DebugLogger
     private void init()
     {
         logHandler.setLevel(Level.ALL);
-        log.setLevel(Level.FINE);
+        log.setLevel(Level.INFO);
         log.addHandler(logHandler);
     }
 }

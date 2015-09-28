@@ -36,7 +36,7 @@ public class Point
      */
     public void moveBy(double dx, double dy)
     {
-        center.moveBy(dx, dy);
+        center = center.moveBy(dx, dy);
     }
 
     /**
