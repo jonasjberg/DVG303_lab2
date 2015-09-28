@@ -40,6 +40,9 @@ public class Rectangle
         addVerticesToList(v0, v1, v2, v3);
     }
 
+    /**
+     * Calculates the position of vertices v0, v1, v2, v3.
+     */
     private void calculateVerticesFromCenter()
     {
         /*        |
@@ -117,11 +120,28 @@ public class Rectangle
         }
     }
 
+    /**
+     * Returns the object data in a somewhat more "human readable" format.
+     * @return      object data as a string
+     */
     @Override
     public String toString()
     {
-        /* TODO: */
-        return null;
+        final String NEWLINE = Constants.NEWLINE;
+        StringBuilder str = new StringBuilder();
+
+        /* Anropa först superklassens 'toString()'-metod. */
+        // str.append(super.toString());
+
+        /* Utöka sedan med 'Point'-objektets data. */
+        str.append("Rectangle:  " + this.hashCode() + NEWLINE);
+        str.append("   center: (" + getCenter().getX() + ", " + getCenter().getY() + ")" + NEWLINE);
+        str.append("       v0: (" + v0.getX() + ", " + v0.getY() + ")" + NEWLINE);
+        str.append("       v1: (" + v1.getX() + ", " + v1.getY() + ")" + NEWLINE);
+        str.append("       v2: (" + v2.getX() + ", " + v2.getY() + ")" + NEWLINE);
+        str.append("       v3: (" + v3.getX() + ", " + v3.getY() + ")" + NEWLINE);
+        str.append(NEWLINE);
+        return str.toString();
     }
 
     /**
@@ -162,9 +182,9 @@ public class Rectangle
             DebugLogger.log.finer("Added to list: "
                                   + newVertices[i].toString());
         }
-        //            vertices.add(v);
-        //            System.out.println("Added to list: " + v.toString());
-        //            DebugLogger.log.fine("Added to list: " + v.toString());
+        // vertices.add(v);
+        // System.out.println("Added to list: " + v.toString());
+        // DebugLogger.log.fine("Added to list: " + v.toString());
 
     }
 
@@ -183,6 +203,9 @@ public class Rectangle
         return vertices.get(n);
     }
 
+    /**
+     * Calculate the width from the vertex positions.
+     */
     private void calculateWidth()
     {
         /* Subtract upper right corner X from upper left corner Y. */
@@ -195,6 +218,9 @@ public class Rectangle
         }
     }
 
+    /**
+     * Calculate the height from the vertex positions.
+     */
     private void calculateHeight()
     {
         /* Subtract upper left corner Y from lower left corner Y. */
@@ -213,7 +239,6 @@ public class Rectangle
      */
     public Vertex2D getCenter()
     {
-        //        updateCenterPoint();
         return center;
     }
 }

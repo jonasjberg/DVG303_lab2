@@ -54,12 +54,6 @@ public class CircleTest
     }
 
     @Test
-    public void testRotate() throws Exception
-    {
-        /* TODO: implement .. */
-    }
-
-    @Test
     public void testScale() throws Exception
     {
         circle.scale(1.21);

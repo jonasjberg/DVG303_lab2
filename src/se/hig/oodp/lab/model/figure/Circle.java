@@ -43,16 +43,6 @@ public class Circle
     }
 
     /**
-     * Rotate the Circle by 'angle' degrees clockwise from a reference point.
-     * @param angle         rotate clockwise by this angle in degrees
-     */
-    public void rotate(double angle)
-    {
-        angle %= 360;
-        center = center.rotate(center, angle);
-    }
-
-    /**
      * Scale the Circle by 'factor' from a reference point.
      * @param factor    scaling factor
      */
@@ -82,10 +72,24 @@ public class Circle
         return radius;
     }
 
+    /**
+     * Returns the object data in a somewhat more "human readable" format.
+     * @return      object data as a string
+     */
     @Override
     public String toString()
     {
-        /* TODO: */
-        return null;
+        final String NEWLINE = Constants.NEWLINE;
+        StringBuilder str = new StringBuilder();
+
+        /* Anropa först superklassens 'toString()'-metod. */
+        // str.append(super.toString());
+
+        /* Utöka sedan med 'Point'-objektets data. */
+        str.append("Circle:  " + this.hashCode() + NEWLINE);
+        str.append("center: (" + getCenter().getX() + ", " + getCenter().getY() + ")" + NEWLINE);
+        str.append("radius:  " + getRadius() + NEWLINE);
+        str.append(NEWLINE);
+        return str.toString();
     }
 }

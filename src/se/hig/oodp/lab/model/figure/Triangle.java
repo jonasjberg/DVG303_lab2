@@ -143,13 +143,6 @@ public class Triangle
         }
     }
 
-    @Override
-    public String toString()
-    {
-        /* TODO: */
-        return null;
-    }
-
     /**
      * Get vertex number 'n' from the vertices list.
      * @param n     vertex to return
@@ -173,5 +166,28 @@ public class Triangle
     {
         // updateCenterPoint();
         return center;
+    }
+
+    /**
+     * Returns the object data in a somewhat more "human readable" format.
+     * @return      object data as a string
+     */
+    @Override
+    public String toString()
+    {
+        final String NEWLINE = Constants.NEWLINE;
+        StringBuilder str = new StringBuilder();
+
+        /* Anropa först superklassens 'toString()'-metod. */
+        // str.append(super.toString());
+
+        /* Utöka sedan med 'Point'-objektets data. */
+        str.append("Triangle:  " + this.hashCode() + NEWLINE);
+        str.append("  center: (" + getCenter().getX() + ", " + getCenter().getY() + ")" + NEWLINE);
+        str.append("      v0: (" + v0.getX() + ", " + v0.getY() + ")" + NEWLINE);
+        str.append("      v1: (" + v1.getX() + ", " + v1.getY() + ")" + NEWLINE);
+        str.append("      v2: (" + v2.getX() + ", " + v2.getY() + ")" + NEWLINE);
+        str.append(NEWLINE);
+        return str.toString();
     }
 }

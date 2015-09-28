@@ -49,8 +49,8 @@ public class Point
     }
 
     /**
-     * Skriv ut en någorlunda "human readable" sammanfattning av objektets data.
-     * @return      objektets data som textsträng
+     * Returns the object data in a somewhat more "human readable" format.
+     * @return      object data as a string
      */
     @Override
     public String toString()
