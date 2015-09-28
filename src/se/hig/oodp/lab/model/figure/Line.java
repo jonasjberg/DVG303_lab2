@@ -11,6 +11,7 @@ package se.hig.oodp.lab.model.figure;
 
 import se.hig.oodp.lab.model.Utility.DebugLogger;
 import se.hig.oodp.lab.model.Vertex2D;
+import sun.security.ssl.Debug;
 
 import java.util.ArrayList;
 
@@ -35,7 +36,6 @@ public class Line
         this.v1 = v1;
 
         addVerticesToList(v0, v1);
-
         calculateCenter();
     }
 
@@ -46,10 +46,14 @@ public class Line
      */
     public void moveBy(double dx, double dy)
     {
-        for (Vertex2D v : vertices) {
-            if (v == null)
+        for (int i = 0; i < vertices.size(); i++) {
+            if (vertices.get(i) == null) {
+                DebugLogger.log.warning("Got null value!");
                 continue;
-            v = v.moveBy(dx, dy);
+            }
+
+            Vertex2D temp = getVertex(i).moveBy(dx, dy);
+            vertices.set(i, temp);
         }
 //        v0 = v0.moveBy(dx, dy);
 //        v1 = v1.moveBy(dx, dy);
@@ -62,10 +66,14 @@ public class Line
      */
     public void rotate(double angle)
     {
-        for (Vertex2D v : vertices) {
-            if (v == null)
+        for (int i = 0; i < vertices.size(); i++) {
+            if (vertices.get(i) == null) {
+                DebugLogger.log.warning("Got null value!");
                 continue;
-            v = v.rotate(center, angle);
+            }
+
+            Vertex2D temp = getVertex(i).rotate(center, angle);
+            vertices.set(i, temp);
         }
 //        v0 = v0.rotate(center, angle);
 //        v1 = v1.rotate(center, angle);
@@ -78,11 +86,14 @@ public class Line
      */
     public void scale(double xFactor, double yFactor)
     {
-        for (Vertex2D v : vertices) {
-            if (v == null) {
+        for (int i = 0; i < vertices.size(); i++) {
+            if (vertices.get(i) == null) {
+                DebugLogger.log.warning("Got null value!");
                 continue;
             }
-            v.scale(center, xFactor, yFactor);
+
+            Vertex2D temp = getVertex(i).scale(center, xFactor, yFactor);
+            vertices.set(i, temp);
         }
 //        v0 = v0.scale(center, xFactor, yFactor);
 //        v1 = v1.scale(center, xFactor, yFactor);
@@ -103,9 +114,21 @@ public class Line
      */
     private void calculateCenter()
     {
-        double xMid = v0.getX() + ((v1.getX() - v0.getX()) / 2);
-        double yMid = v0.getY() + ((v1.getY() - v0.getY()) / 2);
-        center = center.moveTo(xMid, yMid);
+        double v0X = getVertex(0).getX();
+        double v0Y = getVertex(0).getY();
+        double v1X = getVertex(1).getX();
+        double v1Y = getVertex(1).getY();
+
+        double xMid = v0X + ((v1X - v0X) / 2);
+        double yMid = v0Y + ((v1Y - v0Y)/ 2);
+
+        DebugLogger.log.finer("calculated midpoint (" + xMid + ", " + yMid + ")");
+
+//        if (center == null) {
+            center = new Vertex2D(xMid, yMid);
+//        } else {
+//            center = center.moveTo(xMid, yMid);
+//        }
     }
 
     @Override
@@ -119,15 +142,21 @@ public class Line
      * Convenience-method for adding a bunch of vertices to list 'vertices'.
      * @param vertices      Vertex2D vertices to add to the list 'vertices'
      */
-    private void addVerticesToList(Vertex2D... vertices)
+    private void addVerticesToList(Vertex2D... newVertices)
     {
-        for (Vertex2D v : vertices) {
+        for (Vertex2D v : newVertices) {
             if (v == null)
                 continue;
-            this.vertices.add(v);
+            vertices.add(v);
+            DebugLogger.log.info("Added Vertex2D: " + v.toString());
         }
     }
 
+    /**
+     * Get vertex number 'n' from the vertices list.
+     * @param n     vertex to return
+     * @return      vertex at index 'n'
+     */
     public Vertex2D getVertex(int n)
     {
         if (n < 0 || n > vertices.size()) {

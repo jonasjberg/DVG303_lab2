@@ -10,6 +10,9 @@
 package se.hig.oodp.lab.model.figure;
 
 import junit.framework.TestCase;
+import org.junit.After;
+import org.junit.Before;
+import org.junit.Test;
 
 /**
  * @author  Jonas Sjöberg
@@ -18,27 +21,31 @@ import junit.framework.TestCase;
  */
 public class RectangleTest extends TestCase
 {
-
+    @Before
     public void setUp() throws Exception
     {
 
     }
 
+    @After
     public void tearDown() throws Exception
     {
 
     }
 
+    @Test
     public void testMoveBy() throws Exception
     {
 
     }
 
+    @Test
     public void testRotate() throws Exception
     {
 
     }
 
+    @Test
     public void testScale() throws Exception
     {
 
