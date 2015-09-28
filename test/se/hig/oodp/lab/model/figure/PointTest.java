@@ -23,7 +23,7 @@ import se.hig.oodp.lab.model.Vertex2D;
 public class PointTest extends TestCase
 {
     private static final double PRECISION = TestConstants.PRECISION;
-    private Point point;
+    private static Point        point;
 
     @Before
     public void setUp() throws Exception
@@ -33,7 +33,7 @@ public class PointTest extends TestCase
 
     @After
     public void tearDown() throws Exception
-    { }
+    {}
 
     @Test
     public void testPoint() throws Exception

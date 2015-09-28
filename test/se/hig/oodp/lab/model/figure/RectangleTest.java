@@ -24,7 +24,7 @@ import se.hig.oodp.lab.model.Vertex2D;
 public class RectangleTest
 {
     private static final double PRECISION = TestConstants.PRECISION;
-    private static Rectangle rectangle;
+    private static Rectangle    rectangle;
 
     @Before
     public void setUp() throws Exception
@@ -34,9 +34,7 @@ public class RectangleTest
 
     @After
     public void tearDown() throws Exception
-    {
-
-    }
+    { }
 
     @Test
     public void testRectangle() throws Exception

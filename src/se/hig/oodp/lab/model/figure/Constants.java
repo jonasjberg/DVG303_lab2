@@ -15,9 +15,9 @@ package se.hig.oodp.lab.model.figure;
 public class Constants
 {
     /* Plattformsspecifik nyradsmarkör. */
-    public static final String NEWLINE = System.getProperty("line.separator");
+    public static final String NEWLINE         = System.getProperty("line.separator");
 
     /* Osäker på huruvida det är vettigt att låta figurer ha defaults.. */
-    public static final int DEFAULT_X_COORD = 0;
-    public static final int DEFAULT_Y_COORD = 0;
+    public static final int    DEFAULT_X_COORD = 0;
+    public static final int    DEFAULT_Y_COORD = 0;
 }

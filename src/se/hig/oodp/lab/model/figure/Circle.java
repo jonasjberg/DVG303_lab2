@@ -20,7 +20,7 @@ import se.hig.oodp.lab.model.Vertex2D;
 public class Circle
 {
     private Vertex2D center;
-    private double radius;
+    private double   radius;
 
     /**
      * Creates a new instance of a 'Circle'.

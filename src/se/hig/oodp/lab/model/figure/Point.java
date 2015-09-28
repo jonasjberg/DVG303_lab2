@@ -63,7 +63,8 @@ public class Point
 
         /* Utöka sedan med 'Point'-objektets data. */
         str.append("Point:  " + this.hashCode() + NEWLINE);
-        str.append("  pos: (" + getCenter().getX() + ", " + getCenter().getY() + ")" + NEWLINE);
+        str.append("  pos: (" + getCenter().getX() + ", " + getCenter().getY()
+                   + ")" + NEWLINE);
         str.append(NEWLINE);
         return str.toString();
     }

@@ -21,10 +21,10 @@ import java.util.ArrayList;
  */
 public class Triangle
 {
-    private static final int DEFAULT_X_COORD = Constants.DEFAULT_X_COORD;
-    private static final int DEFAULT_Y_COORD = Constants.DEFAULT_Y_COORD;
-    private Vertex2D v0, v1, v2, center;
-    private ArrayList<Vertex2D> vertices = new ArrayList<Vertex2D>();
+    private static final int    DEFAULT_X_COORD = Constants.DEFAULT_X_COORD;
+    private static final int    DEFAULT_Y_COORD = Constants.DEFAULT_Y_COORD;
+    private Vertex2D            v0, v1, v2, center;
+    private ArrayList<Vertex2D> vertices        = new ArrayList<Vertex2D>();
 
     /**
      * Creates a new instance of a 'Triangle'.
@@ -63,8 +63,9 @@ public class Triangle
 
         double xMid = (xMin + xMax) / 2;
         double yMid = (yMin + yMax) / 2;
-        DebugLogger.log.finer("calculated midpoint (" + xMid + ", " + yMid + ")");
-//        System.out.println("calculated midpoint (" + xMid + ", " + yMid + ")");
+        DebugLogger.log.finer("calculated midpoint (" + xMid + ", " + yMid
+                              + ")");
+        // System.out.println("calculated midpoint (" + xMid + ", " + yMid + ")");
         center = center.moveTo(xMid, yMid);
     }
 
@@ -79,7 +80,8 @@ public class Triangle
                 continue;
 
             vertices.add(newVertices[i]);
-            DebugLogger.log.finer("Added to list: " + newVertices[i].toString());
+            DebugLogger.log.finer("Added to list: "
+                                  + newVertices[i].toString());
         }
     }
 
@@ -169,7 +171,7 @@ public class Triangle
      */
     public Vertex2D getCenter()
     {
-//        updateCenterPoint();
+        // updateCenterPoint();
         return center;
     }
 }

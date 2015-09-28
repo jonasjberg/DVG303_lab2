@@ -21,9 +21,9 @@ import java.util.ArrayList;
  */
 public class Rectangle
 {
-    private Vertex2D v0, v1, v2, v3, center;
+    private Vertex2D            v0, v1, v2, v3, center;
     private ArrayList<Vertex2D> vertices = new ArrayList<Vertex2D>();
-    private double width, height;
+    private double              width, height;
 
     /**
      * Creates a new instance of a 'Rectangle'.
@@ -43,10 +43,10 @@ public class Rectangle
     private void calculateVerticesFromCenter()
     {
         /*        |
-         *   v3 o~|~~~~~~~~~o v2
+         *   v3 o~~~~~~~~~~~o v2
          *      | |         |
          * -----|-+---------|-----
-         *   v0 o~|~~~~~~~~~o v1
+         *   v0 o~~~~~~~~~~~o v1
          *        |
          */
 
@@ -78,7 +78,7 @@ public class Rectangle
         }
 
         center = center.moveBy(dx, dy);
-//        updateCenterPoint();
+        // updateCenterPoint();
     }
 
     /**
@@ -142,8 +142,9 @@ public class Rectangle
 
         double xMid = xMin + xMax / 2;
         double yMid = yMin + yMax / 2;
-        DebugLogger.log.finer("calculated midpoint (" + xMid + ", " + yMid + ")");
-//        center = new Vertex2D(xMid, yMid);
+        DebugLogger.log.finer("calculated midpoint (" + xMid + ", " + yMid
+                              + ")");
+        //        center = new Vertex2D(xMid, yMid);
         center.moveTo(xMid, yMid);
     }
 
@@ -158,11 +159,12 @@ public class Rectangle
                 continue;
 
             vertices.add(newVertices[i]);
-            DebugLogger.log.finer("Added to list: " + newVertices[i].toString());
+            DebugLogger.log.finer("Added to list: "
+                                  + newVertices[i].toString());
         }
-//            vertices.add(v);
-//            System.out.println("Added to list: " + v.toString());
-//            DebugLogger.log.fine("Added to list: " + v.toString());
+        //            vertices.add(v);
+        //            System.out.println("Added to list: " + v.toString());
+        //            DebugLogger.log.fine("Added to list: " + v.toString());
 
     }
 
@@ -189,8 +191,7 @@ public class Rectangle
         /* "Belt and suspenders" checking. Most probably not necessary.. */
         double checkWidth = v3.getX() - v2.getX();
         if (width != checkWidth) {
-            DebugLogger.log.warning(
-                    "WARNING: Width calculation is acting up ..");
+            DebugLogger.log.warning("WARNING: Width calculation is acting up ..");
         }
     }
 
@@ -202,8 +203,7 @@ public class Rectangle
         /* "Belt and suspenders" checking. Most probably not necessary.. */
         double checkHeight = v3.getY() - v1.getY();
         if (height != checkHeight) {
-            DebugLogger.log.warning(
-                    "WARNING: Height calculation is acting up ..");
+            DebugLogger.log.warning("WARNING: Height calculation is acting up ..");
         }
     }
 
@@ -213,8 +213,7 @@ public class Rectangle
      */
     public Vertex2D getCenter()
     {
-//        updateCenterPoint();
+        //        updateCenterPoint();
         return center;
     }
 }
-

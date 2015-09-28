@@ -16,6 +16,7 @@ import org.junit.runners.Suite.SuiteClasses;
  *		    tel12jsg@student.hig.se
  * @date	Sep 28, 2015
  */
+//@formatter:off
 @RunWith(Suite.class)
 @Suite.SuiteClasses ({
                         PointTest.class,
@@ -24,5 +25,6 @@ import org.junit.runners.Suite.SuiteClasses;
                         TriangleTest.class,
                         CircleTest.class
                     })
+//@formatter:on
 
-public class AllTests { }
+public class AllTests {}

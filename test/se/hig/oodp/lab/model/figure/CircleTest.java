@@ -24,18 +24,18 @@ import static org.junit.Assert.*;
 public class CircleTest
 {
     private static final double PRECISION = TestConstants.PRECISION;
-    private static Circle circle;
+    private static Circle       circle;
 
-    @Before public void setUp() throws Exception
+    @Before
+    public void setUp() throws Exception
     {
         circle = new Circle(new Vertex2D(2.0, 1.0), 1.0);
     }
 
-    @After public void tearDown() throws Exception
-    { }
+    @After
+    public void tearDown() throws Exception {}
 
     @Test
-
     public void testCircle()
     {
         assertEquals("Wrong X-position!", 2.0, circle.getCenter().getX(), PRECISION);
@@ -56,7 +56,7 @@ public class CircleTest
     @Test
     public void testRotate() throws Exception
     {
-
+        /* TODO: implement .. */
     }
 
     @Test

@@ -23,9 +23,9 @@ import static org.junit.Assert.*;
  */
 public class TriangleTest
 {
-    private static final double PRECISION = 0.1;
-    private static Triangle triangle;
-    private static Vertex2D v0, v1, v2;
+    private static final double PRECISION = 0.1;   /* work around rounding .. */
+    private static Triangle     triangle;
+    private static Vertex2D     v0, v1, v2;
 
     @Before public void setUp() throws Exception
     {

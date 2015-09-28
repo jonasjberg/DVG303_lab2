@@ -21,10 +21,10 @@ import java.util.ArrayList;
  */
 public class Line
 {
-    private static final int DEFAULT_X_COORD = Constants.DEFAULT_X_COORD;
-    private static final int DEFAULT_Y_COORD = Constants.DEFAULT_Y_COORD;
-    private Vertex2D v0, v1, center;
-    private ArrayList<Vertex2D> vertices = new ArrayList<Vertex2D>();
+    private static final int    DEFAULT_X_COORD = Constants.DEFAULT_X_COORD;
+    private static final int    DEFAULT_Y_COORD = Constants.DEFAULT_Y_COORD;
+    private Vertex2D            v0, v1, center;
+    private ArrayList<Vertex2D> vertices        = new ArrayList<Vertex2D>();
 
     /**
      * Creates a new instance of 'Line' consisting of vertices 'v0' and 'v1'.
@@ -76,8 +76,8 @@ public class Line
             Vertex2D temp = getVertex(i).rotate(center, angle);
             vertices.set(i, temp);
         }
-//        v0 = v0.rotate(center, angle);
-//        v1 = v1.rotate(center, angle);
+        //        v0 = v0.rotate(center, angle);
+        //        v1 = v1.rotate(center, angle);
     }
 
     /**
@@ -96,8 +96,8 @@ public class Line
             Vertex2D temp = getVertex(i).scale(center, xFactor, yFactor);
             vertices.set(i, temp);
         }
-//        v0 = v0.scale(center, xFactor, yFactor);
-//        v1 = v1.scale(center, xFactor, yFactor);
+        //        v0 = v0.scale(center, xFactor, yFactor);
+        //        v1 = v1.scale(center, xFactor, yFactor);
     }
 
     /**
@@ -106,7 +106,7 @@ public class Line
      */
     public Vertex2D getCenter()
     {
-//        updateCenterPoint();
+        //        updateCenterPoint();
         return center;
     }
 
@@ -124,7 +124,8 @@ public class Line
         double xMid = v0X + ((v1X - v0X) / 2);
         double yMid = v0Y + ((v1Y - v0Y) / 2);
 
-        DebugLogger.log.finer("calculated midpoint (" + xMid + ", " + yMid + ")");
+        DebugLogger.log.finer("calculated midpoint (" + xMid + ", " + yMid
+                              + ")");
 
         if (center == null) {
             center = new Vertex2D(DEFAULT_X_COORD, DEFAULT_Y_COORD);
@@ -145,7 +146,8 @@ public class Line
 
         /* Utöka sedan med 'Point'-objektets data. */
         str.append("Line:  " + this.hashCode() + NEWLINE);
-        str.append("center: (" + getCenter().getX() + ", " + getCenter().getY() + ")" + NEWLINE);
+        str.append("center: (" + getCenter().getX() + ", " + getCenter().getY()
+                   + ")" + NEWLINE);
         str.append("    v0: (" + v0.getX() + ", " + v0.getY() + ")" + NEWLINE);
         str.append("    v1: (" + v1.getX() + ", " + v1.getY() + ")" + NEWLINE);
         str.append(NEWLINE);
