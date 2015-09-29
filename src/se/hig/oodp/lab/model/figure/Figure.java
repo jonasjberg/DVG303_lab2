@@ -4,7 +4,7 @@
  * Högskolan i Gävle
  * tel12jsg@student.hig.se
  *
- * Lab #1    Uppgift 1
+ * Lab #1    Uppgift 2
  */
 
 package se.hig.oodp.lab.model.figure;
@@ -14,7 +14,6 @@ package se.hig.oodp.lab.model.figure;
  *		    tel12jsg@student.hig.se
  * @date	Sep 27, 2015
  */
-public class Ellipse
+public class Figure
 {
-
 }

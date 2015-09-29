@@ -4,7 +4,7 @@
  * Högskolan i Gävle
  * tel12jsg@student.hig.se
  *
- * Labb #1    Uppgift 1
+ * Lab #1    Uppgift 1
  */
 
 package se.hig.oodp.lab.model.figure;
