@@ -1,10 +1,18 @@
+' DVG303 :: Objektorienterad design och programmering
+' 860224 Jonas Sjöberg
+' Högskolan i Gävle
+' tel12jsg@student.hig.se
+'
+' Lab #1    Uppgift 1
+
+
 @startuml
 ' ____________________________________________________________________________
 ' ____ CONFIGURATION OPTIONS __________________________________________________
-
+' package graphical style
 skinparam packageStyle folder
 
-' don't use characters to indicate visibility
+' don't use symbols to indicate visibility
 ' skinparam classAttributeIconsize 0
 
 

@@ -9,10 +9,10 @@
 @startuml
 ' ____________________________________________________________________________
 ' ____ CONFIGURATION OPTIONS __________________________________________________
-
+' package graphical style
 skinparam packageStyle folder
 
-' don't use characters to indicate visibility
+' don't use symbols to indicate visibility
 ' skinparam classAttributeIconsize 0
 
 
