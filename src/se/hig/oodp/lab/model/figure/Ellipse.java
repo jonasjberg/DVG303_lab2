@@ -16,5 +16,5 @@ package se.hig.oodp.lab.model.figure;
  */
 public class Ellipse
 {
-
+    /* TODO: implement class 'Ellipse' .. */
 }

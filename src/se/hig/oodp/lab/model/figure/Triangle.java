@@ -26,9 +26,29 @@ public class Triangle
     private Vertex2D            v0, v1, v2, center;
     private ArrayList<Vertex2D> vertices        = new ArrayList<Vertex2D>();
 
+
     /**
-     * Creates a new instance of a 'Triangle'.
-     * @param center    center point
+     * Creates a new instance of a 'Triangle' from a center point,
+     * width and height.
+     * @param v0    triangle point 0
+     * @param v1    triangle point 1
+     * @param v2    triangle point 2
+     */
+    public Triangle(Vertex2D v0, Vertex2D v1, Vertex2D v2)
+    {
+        this.v0 = v0;
+        this.v1 = v1;
+        this.v2 = v2;
+
+        addVerticesToList(v0, v1, v2);
+        updateCenterPoint();
+    }
+
+    /**
+     * Creates a new instance of a 'Triangle' from three Vertex2D points.
+     * @param v0    triangle point 0
+     * @param v1    triangle point 1
+     * @param v2    triangle point 2
      */
     public Triangle(Vertex2D v0, Vertex2D v1, Vertex2D v2)
     {

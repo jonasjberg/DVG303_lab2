@@ -11,6 +11,7 @@ package se.hig.oodp.lab.model.figure;
 
 import se.hig.oodp.lab.model.utility.DebugLogger;
 import se.hig.oodp.lab.model.Vertex2D;
+import static se.hig.oodp.lab.model.figure.constants;
 
 import java.util.ArrayList;
 
@@ -19,7 +20,7 @@ import java.util.ArrayList;
  *		    tel12jsg@student.hig.se
  * @date	Sep 27, 2015
  */
-public class Line
+public class Line extends Figure
 {
     private static final int    DEFAULT_X_COORD = Constants.DEFAULT_X_COORD;
     private static final int    DEFAULT_Y_COORD = Constants.DEFAULT_Y_COORD;

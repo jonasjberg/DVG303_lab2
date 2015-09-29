@@ -17,7 +17,7 @@ import se.hig.oodp.lab.model.Vertex2D;
  *		    tel12jsg@student.hig.se
  * @date	Sep 27, 2015
  */
-public class Circle
+public class Circle extends Figure
 {
     private Vertex2D center;
     private double   radius;
@@ -60,6 +60,19 @@ public class Circle
      */
     public Vertex2D getCenter()
     {
+        return center;
+    }
+
+    /**
+     * Get vertex number 'n' from the vertices list.
+     * @param n     vertex to return
+     * @return      vertex at index 'n'
+     */
+    public Vertex2D getVertex(int n)
+    {
+        if (n != 0) {
+            DebugLogger.log.warning("Circle only has one Vertex2D, center.");
+        }
         return center;
     }
 

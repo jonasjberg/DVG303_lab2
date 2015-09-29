@@ -6,7 +6,6 @@
  *
  * Lab #1    Uppgift 1
  */
-
 package se.hig.oodp.lab.model.figure;
 
 import se.hig.oodp.lab.model.utility.DebugLogger;
@@ -19,7 +18,7 @@ import java.util.ArrayList;
  *		    tel12jsg@student.hig.se
  * @date	Sep 27, 2015
  */
-public class Rectangle
+public class Rectangle extends Figure
 {
     private Vertex2D            v0, v1, v2, v3, center;
     private ArrayList<Vertex2D> vertices = new ArrayList<Vertex2D>();
@@ -61,27 +60,6 @@ public class Rectangle
         v1 = new Vertex2D(xCenter + halfWidth, yCenter - halfHeight);
         v2 = new Vertex2D(xCenter + halfWidth, yCenter + halfHeight);
         v3 = new Vertex2D(xCenter - halfWidth, yCenter + halfHeight);
-    }
-
-    /**
-     * Move (translate) the Rectangle by [dx, dy] from its current position.
-     * @param dx    the distance to move along the X-axis
-     * @param dy    the distance to move along the Y-axis
-     */
-    public void moveBy(double dx, double dy)
-    {
-        for (int i = 0; i < vertices.size(); i++) {
-            if (vertices.get(i) == null) {
-                DebugLogger.log.warning("Got null value!");
-                continue;
-            }
-
-            Vertex2D temp = getVertex(i).moveBy(dx, dy);
-            vertices.set(i, temp);
-        }
-
-        center = center.moveBy(dx, dy);
-        // updateCenterPoint();
     }
 
     /**
@@ -162,10 +140,9 @@ public class Rectangle
 
         double xMid = xMin + xMax / 2;
         double yMid = yMin + yMax / 2;
-        DebugLogger.log.finer("calculated midpoint (" + xMid + ", " + yMid
-                              + ")");
-        //        center = new Vertex2D(xMid, yMid);
-        center.moveTo(xMid, yMid);
+        DebugLogger.log.finer("calculated midpoint (" + xMid + ", " + yMid + ")");
+
+        center = new Vertex2D(xMid, yMid);
     }
 
     /**
@@ -182,25 +159,6 @@ public class Rectangle
             DebugLogger.log.finer("Added to list: "
                                   + newVertices[i].toString());
         }
-        // vertices.add(v);
-        // System.out.println("Added to list: " + v.toString());
-        // DebugLogger.log.fine("Added to list: " + v.toString());
-
-    }
-
-    /**
-     * Get vertex number 'n' from the vertices list.
-     * @param n     vertex to return
-     * @return      vertex at index 'n'
-     */
-    public Vertex2D getVertex(int n)
-    {
-        if (n < 0 || n > vertices.size()) {
-            DebugLogger.log.warning("Index out of bounds!");
-            return null;
-        }
-
-        return vertices.get(n);
     }
 
     /**
@@ -231,14 +189,5 @@ public class Rectangle
         if (height != checkHeight) {
             DebugLogger.log.warning("WARNING: Height calculation is acting up ..");
         }
-    }
-
-    /**
-     * Calculates and returns the center point of this Rectangle.
-     * @return      the center point of this Rectangle
-     */
-    public Vertex2D getCenter()
-    {
-        return center;
     }
 }
