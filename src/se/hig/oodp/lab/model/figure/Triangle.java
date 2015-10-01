@@ -12,20 +12,15 @@ package se.hig.oodp.lab.model.figure;
 import se.hig.oodp.lab.model.Vertex2D;
 import se.hig.oodp.lab.model.utility.DebugLogger;
 
-import java.util.ArrayList;
-
 /**
  * @author  Jonas Sjöberg
  *		    tel12jsg@student.hig.se
  * @date	Sep 27, 2015
  */
-public class Triangle
+public class Triangle extends Figure
 {
-    private static final int    DEFAULT_X_COORD = Constants.DEFAULT_X_COORD;
-    private static final int    DEFAULT_Y_COORD = Constants.DEFAULT_Y_COORD;
-    private Vertex2D            v0, v1, v2, center;
-    private ArrayList<Vertex2D> vertices        = new ArrayList<Vertex2D>();
-
+    private Vertex2D v0, v1, v2;
+    private double   width, height;
 
     /**
      * Creates a new instance of a 'Triangle' from a center point,
@@ -34,14 +29,15 @@ public class Triangle
      * @param v1    triangle point 1
      * @param v2    triangle point 2
      */
-    public Triangle(Vertex2D v0, Vertex2D v1, Vertex2D v2)
+    public Triangle(Vertex2D center, double width , double height)
     {
-        this.v0 = v0;
-        this.v1 = v1;
-        this.v2 = v2;
+        super(center);
 
+        this.width = width;
+        this.height = height;
+
+        calculateVerticesFromCenter();
         addVerticesToList(v0, v1, v2);
-        updateCenterPoint();
     }
 
     /**
@@ -52,12 +48,34 @@ public class Triangle
      */
     public Triangle(Vertex2D v0, Vertex2D v1, Vertex2D v2)
     {
+        super();
+
         this.v0 = v0;
         this.v1 = v1;
         this.v2 = v2;
 
         addVerticesToList(v0, v1, v2);
         updateCenterPoint();
+    }
+
+    private void calculateVerticesFromCenter()
+    {
+        /*            |
+         *            |   o v2         'width' is X distance between v0 and v1
+         *            |  / \          'height' is Y distance from the base to v2
+         *            | /   \
+         * -----------+/-----\-----
+         *            /       \
+         *           /|        \
+         *       v0 o~~~~~~~~~~~o v1
+         *            |
+         */
+
+        double x = center.getX();
+        double y = center.getY();
+        v0 = new Vertex2D(x - width, y - height);
+        v1 = new Vertex2D(x + width, y - height);
+        v2 = new Vertex2D(x, y + height);
     }
 
     /**
@@ -87,22 +105,6 @@ public class Triangle
                               + ")");
         // System.out.println("calculated midpoint (" + xMid + ", " + yMid + ")");
         center = center.moveTo(xMid, yMid);
-    }
-
-    /**
-     * Convenience-method for adding a bunch of vertices to list 'vertices'.
-     * @param vertices      Vertex2D vertices to add to the list 'vertices'
-     */
-    private void addVerticesToList(Vertex2D... newVertices)
-    {
-        for (int i = 0; i < newVertices.length; i++) {
-            if (newVertices[i] == null)
-                continue;
-
-            vertices.add(newVertices[i]);
-            DebugLogger.log.finer("Added to list: "
-                                  + newVertices[i].toString());
-        }
     }
 
     /**
@@ -161,31 +163,6 @@ public class Triangle
             vertices.set(i, temp);
             updateCenterPoint();
         }
-    }
-
-    /**
-     * Get vertex number 'n' from the vertices list.
-     * @param n     vertex to return
-     * @return      vertex at index 'n'
-     */
-    public Vertex2D getVertex(int n)
-    {
-        if (n < 0 || n > vertices.size()) {
-            DebugLogger.log.warning("Index out of bounds!");
-            return null;
-        }
-
-        return vertices.get(n);
-    }
-
-    /**
-     * Calculates and returns the center point of this Rectangle.
-     * @return      the center point of this Rectangle
-     */
-    public Vertex2D getCenter()
-    {
-        // updateCenterPoint();
-        return center;
     }
 
     /**

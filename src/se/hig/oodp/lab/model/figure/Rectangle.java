@@ -20,9 +20,8 @@ import java.util.ArrayList;
  */
 public class Rectangle extends Figure
 {
-    private Vertex2D            v0, v1, v2, v3, center;
-    private ArrayList<Vertex2D> vertices = new ArrayList<Vertex2D>();
-    private double              width, height;
+    private Vertex2D v0, v1, v2, v3, center;
+    private double   width, height;
 
     /**
      * Creates a new instance of a 'Rectangle'.
@@ -143,22 +142,6 @@ public class Rectangle extends Figure
         DebugLogger.log.finer("calculated midpoint (" + xMid + ", " + yMid + ")");
 
         center = new Vertex2D(xMid, yMid);
-    }
-
-    /**
-     * Convenience-method for adding a bunch of vertices to list 'vertices'.
-     * @param vertices      Vertex2D vertices to add to the list 'vertices'
-     */
-    private void addVerticesToList(Vertex2D... newVertices)
-    {
-        for (int i = 0; i < newVertices.length; i++) {
-            if (newVertices[i] == null)
-                continue;
-
-            vertices.add(newVertices[i]);
-            DebugLogger.log.finer("Added to list: "
-                                  + newVertices[i].toString());
-        }
     }
 
     /**

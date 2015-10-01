@@ -21,12 +21,27 @@ import java.util.ArrayList;
  */
 public abstract class Figure
 {
-    private Vertex2D            center;
-    private ArrayList<Vertex2D> vertices = new ArrayList<Vertex2D>();
+    public    static final int    DEFAULT_X_COORD = 0;
+    public    static final int    DEFAULT_Y_COORD = 0;
+    protected Vertex2D            center;
+    protected ArrayList<Vertex2D> vertices;
 
+    /**
+     * Constructor for a abstract 'Figure'
+     * @param center    center position of this figure
+     */
     public Figure(Vertex2D center)
     {
         this.center = center;
+        vertices = new ArrayList<Vertex2D>();
+    }
+
+    /**
+     * Constructor for a abstract 'Figure' with a "default" center position.
+     */
+    public Figure()
+    {
+        this(new Vertex2D(DEFAULT_X_COORD, DEFAULT_Y_COORD));
     }
 
     /**
@@ -77,7 +92,7 @@ public abstract class Figure
      * Convenience-method for adding a bunch of vertices to list 'vertices'.
      * @param vertices      Vertex2D vertices to add to the list 'vertices'
      */
-    private void addVerticesToList(Vertex2D... newVertices)
+    public void addVerticesToList(Vertex2D... newVertices)
     {
         for (int i = 0; i < newVertices.length; i++) {
             if (newVertices[i] == null)

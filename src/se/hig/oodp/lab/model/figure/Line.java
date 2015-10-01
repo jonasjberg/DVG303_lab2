@@ -9,9 +9,8 @@
 
 package se.hig.oodp.lab.model.figure;
 
-import se.hig.oodp.lab.model.utility.DebugLogger;
 import se.hig.oodp.lab.model.Vertex2D;
-import static se.hig.oodp.lab.model.figure.constants;
+import se.hig.oodp.lab.model.utility.DebugLogger;
 
 import java.util.ArrayList;
 
@@ -34,6 +33,7 @@ public class Line extends Figure
      */
     public Line(Vertex2D v0, Vertex2D v1)
     {
+        super();
         this.v0 = v0;
         this.v1 = v1;
 
@@ -153,34 +153,5 @@ public class Line extends Figure
         str.append("    v1: (" + v1.getX() + ", " + v1.getY() + ")" + NEWLINE);
         str.append(NEWLINE);
         return str.toString();
-    }
-
-    /**
-     * Convenience-method for adding a bunch of vertices to list 'vertices'.
-     * @param vertices      Vertex2D vertices to add to the list 'vertices'
-     */
-    private void addVerticesToList(Vertex2D... newVertices)
-    {
-        for (Vertex2D v : newVertices) {
-            if (v == null)
-                continue;
-            vertices.add(v);
-            DebugLogger.log.fine("Added Vertex2D: " + v.toString());
-        }
-    }
-
-    /**
-     * Get vertex number 'n' from the vertices list.
-     * @param n     vertex to return
-     * @return      vertex at index 'n'
-     */
-    public Vertex2D getVertex(int n)
-    {
-        if (n < 0 || n > vertices.size()) {
-            DebugLogger.log.warning("Index out of bounds!");
-            return null;
-        }
-
-        return vertices.get(n);
     }
 }

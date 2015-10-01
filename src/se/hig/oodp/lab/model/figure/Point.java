@@ -68,6 +68,4 @@ public class Point
         str.append(NEWLINE);
         return str.toString();
     }
-
-
 }

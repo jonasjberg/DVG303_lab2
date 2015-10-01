@@ -45,12 +45,13 @@ package se.hig.oodp.lab.model.figure {
         +toString(): String
     }
 
-    class Figure {
+    abstract class Figure {
         #center: Vertex2D
         #vertices: ArrayList<Vertex2D>
         --
         +Figure(center:Vertex2D)
         ..
+        -addVerticesToList(newVertices: Vertex2D...)
         +moveBy(dx:double, dy:double)
         +getCenter(): Vertex2D
         +getVertex(n:int): Vertex2D
@@ -77,8 +78,11 @@ package se.hig.oodp.lab.model.figure {
         -v2: Vertex2D
 '       -vertices: ArrayList<Vertex2D>
         --
+        +Triangle(center:Vertex2D, width:double, height:double)
         +Triangle(v0:Vertex2D, v1:Vertex2D, v2:Vertex2D)
         ..
+        -calculateVerticesFromCenter()
+        -updateCenterPoint()
 '       +moveBy(dx:double, dy:double)
         +rotate(angle:double)
         +scale(xFactor:double, yFactor:double)
@@ -111,7 +115,11 @@ package se.hig.oodp.lab.model.figure {
         --
         +Rectangle(center:Vertex2D, width:double, height:double)
         ..
-        +moveBy(dx:double, dy:double)
+        -calculateVerticesFromCenter()
+        -updateCenterPoint()
+        -calculateWidth()
+        -calculateHeight()
+'       +moveBy(dx:double, dy:double)
         +rotate(angle:double)
         +scale(xFactor:double, yFactor:double)
 '       +getCenter(): Vertex2D
