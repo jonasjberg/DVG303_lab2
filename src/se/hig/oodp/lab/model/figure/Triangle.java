@@ -113,23 +113,6 @@ public class Triangle extends Figure
     }
 
     /**
-     * Rotate the Triangle by 'angle' degrees clockwise from a reference point.
-     * @param angle         rotate clockwise by this angle in degrees
-     */
-    public void rotate(double angle)
-    {
-        for (int i = 0; i < vertices.size(); i++) {
-            if (vertices.get(i) == null) {
-                DebugLogger.log.warning("Got null value!");
-                continue;
-            }
-
-            Vertex2D temp = getVertex(i).rotate(center, angle);
-            vertices.set(i, temp);
-        }
-    }
-
-    /**
      * Scale the Triangle by 'xFactor' and 'yFactor' from a reference point.
      * @param xFactor       amount to scale in the X-axis
      * @param yFactor       amount to scale in the Y-axis

@@ -8,10 +8,8 @@
  */
 package se.hig.oodp.lab.model.figure;
 
-import se.hig.oodp.lab.model.utility.DebugLogger;
 import se.hig.oodp.lab.model.Vertex2D;
-
-import java.util.ArrayList;
+import se.hig.oodp.lab.model.utility.DebugLogger;
 
 /**
  * @author  Jonas Sjöberg
@@ -84,23 +82,6 @@ public class Rectangle extends Figure
         v1 = new Vertex2D(xCenter + halfWidth, yCenter - halfHeight);
         v2 = new Vertex2D(xCenter + halfWidth, yCenter + halfHeight);
         v3 = new Vertex2D(xCenter - halfWidth, yCenter + halfHeight);
-    }
-
-    /**
-     * Rotate the Rectangle by 'angle' degrees clockwise from a reference point.
-     * @param angle         rotate clockwise by this angle in degrees
-     */
-    public void rotate(double angle)
-    {
-        for (int i = 0; i < vertices.size(); i++) {
-            if (vertices.get(i) == null) {
-                DebugLogger.log.warning("Got null value!");
-                continue;
-            }
-
-            Vertex2D temp = getVertex(i).rotate(center, angle);
-            vertices.set(i, temp);
-        }
     }
 
     /**

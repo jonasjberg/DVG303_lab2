@@ -37,29 +37,11 @@ public class Line extends Figure
     }
 
     /**
-     * Rotate the Line by 'angle' degrees clockwise from a reference point.
-     * @param angle
-     */
-    public void rotate(double angle)
-    {
-        for (int i = 0; i < vertices.size(); i++) {
-            if (vertices.get(i) == null) {
-                DebugLogger.log.warning("Got null value!");
-                continue;
-            }
-
-            Vertex2D temp = getVertex(i).rotate(center, angle);
-            vertices.set(i, temp);
-        }
-        //        v0 = v0.rotate(center, angle);
-        //        v1 = v1.rotate(center, angle);
-    }
-
-    /**
      * Scale the Line by 'xFactor' and 'yFactor' from a reference point.
      * @param xFactor       amount to scale in the X-axis
      * @param yFactor       amount to scale in the Y-axis
      */
+    @Override
     public void scale(double xFactor, double yFactor)
     {
         for (int i = 0; i < vertices.size(); i++) {

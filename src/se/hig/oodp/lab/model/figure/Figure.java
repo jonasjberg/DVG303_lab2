@@ -65,6 +65,23 @@ public abstract class Figure
     }
 
     /**
+     * Rotate the Figure by 'angle' degrees clockwise from a reference point.
+     * @param angle         rotate clockwise by this angle in degrees
+     */
+    public void rotate(double angle)
+    {
+        for (int i = 0; i < vertices.size(); i++) {
+            if (vertices.get(i) == null) {
+                DebugLogger.log.warning("Got null value!");
+                continue;
+            }
+
+            Vertex2D temp = getVertex(i).rotate(center, angle);
+            vertices.set(i, temp);
+        }
+    }
+
+    /**
      * Calculates and returns the center point of this Figure.
      * @return      the center point of this Figure
      */
@@ -103,6 +120,9 @@ public abstract class Figure
         }
     }
 
+    public abstract void scale(double xFactor, double yFactor);
+
+    @Override
     public String toString()
     {
         return "center: (" + getCenter().getX() + ", " + getCenter().getY() + ")";

@@ -24,9 +24,7 @@ public class FigureTest
     private static final double PRECISION = TestConstants.PRECISION;
 
     public FigureTest()
-    {
-        /* TODO: implement this .. */
-    }
+    { /* TODO: implement this .. */ }
 
     /**
      * Helper method for checking individual Vertex2D positions.

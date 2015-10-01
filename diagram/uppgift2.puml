@@ -43,13 +43,11 @@ package se.hig.oodp.lab.model.simplefigure {
         --
         SimpleFigure(position:Vertex2D)
         ..
-        +moveBy(dx:double. dy:double)
+        +moveBy(dx:double, dy:double)
         +getPosition():Vertex2D
     }
 
     class Point {
-        +Point(position:Vertex2D)
-        --
         Point(position:Vertex2D)
         ..
         +toString():String
@@ -88,6 +86,8 @@ package se.hig.oodp.lab.model.figure {
         +Figure(center:Vertex2D)
         ..
         -addVerticesToList(newVertices:Vertex2D...)
+        +rotate(angle:double)
+        {abstract} +scale(xFactor:double, yFactor:double)
         +moveBy(dx:double, dy:double)
         +getCenter():Vertex2D
         +getVertex(n:int):Vertex2D
@@ -100,7 +100,6 @@ package se.hig.oodp.lab.model.figure {
         +Line(v0:Vertex2D, v1:Vertex2D)
         ..
         -updateCenterPoint()
-        +rotate(angle:double)
         +scale(xFactor:double, yFactor:double)
         +toString():String
     }
@@ -117,7 +116,6 @@ package se.hig.oodp.lab.model.figure {
         ..
         -calculateVerticesFromCenter()
         -updateCenterPoint()
-        +rotate(angle:double)
         +scale(xFactor:double, yFactor:double)
         +toString():String
     }
@@ -137,7 +135,6 @@ package se.hig.oodp.lab.model.figure {
         -updateCenterPoint()
         -calculateWidth()
         -calculateHeight()
-        +rotate(angle:double)
         +scale(xFactor:double, yFactor:double)
         +toString():String
     }
@@ -152,8 +149,6 @@ package se.hig.oodp.lab.model.figure {
         +Square(center:Vertex2D, side:double)
         ..
         -updateCenterPoint()
-        +moveBy(dx:double, dy:double)
-        +rotate(angle:double)
         +scale(xFactor:double, yFactor:double)
         +toString():String
     }
