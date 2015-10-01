@@ -10,8 +10,8 @@
 package se.hig.oodp.lab.model.simplefigure;
 
 import se.hig.oodp.lab.model.figure.Constants;
-import se.hig.oodp.lab.model.utility.DebugLogger;
 import se.hig.oodp.lab.model.Vertex2D;
+import se.hig.oodp.lab.model.utility.DebugLogger;
 
 /**
  * @author  Jonas Sjöberg
@@ -24,11 +24,11 @@ public class Circle extends SimpleFigure
 
     /**
      * Creates a new instance of a 'Circle'.
-     * @param center    center point
+     * @param position  center point
      */
-    public Circle(Vertex2D center, double radius)
+    public Circle(Vertex2D position, double radius)
     {
-        super(center);
+        super(position);
 
         this.radius = radius;
     }
@@ -40,7 +40,7 @@ public class Circle extends SimpleFigure
     public void scale(double factor)
     {
         if (factor == 0) {
-            debuglogger.log.warning("scaling factor is 0");
+            DebugLogger.log.warning("scaling factor is 0");
         }
         radius = radius * factor;
     }
@@ -69,7 +69,7 @@ public class Circle extends SimpleFigure
 
         /* Utöka sedan med 'Point'-objektets data. */
         str.append("Circle:  " + this.hashCode() + NEWLINE);
-        str.append("center: (" + getCenter().getX() + ", " + getCenter().getY() + ")" + NEWLINE);
+        str.append("center: (" + getPosition().getX() + ", " + getPosition().getY() + ")" + NEWLINE);
         str.append("radius:  " + getRadius() + NEWLINE);
         str.append(NEWLINE);
         return str.toString();

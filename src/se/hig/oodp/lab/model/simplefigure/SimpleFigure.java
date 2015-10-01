@@ -39,8 +39,8 @@ public abstract class SimpleFigure
      * Calculates and returns the center point of this SimpleFigure.
      * @return      the center point of this SimpleFigure
      */
-    public Vertex2D getCenter()
+    public Vertex2D getPosition()
     {
-        return center;
+        return position;
     }
 }

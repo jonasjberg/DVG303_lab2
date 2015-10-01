@@ -19,34 +19,13 @@ import se.hig.oodp.lab.model.figure.Constants;
  */
 public class Point extends SimpleFigure
 {
-    private Vertex2D center;
-
     /**
      * Creates a new instance of 'Point'.
-     * @param center    position of the Point
+     * @param position  position of the Point
      */
-    public Point(Vertex2D center)
+    public Point(Vertex2D position)
     {
-        this.center = center;
-    }
-
-    /**
-     * Move (translate) the Point by [dx, dy] from its current position.
-     * @param dx    the distance to move along the X-axis
-     * @param dy    the distance to move along the Y-axis
-     */
-    public void moveBy(double dx, double dy)
-    {
-        center = center.moveBy(dx, dy);
-    }
-
-    /**
-     * Calculates and returns the center point of this Point.
-     * @return      the center point of this Point
-     */
-    public Vertex2D getCenter()
-    {
-        return center;
+        super(position);
     }
 
     /**
@@ -64,7 +43,7 @@ public class Point extends SimpleFigure
 
         /* Utöka sedan med 'Point'-objektets data. */
         str.append("Point:  " + this.hashCode() + NEWLINE);
-        str.append("  pos: (" + getCenter().getX() + ", " + getCenter().getY()
+        str.append("  pos: (" + getPosition().getX() + ", " + getPosition().getY()
                    + ")" + NEWLINE);
         str.append(NEWLINE);
         return str.toString();

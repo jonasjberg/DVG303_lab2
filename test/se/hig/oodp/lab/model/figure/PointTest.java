@@ -37,24 +37,24 @@ public class PointTest extends TestCase
 
     @Test public void testPoint() throws Exception
     {
-        assertEquals("Wrong X-position!", 2.0, point.getCenter().getX(),
+        assertEquals("Wrong X-position!", 2.0, point.getPosition().getX(),
                      PRECISION);
-        assertEquals("Wrong Y-position!", 1.0, point.getCenter().getY(),
+        assertEquals("Wrong Y-position!", 1.0, point.getPosition().getY(),
                      PRECISION);
     }
 
     @Test public void testMoveBy() throws Exception
     {
         point.moveBy(3.0, 3.0);
-        assertEquals("Wrong X-position!", 5.0, point.getCenter().getX(),
+        assertEquals("Wrong X-position!", 5.0, point.getPosition().getX(),
                      PRECISION);
-        assertEquals("Wrong Y-position!", 4.0, point.getCenter().getY(), PRECISION);
+        assertEquals("Wrong Y-position!", 4.0, point.getPosition().getY(), PRECISION);
     }
 
     @Test
     public void testGetCenter() throws Exception
     {
-        assertEquals("Wrong X-position!", 2.0, point.getCenter().getX(), PRECISION);
-        assertEquals("Wrong Y-position!", 1.0, point.getCenter().getY(), PRECISION);
+        assertEquals("Wrong X-position!", 2.0, point.getPosition().getX(), PRECISION);
+        assertEquals("Wrong Y-position!", 1.0, point.getPosition().getY(), PRECISION);
     }
 }

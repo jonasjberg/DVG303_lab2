@@ -73,8 +73,8 @@ public class Line extends Figure
             Vertex2D temp = getVertex(i).scale(center, xFactor, yFactor);
             vertices.set(i, temp);
         }
-        //        v0 = v0.scale(center, xFactor, yFactor);
-        //        v1 = v1.scale(center, xFactor, yFactor);
+
+        updateCenterPoint();
     }
 
     /**

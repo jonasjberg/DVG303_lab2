@@ -139,8 +139,9 @@ public class Triangle extends Figure
 
             Vertex2D temp = getVertex(i).scale(center, xFactor, yFactor);
             vertices.set(i, temp);
-            updateCenterPoint();
         }
+
+        updateCenterPoint();
     }
 
     /**

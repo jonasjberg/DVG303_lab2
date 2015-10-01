@@ -20,7 +20,7 @@ import java.util.ArrayList;
  */
 public class Rectangle extends Figure
 {
-    private Vertex2D v0, v1, v2, v3, center;
+    private Vertex2D v0, v1, v2, v3;
     private double   width, height;
 
     /**
@@ -117,8 +117,10 @@ public class Rectangle extends Figure
 
             Vertex2D temp = getVertex(i).scale(center, xFactor, yFactor);
             vertices.set(i, temp);
-            updateCenterPoint();
         }
+
+//        updateCenterPoint();
+        center = center.scale(center, xFactor, yFactor);
     }
 
     /**

@@ -38,9 +38,9 @@ public class CircleTest
 
     @Test public void testCircle()
     {
-        assertEquals("Wrong X-position!", 2.0, circle.getCenter().getX(),
+        assertEquals("Wrong X-position!", 2.0, circle.getPosition().getX(),
                      PRECISION);
-        assertEquals("Wrong Y-position!", 1.0, circle.getCenter().getY(),
+        assertEquals("Wrong Y-position!", 1.0, circle.getPosition().getY(),
                      PRECISION);
         assertEquals("Wrong radius!", 1.0, circle.getRadius(), PRECISION);
     }
@@ -49,8 +49,8 @@ public class CircleTest
     {
         circle.moveBy(3.0, 3.0);
 
-        assertEquals("Wrong X-position!", 5.0, circle.getCenter().getX(), PRECISION);
-        assertEquals("Wrong Y-position!", 4.0, circle.getCenter().getY(), PRECISION);
+        assertEquals("Wrong X-position!", 5.0, circle.getPosition().getX(), PRECISION);
+        assertEquals("Wrong Y-position!", 4.0, circle.getPosition().getY(), PRECISION);
         assertEquals("Wrong radius!", 1.0, circle.getRadius(), PRECISION);
     }
 
@@ -59,16 +59,16 @@ public class CircleTest
     {
         circle.scale(1.21);
 
-        assertEquals("Wrong X-position!", 2.0, circle.getCenter().getX(), PRECISION);
-        assertEquals("Wrong Y-position!", 1.0, circle.getCenter().getY(), PRECISION);
+        assertEquals("Wrong X-position!", 2.0, circle.getPosition().getX(), PRECISION);
+        assertEquals("Wrong Y-position!", 1.0, circle.getPosition().getY(), PRECISION);
         assertEquals("Wrong radius!", 1.21, circle.getRadius(), PRECISION);
     }
 
     @Test
     public void testGetCenter() throws Exception
     {
-        assertEquals("Wrong X-position!", 2.0, circle.getCenter().getX(), PRECISION);
-        assertEquals("Wrong Y-position!", 1.0, circle.getCenter().getY(), PRECISION);
+        assertEquals("Wrong X-position!", 2.0, circle.getPosition().getX(), PRECISION);
+        assertEquals("Wrong Y-position!", 1.0, circle.getPosition().getY(), PRECISION);
     }
 
     @Test

@@ -49,23 +49,17 @@ package se.hig.oodp.lab.model.simplefigure {
     }
 
     class Point {
-        -center: Vertex2D
-        --
-        +Point(center:Vertex2D)
+        +Point(position:Vertex2D)
         ..
-        +moveBy(dx:double, dy:double)
-        +getCenter(): Vertex2D
         +toString(): String
     }
 
     class Circle {
         -radius: double
         --
-        +Circle(center:Vertex2D, radius:double)
+        +Circle(position:Vertex2D, radius:double)
         ..
-        +moveBy(dx:double, dy:double)
         +scale(factor:double)
-        +getVertex(n:int): Vertex2D
         +getRadius(): double
         +toString(): String
     }
