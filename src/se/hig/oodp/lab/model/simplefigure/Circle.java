@@ -9,8 +9,8 @@
 
 package se.hig.oodp.lab.model.simplefigure;
 
-import se.hig.oodp.lab.model.figure.Constants;
 import se.hig.oodp.lab.model.Vertex2D;
+import se.hig.oodp.lab.model.figure.Constants;
 import se.hig.oodp.lab.model.utility.DebugLogger;
 
 /**
@@ -74,5 +74,23 @@ public class Circle extends SimpleFigure
         str.append("radius:  " + getRadius() + NEWLINE);
         str.append(NEWLINE);
         return str.toString();
+    }
+
+    /**
+     * Scale circle by a factor. Demonstrates the 'circle/ellipse'-problem.
+     * @param xFactor       amount to scale in the X-axis
+     * @param yFactor       amount to scale in the Y-axis
+     */
+    @Override
+    public void scale(double xFactor, double yFactor) {
+        if (xFactor != yFactor) {
+            DebugLogger.log.warning("Circle can't be scaled in two dimensions");
+        }
+
+        if (xFactor * radius <= 0 || yFactor * radius <= 0) {
+            DebugLogger.log.warning("Scaling operation results in a negative radius");
+        }
+
+        radius *= xFactor;
     }
 }

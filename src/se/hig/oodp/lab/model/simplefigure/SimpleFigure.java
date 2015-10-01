@@ -10,13 +10,15 @@
 package se.hig.oodp.lab.model.simplefigure;
 
 import se.hig.oodp.lab.model.Vertex2D;
+import se.hig.oodp.lab.model.figure.Movable;
+import se.hig.oodp.lab.model.figure.Scalable;
 
 /**
  * @author  Jonas Sjöberg
  *		    tel12jsg@student.hig.se
  * @date    Oct 1, 2015
  */
-public abstract class SimpleFigure
+public abstract class SimpleFigure implements Movable, Scalable
 {
     protected Vertex2D position;
 
