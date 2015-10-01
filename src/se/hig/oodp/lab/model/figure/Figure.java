@@ -21,8 +21,8 @@ import java.util.ArrayList;
  */
 public abstract class Figure
 {
-    public    static final int    DEFAULT_X_COORD = 0;
-    public    static final int    DEFAULT_Y_COORD = 0;
+    public    static final double DEFAULT_X_COORD = 0;
+    public    static final double DEFAULT_Y_COORD = 0;
     protected Vertex2D            center;
     protected ArrayList<Vertex2D> vertices;
 
@@ -66,7 +66,7 @@ public abstract class Figure
 
     /**
      * Calculates and returns the center point of this Figure.
-     * @return      the center point of this Rectangle
+     * @return      the center point of this Figure
      */
     public Vertex2D getCenter()
     {

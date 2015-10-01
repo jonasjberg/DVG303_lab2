@@ -13,6 +13,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import se.hig.oodp.lab.model.Vertex2D;
+import se.hig.oodp.lab.model.simplefigure.Circle;
 
 import static org.junit.Assert.*;
 
@@ -24,27 +25,27 @@ import static org.junit.Assert.*;
 public class CircleTest
 {
     private static final double PRECISION = TestConstants.PRECISION;
-    private static Circle       circle;
+    private static Circle circle;
 
-    @Before
-    public void setUp() throws Exception
+    @Before public void setUp() throws Exception
     {
         circle = new Circle(new Vertex2D(2.0, 1.0), 1.0);
     }
 
-    @After
-    public void tearDown() throws Exception {}
-
-    @Test
-    public void testCircle()
+    @After public void tearDown() throws Exception
     {
-        assertEquals("Wrong X-position!", 2.0, circle.getCenter().getX(), PRECISION);
-        assertEquals("Wrong Y-position!", 1.0, circle.getCenter().getY(), PRECISION);
+    }
+
+    @Test public void testCircle()
+    {
+        assertEquals("Wrong X-position!", 2.0, circle.getCenter().getX(),
+                     PRECISION);
+        assertEquals("Wrong Y-position!", 1.0, circle.getCenter().getY(),
+                     PRECISION);
         assertEquals("Wrong radius!", 1.0, circle.getRadius(), PRECISION);
     }
 
-    @Test
-    public void testMoveBy() throws Exception
+    @Test public void testMoveBy() throws Exception
     {
         circle.moveBy(3.0, 3.0);
 

@@ -21,10 +21,7 @@ import java.util.ArrayList;
  */
 public class Line extends Figure
 {
-    private static final int    DEFAULT_X_COORD = Constants.DEFAULT_X_COORD;
-    private static final int    DEFAULT_Y_COORD = Constants.DEFAULT_Y_COORD;
-    private Vertex2D            v0, v1, center;
-    private ArrayList<Vertex2D> vertices        = new ArrayList<Vertex2D>();
+    private Vertex2D v0, v1;
 
     /**
      * Creates a new instance of 'Line' consisting of vertices 'v0' and 'v1'.
@@ -38,27 +35,6 @@ public class Line extends Figure
         this.v1 = v1;
 
         addVerticesToList(v0, v1);
-        updateCenterPoint();
-    }
-
-    /**
-     * Move (translate) the Line by [dx, dy] from its current position.
-     * @param dx    the distance to move along the X-axis
-     * @param dy    the distance to move along the Y-axis
-     */
-    public void moveBy(double dx, double dy)
-    {
-        for (int i = 0; i < vertices.size(); i++) {
-            if (vertices.get(i) == null) {
-                DebugLogger.log.warning("Got null value!");
-                continue;
-            }
-
-            Vertex2D temp = getVertex(i).moveBy(dx, dy);
-            vertices.set(i, temp);
-        }
-        // v0 = v0.moveBy(dx, dy);
-        // v1 = v1.moveBy(dx, dy);
         updateCenterPoint();
     }
 
@@ -102,16 +78,6 @@ public class Line extends Figure
     }
 
     /**
-     * Calculates and returns the center point of this Line.
-     * @return      the Line center point
-     */
-    public Vertex2D getCenter()
-    {
-        //        updateCenterPoint();
-        return center;
-    }
-
-    /**
      * Calculate the center point of this Line using the "distance formula".
      */
     private void updateCenterPoint()
@@ -125,14 +91,13 @@ public class Line extends Figure
         double xMid = v0X + ((v1X - v0X) / 2);
         double yMid = v0Y + ((v1Y - v0Y) / 2);
 
-        DebugLogger.log.finer("calculated midpoint (" + xMid + ", " + yMid
-                              + ")");
+        DebugLogger.log.finer("calculated midpoint (" + xMid + ", " + yMid + ")");
 
         if (center == null) {
             center = new Vertex2D(DEFAULT_X_COORD, DEFAULT_Y_COORD);
             DebugLogger.log.fine("Created new 'center' (was null) ..");
         }
-        // center = new Vertex2D(xMid, yMid);
+
         center = center.moveTo(xMid, yMid);
     }
 
@@ -147,8 +112,7 @@ public class Line extends Figure
 
         /* Utöka sedan med 'Point'-objektets data. */
         str.append("Line:  " + this.hashCode() + NEWLINE);
-        str.append("center: (" + getCenter().getX() + ", " + getCenter().getY()
-                   + ")" + NEWLINE);
+        str.append("center: (" + getCenter().getX() + ", " + getCenter().getY() + ")" + NEWLINE);
         str.append("    v0: (" + v0.getX() + ", " + v0.getY() + ")" + NEWLINE);
         str.append("    v1: (" + v1.getX() + ", " + v1.getY() + ")" + NEWLINE);
         str.append(NEWLINE);

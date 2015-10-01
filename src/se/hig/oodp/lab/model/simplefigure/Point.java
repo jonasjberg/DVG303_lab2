@@ -7,16 +7,17 @@
  * Lab #1    Uppgift 1
  */
 
-package se.hig.oodp.lab.model.figure;
+package se.hig.oodp.lab.model.simplefigure;
 
 import se.hig.oodp.lab.model.Vertex2D;
+import se.hig.oodp.lab.model.figure.Constants;
 
 /**
  * @author  Jonas Sjöberg
  *		    tel12jsg@student.hig.se
  * @date	Sep 27, 2015
  */
-public class Point
+public class Point extends SimpleFigure
 {
     private Vertex2D center;
 

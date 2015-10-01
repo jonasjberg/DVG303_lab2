@@ -24,18 +24,42 @@ public class Rectangle extends Figure
     private double   width, height;
 
     /**
-     * Creates a new instance of a 'Rectangle'.
+     * Creates a new instance of a 'Rectangle' with a center point,
+     * with the specified width and height.
      * @param center    center point of Rectangle
      * @param width     width of the Rectangle
      * @param height    height of the Rectangle
      */
     public Rectangle(Vertex2D center, double width, double height)
     {
-        this.center = center;
+        super(center);
+
         this.width = width;
         this.height = height;
+
         calculateVerticesFromCenter();
         addVerticesToList(v0, v1, v2, v3);
+    }
+
+    /**
+     * Creates a new instance of a 'Rectangle' from 4 vertices (points).
+     * @param v0    lower left corner of the rectangle
+     * @param v1    lower right corner of the rectangle
+     * @param v2    upper right corner of the rectangle
+     * @param v3    upper left corner of the rectangle
+     */
+    public Rectangle(Vertex2D v0, Vertex2D v1, Vertex2D v2, Vertex2D v3)
+    {
+        super();
+
+        this.v0 = v0;
+        this.v1 = v1;
+        this.v2 = v2;
+        this.v3 = v3;
+
+        addVerticesToList(v0, v1, v2, v3);
+        calculateWidth();
+        calculateHeight();
     }
 
     /**

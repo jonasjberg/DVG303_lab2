@@ -108,28 +108,6 @@ public class Triangle extends Figure
     }
 
     /**
-     * Move (translate) the Triangle by [dx, dy] from its current position.
-     * @param dx    the distance to move along the X-axis
-     * @param dy    the distance to move along the Y-axis
-     */
-    public void moveBy(double dx, double dy)
-    {
-        System.out.println("triangle pre-move: " + center.toString());
-        for (int i = 0; i < vertices.size(); i++) {
-            if (vertices.get(i) == null) {
-                DebugLogger.log.warning("Got null value!");
-                continue;
-            }
-
-            Vertex2D temp = getVertex(i).moveBy(dx, dy);
-            vertices.set(i, temp);
-        }
-
-        center = center.moveBy(dx, dy);
-        System.out.println("triangle post-move: " + center.toString());
-    }
-
-    /**
      * Rotate the Triangle by 'angle' degrees clockwise from a reference point.
      * @param angle         rotate clockwise by this angle in degrees
      */

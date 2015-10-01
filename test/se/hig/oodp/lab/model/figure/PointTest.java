@@ -14,6 +14,7 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import se.hig.oodp.lab.model.Vertex2D;
+import se.hig.oodp.lab.model.simplefigure.Point;
 
 /**
  * @author  Jonas Sjöberg
@@ -23,30 +24,30 @@ import se.hig.oodp.lab.model.Vertex2D;
 public class PointTest extends TestCase
 {
     private static final double PRECISION = TestConstants.PRECISION;
-    private static Point        point;
+    private static Point point;
 
-    @Before
-    public void setUp() throws Exception
+    @Before public void setUp() throws Exception
     {
         point = new Point(new Vertex2D(2.0, 1.0));
     }
 
-    @After
-    public void tearDown() throws Exception
-    {}
-
-    @Test
-    public void testPoint() throws Exception
+    @After public void tearDown() throws Exception
     {
-        assertEquals("Wrong X-position!", 2.0, point.getCenter().getX(), PRECISION);
-        assertEquals("Wrong Y-position!", 1.0, point.getCenter().getY(), PRECISION);
     }
 
-    @Test
-    public void testMoveBy() throws Exception
+    @Test public void testPoint() throws Exception
+    {
+        assertEquals("Wrong X-position!", 2.0, point.getCenter().getX(),
+                     PRECISION);
+        assertEquals("Wrong Y-position!", 1.0, point.getCenter().getY(),
+                     PRECISION);
+    }
+
+    @Test public void testMoveBy() throws Exception
     {
         point.moveBy(3.0, 3.0);
-        assertEquals("Wrong X-position!", 5.0, point.getCenter().getX(), PRECISION);
+        assertEquals("Wrong X-position!", 5.0, point.getCenter().getX(),
+                     PRECISION);
         assertEquals("Wrong Y-position!", 4.0, point.getCenter().getY(), PRECISION);
     }
 
