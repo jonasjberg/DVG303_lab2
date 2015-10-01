@@ -16,7 +16,7 @@
 skinparam packageStyle folder
 
 ' don't use symbols to indicate visibility
-skinparam classAttributeIconsize 0
+' skinparam classAttributeIconsize 0
 
 
 ' ____________________________________________________________________________
@@ -72,6 +72,8 @@ package se.hig.oodp.lab.model.simplefigure {
         +Ellipse(position:Vertex2D, radius:double)
         ..
         +scale(xFactor:double, yFactor:double)
+        +getWidth():double
+        +getHeight():double
         +toString():String
     }
 }
@@ -175,6 +177,7 @@ SimpleFigure <.. Vertex2D
 
 SimpleFigure <|-- Point
 SimpleFigure <|-- Circle
+SimpleFigure <|-- Ellipse
 
 Figure <|-- Line
 Figure <|-- Triangle
