@@ -102,4 +102,9 @@ public abstract class Figure
             DebugLogger.log.finer("Added to list: " + newVertices[i].toString());
         }
     }
+
+    public String toString()
+    {
+        return "center: (" + getCenter().getX() + ", " + getCenter().getY() + ")";
+    }
 }

@@ -4,7 +4,7 @@
  * Högskolan i Gävle
  * tel12jsg@student.hig.se
  *
- * Labb #1    Uppgift 1
+ * Labb #1
  */
 
 package se.hig.oodp.lab.model.figure;
@@ -27,25 +27,28 @@ public class CircleTest
     private static final double PRECISION = TestConstants.PRECISION;
     private static Circle circle;
 
-    @Before public void setUp() throws Exception
+    @Before
+    public void setUp() throws Exception
     {
         circle = new Circle(new Vertex2D(2.0, 1.0), 1.0);
     }
 
-    @After public void tearDown() throws Exception
+    @After
+    public void tearDown() throws Exception
     {
+        circle = null;
     }
 
-    @Test public void testCircle()
+    @Test
+    public void testCircle()
     {
-        assertEquals("Wrong X-position!", 2.0, circle.getPosition().getX(),
-                     PRECISION);
-        assertEquals("Wrong Y-position!", 1.0, circle.getPosition().getY(),
-                     PRECISION);
+        assertEquals("Wrong X-position!", 2.0, circle.getPosition().getX(), PRECISION);
+        assertEquals("Wrong Y-position!", 1.0, circle.getPosition().getY(), PRECISION);
         assertEquals("Wrong radius!", 1.0, circle.getRadius(), PRECISION);
     }
 
-    @Test public void testMoveBy() throws Exception
+    @Test
+    public void testMoveBy() throws Exception
     {
         circle.moveBy(3.0, 3.0);
 

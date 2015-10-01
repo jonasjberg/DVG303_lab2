@@ -4,7 +4,7 @@
  * Högskolan i Gävle
  * tel12jsg@student.hig.se
  *
- * Lab #1    Uppgift 1
+ * Lab #1    Uppgift 2
  */
 package se.hig.oodp.lab.model.figure;
 
@@ -63,7 +63,8 @@ public class Rectangle extends Figure
     }
 
     /**
-     * Calculates the position of vertices v0, v1, v2, v3.
+     * Calculates positions for vertices v0, v1, v2 and v3 from a center point,
+     * a width and a height. The vertices are then moved to these new positions.
      */
     private void calculateVerticesFromCenter()
     {

@@ -4,7 +4,7 @@
  * Högskolan i Gävle
  * tel12jsg@student.hig.se
  *
- * Lab #1    Uppgift 1
+ * Lab #1
  */
 
 package se.hig.oodp.lab.model.figure;
@@ -12,7 +12,7 @@ package se.hig.oodp.lab.model.figure;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
-import org.junit.Assert;
+
 import static org.junit.Assert.*;
 import se.hig.oodp.lab.model.Vertex2D;
 
@@ -21,7 +21,7 @@ import se.hig.oodp.lab.model.Vertex2D;
  *		    tel12jsg@student.hig.se
  * @date	Sep 28, 2015
  */
-public class RectangleTest
+public class RectangleTest extends FigureTest
 {
     private static final double PRECISION = TestConstants.PRECISION;
     private static Rectangle    rectangle;
@@ -34,7 +34,9 @@ public class RectangleTest
 
     @After
     public void tearDown() throws Exception
-    { }
+    {
+        rectangle = null;
+    }
 
     @Test
     public void testRectangle() throws Exception
@@ -47,22 +49,15 @@ public class RectangleTest
          *        |                     center: (2.0, 1.0)
          */
 
-        /* test center */
+        /* Test center */
         assertEquals("Wrong X-position!", 2.0, rectangle.getCenter().getX(), PRECISION);
         assertEquals("Wrong Y-position!", 1.0, rectangle.getCenter().getY(), PRECISION);
 
-        /* Test v0 */
-        assertEquals("v0 X-position is wrong!", -1.0, rectangle.getVertex(0).getX(), PRECISION);
-        assertEquals("v0 Y-position is wrong!", -1.0, rectangle.getVertex(0).getY(), PRECISION);
-        /* Test v1 */
-        assertEquals("v1 X-position is wrong!", 5.0, rectangle.getVertex(1).getX(), PRECISION);
-        assertEquals("v1 Y-position is wrong!", -1.0, rectangle.getVertex(1).getY(), PRECISION);
-        /* Test v2 */
-        assertEquals("v2 X-position is wrong!", 5.0, rectangle.getVertex(2).getX(), PRECISION);
-        assertEquals("v2 Y-position is wrong!", 3.0, rectangle.getVertex(2).getY(), PRECISION);
-        /* Test v3 */
-        assertEquals("v3 X-position is wrong!", -1.0, rectangle.getVertex(3).getX(), PRECISION);
-        assertEquals("v3 Y-position is wrong!", 3.0, rectangle.getVertex(3).getY(), PRECISION);
+        /* Test individual vertices */
+        checkVertex(rectangle, -1.0, -1.0, 0);
+        checkVertex(rectangle, 5.0, -1.0, 1);
+        checkVertex(rectangle, 5.0, 3.0, 2);
+        checkVertex(rectangle, -1.0, 3.0, 3);
     }
 
     @Test
@@ -74,18 +69,11 @@ public class RectangleTest
         assertEquals("Wrong X-position!", 5.0, rectangle.getCenter().getX(), PRECISION);
         assertEquals("Wrong Y-position!", 4.0, rectangle.getCenter().getY(), PRECISION);
 
-        /* Test v0 */
-        assertEquals("v0 X-position is wrong!", 2.0, rectangle.getVertex(0).getX(), PRECISION);
-        assertEquals("v0 Y-position is wrong!", 2.0, rectangle.getVertex(0).getY(), PRECISION);
-        /* Test v1 */
-        assertEquals("v1 X-position is wrong!", 8.0, rectangle.getVertex(1).getX(), PRECISION);
-        assertEquals("v1 Y-position is wrong!", 2.0, rectangle.getVertex(1).getY(), PRECISION);
-        /* Test v2 */
-        assertEquals("v2 X-position is wrong!", 8.0, rectangle.getVertex(2).getX(), PRECISION);
-        assertEquals("v2 Y-position is wrong!", 6.0, rectangle.getVertex(2).getY(), PRECISION);
-        /* Test v3 */
-        assertEquals("v3 X-position is wrong!", 2.0, rectangle.getVertex(3).getX(), PRECISION);
-        assertEquals("v3 Y-position is wrong!", 6.0, rectangle.getVertex(3).getY(), PRECISION);
+        /* Test individual vertices */
+        checkVertex(rectangle, 2.0, 2.0, 0);
+        checkVertex(rectangle, 8.0, 2.0, 1);
+        checkVertex(rectangle, 8.0, 6.0, 2);
+        checkVertex(rectangle, 2.0, 6.0, 3);
     }
 
     @Test
@@ -97,18 +85,11 @@ public class RectangleTest
         assertEquals("Wrong X-position!", 2.0, rectangle.getCenter().getX(), PRECISION);
         assertEquals("Wrong Y-position!", 1.0, rectangle.getCenter().getY(), PRECISION);
 
-        /* Test v0 */
-        assertEquals("v0 X-position is wrong!", -1.63, rectangle.getVertex(0).getX(), PRECISION);
-        assertEquals("v0 Y-position is wrong!", -1.42, rectangle.getVertex(0).getY(), PRECISION);
-        /* Test v1 */
-        assertEquals("v1 X-position is wrong!", 5.63, rectangle.getVertex(1).getX(), PRECISION);
-        assertEquals("v1 Y-position is wrong!", -1.42, rectangle.getVertex(1).getY(), PRECISION);
-        /* Test v2 */
-        assertEquals("v2 X-position is wrong!", 5.63, rectangle.getVertex(2).getX(), PRECISION);
-        assertEquals("v2 Y-position is wrong!", 3.42, rectangle.getVertex(2).getY(), PRECISION);
-        /* Test v3 */
-        assertEquals("v3 X-position is wrong!", -1.63, rectangle.getVertex(3).getX(), PRECISION);
-        assertEquals("v3 Y-position is wrong!", 3.42, rectangle.getVertex(3).getY(), PRECISION);
+        /* Test individual vertices */
+        checkVertex(rectangle, -1.63, -1.42, 0);
+        checkVertex(rectangle, 5.63, -1.42, 1);
+        checkVertex(rectangle, 5.63, 3.42, 2);
+        checkVertex(rectangle, -1.63, 3.42, 3);
     }
 
     @Test
@@ -120,18 +101,10 @@ public class RectangleTest
         assertEquals("Wrong X-position!", 2.0, rectangle.getCenter().getX(), PRECISION);
         assertEquals("Wrong Y-position!", 1.0, rectangle.getCenter().getY(), PRECISION);
 
-        /* Test v0 */
-        assertEquals("v0 X-position is wrong!", 0.402, rectangle.getVertex(0).getX(), PRECISION);
-        assertEquals("v0 Y-position is wrong!", -2.232, rectangle.getVertex(0).getY(), PRECISION);
-        /* Test v1 */
-        assertEquals("v1 X-position is wrong!", 5.598, rectangle.getVertex(1).getX(), PRECISION);
-        assertEquals("v1 Y-position is wrong!", 0.768, rectangle.getVertex(1).getY(), PRECISION);
-        /* Test v2 */
-        assertEquals("v2 X-position is wrong!", 3.598, rectangle.getVertex(2).getX(), PRECISION);
-        assertEquals("v2 Y-position is wrong!", 4.232, rectangle.getVertex(2).getY(), PRECISION);
-        /* Test v3 */
-        assertEquals("v3 X-position is wrong!", -1.598, rectangle.getVertex(3).getX(), PRECISION);
-        assertEquals("v3 Y-position is wrong!", 1.232, rectangle.getVertex(3).getY(), PRECISION);
-
+        /* Test individual vertices */
+        checkVertex(rectangle, 0.402, -2.232, 0);
+        checkVertex(rectangle, 5.598, 0.768, 1);
+        checkVertex(rectangle, 3.598, 4.232, 2);
+        checkVertex(rectangle, -1.598, 1.232, 3);
     }
 }

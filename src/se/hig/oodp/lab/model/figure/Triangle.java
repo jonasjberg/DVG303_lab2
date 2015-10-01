@@ -58,16 +58,21 @@ public class Triangle extends Figure
         updateCenterPoint();
     }
 
+    /**
+     * Calculates positions for vertices v0, v1 and v2 from a center point,
+     * a width and a height. The vertices are then moved to these new positions.
+     */
     private void calculateVerticesFromCenter()
     {
         /*            |
-         *            |   o v2         'width' is X distance between v0 and v1
+         *            |   o v2        'width' is X distance between v0 and v1
          *            |  / \          'height' is Y distance from the base to v2
          *            | /   \
          * -----------+/-----\-----
-         *            /       \
-         *           /|        \
-         *       v0 o~~~~~~~~~~~o v1
+         *            /   X   \
+         *           /| center \
+         *          / |         \
+         *      v0 o~~~~~~~~~~~~~o v1
          *            |
          */
 

@@ -4,7 +4,7 @@
  * Högskolan i Gävle
  * tel12jsg@student.hig.se
  *
- * Labb #1    Uppgift 1
+ * Labb #1
  */
 
 package se.hig.oodp.lab.model.figure;
@@ -17,12 +17,14 @@ import org.junit.Test;
 import se.hig.oodp.lab.model.utility.DebugLogger;
 import se.hig.oodp.lab.model.Vertex2D;
 
+import static org.junit.Assert.assertEquals;
+
 /**
  * @author  Jonas Sjöberg
  *		    tel12jsg@student.hig.se
  * @date	Sep 27, 2015
  */
-public class LineTest extends TestCase
+public class LineTest extends FigureTest
 {
     private static final double PRECISION = TestConstants.PRECISION;
     private static Line         line;
@@ -41,6 +43,14 @@ public class LineTest extends TestCase
     }
 
     @Test
+    public void testLine()
+    {
+        /* Test center */
+        assertEquals("Wrong X-position!", 2.0, line.getCenter().getX(), PRECISION);
+        assertEquals("Wrong Y-position!", 1.0, line.getCenter().getY(), PRECISION);
+    }
+
+    @Test
     public void testMoveBy() throws Exception
     {
         line.moveBy(3.0, 3.0);
@@ -49,13 +59,9 @@ public class LineTest extends TestCase
         assertEquals("Wrong X-position!", 5.0, line.getCenter().getX(), PRECISION);
         assertEquals("Wrong Y-position!", 4.0, line.getCenter().getY(), PRECISION);
 
-        /* Test v0 */
-        assertEquals("v0 X-position is wrong!", 3.0, line.getVertex(0).getX(), PRECISION);
-        assertEquals("v0 Y-position is wrong!", 3.0, line.getVertex(0).getY(), PRECISION);
-
-        /* Test v1 */
-        assertEquals("v1 X-position is wrong!", 7.0, line.getVertex(1).getX(), PRECISION);
-        assertEquals("v1 Y-position is wrong!", 5.0, line.getVertex(1).getY(), PRECISION);
+        /* Test individual vertices */
+        checkVertex(line, 3.0, 3.0, 0);
+        checkVertex(line, 7.0, 5.0, 1);
     }
 
     @Test
@@ -67,13 +73,9 @@ public class LineTest extends TestCase
         assertEquals("Wrong X-position!", 2.0, line.getCenter().getX(), PRECISION);
         assertEquals("Wrong Y-position!", 1.0, line.getCenter().getY(), PRECISION);
 
-        /* Test v0*/
-        assertEquals("v0 X-position is wrong!", -0.42, line.getVertex(0).getX(), PRECISION);
-        assertEquals("v0 Y-position is wrong!", -0.21, line.getVertex(0).getY(), PRECISION);
-
-        /* Test v1*/
-        assertEquals("v1 X-position is wrong!", 4.42, line.getVertex(1).getX(), PRECISION);
-        assertEquals("v1 Y-position is wrong!", 2.21, line.getVertex(1).getY(), PRECISION);
+        /* Test individual vertices */
+        checkVertex(line, -0.42, -0.21, 0);
+        checkVertex(line, 4.42, 2.21, 1);
     }
 
     @Test
@@ -85,20 +87,17 @@ public class LineTest extends TestCase
         assertEquals("Wrong X-position!", 2.0, line.getCenter().getX(), PRECISION);
         assertEquals("Wrong Y-position!", 1.0, line.getCenter().getY(), PRECISION);
 
-        /* Test v0 */
-        assertEquals("v0 X-position is wrong!", 0.768, line.getVertex(0).getX(), PRECISION);
-        assertEquals("v0 Y-position is wrong!", -0.866, line.getVertex(0).getY(), PRECISION);
-
-        /* Test v1 */
-        assertEquals("v1 X-position is wrong!", 3.232, line.getVertex(1).getX(), PRECISION);
-        assertEquals("v1 Y-position is wrong!", 2.866, line.getVertex(1).getY(), PRECISION);
+        /* Test individual vertices */
+        checkVertex(line, 0.768, -0.866, 0);
+        checkVertex(line, 3.232, 2.866, 1);
     }
 
-    @Ignore
     @Test
     public void testGetCenter() throws Exception
     {
-        // fail("Not yet implemented!");
+        /* Test center */
+        assertEquals("Wrong X-position!", 2.0, line.getCenter().getX(), PRECISION);
+        assertEquals("Wrong Y-position!", 1.0, line.getCenter().getY(), PRECISION);
     }
 
     @Ignore

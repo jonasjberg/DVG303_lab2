@@ -4,7 +4,7 @@
  * Högskolan i Gävle
  * tel12jsg@student.hig.se
  *
- * Labb #1    Uppgift 1
+ * Labb #1
  */
 
 package se.hig.oodp.lab.model.figure;
@@ -33,21 +33,19 @@ public class PointTest extends TestCase
 
     @After public void tearDown() throws Exception
     {
+        point = null;
     }
 
     @Test public void testPoint() throws Exception
     {
-        assertEquals("Wrong X-position!", 2.0, point.getPosition().getX(),
-                     PRECISION);
-        assertEquals("Wrong Y-position!", 1.0, point.getPosition().getY(),
-                     PRECISION);
+        assertEquals("Wrong X-position!", 2.0, point.getPosition().getX(), PRECISION);
+        assertEquals("Wrong Y-position!", 1.0, point.getPosition().getY(), PRECISION);
     }
 
     @Test public void testMoveBy() throws Exception
     {
         point.moveBy(3.0, 3.0);
-        assertEquals("Wrong X-position!", 5.0, point.getPosition().getX(),
-                     PRECISION);
+        assertEquals("Wrong X-position!", 5.0, point.getPosition().getX(), PRECISION);
         assertEquals("Wrong Y-position!", 4.0, point.getPosition().getY(), PRECISION);
     }
 

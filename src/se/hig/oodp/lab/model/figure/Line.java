@@ -12,8 +12,6 @@ package se.hig.oodp.lab.model.figure;
 import se.hig.oodp.lab.model.Vertex2D;
 import se.hig.oodp.lab.model.utility.DebugLogger;
 
-import java.util.ArrayList;
-
 /**
  * @author  Jonas Sjöberg
  *		    tel12jsg@student.hig.se
@@ -108,7 +106,7 @@ public class Line extends Figure
         StringBuilder str = new StringBuilder();
 
         /* Anropa först superklassens 'toString()'-metod. */
-        // str.append(super.toString());
+        str.append(super.toString());
 
         /* Utöka sedan med 'Point'-objektets data. */
         str.append("Line:  " + this.hashCode() + NEWLINE);

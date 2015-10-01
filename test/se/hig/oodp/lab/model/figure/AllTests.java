@@ -19,11 +19,13 @@ import org.junit.runners.Suite.SuiteClasses;
 //@formatter:off
 @RunWith(Suite.class)
 @Suite.SuiteClasses ({
-                        PointTest.class,
+                        CircleTest.class,
+                      //FigureTest.class
                         LineTest.class,
+                        PointTest.class,
                         RectangleTest.class,
-                        TriangleTest.class,
-                        CircleTest.class
+                        SquareTest.class,
+                        TriangleTest.class
                     })
 //@formatter:on
 
