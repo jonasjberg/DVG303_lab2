@@ -43,4 +43,10 @@ public abstract class SimpleFigure
     {
         return position;
     }
+
+    @Override
+    public String toString()
+    {
+        return "Position: (" + getPosition().getX() + ", " + getPosition().getY() + ")";
+    }
 }

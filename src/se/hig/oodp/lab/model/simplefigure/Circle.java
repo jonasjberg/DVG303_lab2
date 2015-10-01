@@ -24,7 +24,8 @@ public class Circle extends SimpleFigure
 
     /**
      * Creates a new instance of a 'Circle'.
-     * @param position  center point
+     * @param position  center point of the circle
+     * @param radius    radius of the circle
      */
     public Circle(Vertex2D position, double radius)
     {

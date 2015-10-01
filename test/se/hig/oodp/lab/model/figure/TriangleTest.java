@@ -112,11 +112,6 @@ public class TriangleTest extends FigureTest
         checkVertex(triangle, 5.0, 3.0, 2);
     }
 
-    @Ignore
-    @Test
-    public void testToString() throws Exception
-    { /* TODO: Implement .. */}
-
     @Test
     public void testGetVertex() throws Exception
     {

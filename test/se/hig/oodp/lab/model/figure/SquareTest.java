@@ -1,13 +1,13 @@
-package se.hig.oodp.lab.model.figure;
-
 /**
  * DVG303 :: Objektorienterad design och programmering
  * 860224 Jonas Sjöberg
  * Högskolan i Gävle
  * tel12jsg@student.hig.se
  *
- * Lab #1    Uppgift 2
+ * Lab #1
  */
+
+package se.hig.oodp.lab.model.figure;
 
 import org.junit.After;
 import org.junit.Before;
@@ -120,12 +120,5 @@ public class SquareTest extends FigureTest
         /* Test center */
         assertEquals("Wrong X-position!", 2.0, square.getCenter().getX(), PRECISION);
         assertEquals("Wrong Y-position!", 1.0, square.getCenter().getY(), PRECISION);
-    }
-
-    @Ignore
-    @Test
-    public void testToString() throws Exception
-    {
-        // fail("Not yet implemented!");
     }
 }

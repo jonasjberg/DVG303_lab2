@@ -99,11 +99,4 @@ public class LineTest extends FigureTest
         assertEquals("Wrong X-position!", 2.0, line.getCenter().getX(), PRECISION);
         assertEquals("Wrong Y-position!", 1.0, line.getCenter().getY(), PRECISION);
     }
-
-    @Ignore
-    @Test
-    public void testToString() throws Exception
-    {
-        // fail("Not yet implemented!");
-    }
 }

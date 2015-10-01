@@ -45,7 +45,6 @@ package se.hig.oodp.lab.model.simplefigure {
         ..
         +moveBy(dx:double. dy:double)
         +getPosition():Vertex2D
-        {Abstract}+scale(factor:double)
     }
 
     class Point {
@@ -63,6 +62,16 @@ package se.hig.oodp.lab.model.simplefigure {
         ..
         +scale(factor:double)
         +getRadius():double
+        +toString():String
+    }
+
+    class Ellipse {
+        -width:double
+        -height:double
+        --
+        +Ellipse(position:Vertex2D, radius:double)
+        ..
+        +scale(xFactor:double, yFactor:double)
         +toString():String
     }
 }

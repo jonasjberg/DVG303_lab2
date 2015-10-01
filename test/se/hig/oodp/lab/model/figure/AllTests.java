@@ -10,6 +10,7 @@ package se.hig.oodp.lab.model.figure;
 import org.junit.runner.RunWith;
 import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
+import se.hig.oodp.lab.model.simplefigure.EllipseTest;
 
 /**
  * @author  Jonas Sjöberg
@@ -20,6 +21,7 @@ import org.junit.runners.Suite.SuiteClasses;
 @RunWith(Suite.class)
 @Suite.SuiteClasses ({
                         CircleTest.class,
+                        EllipseTest.class,
                       //FigureTest.class
                         LineTest.class,
                         PointTest.class,
