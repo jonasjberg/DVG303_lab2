@@ -4,7 +4,7 @@
  * Högskolan i Gävle
  * tel12jsg@student.hig.se
  *
- * Lab #1    Uppgift 2
+ * Lab #1    Uppgift 3
  */
 
 package se.hig.oodp.lab.model.figure;
@@ -19,7 +19,7 @@ import java.util.ArrayList;
  *		    tel12jsg@student.hig.se
  * @date	Sep 27, 2015
  */
-public abstract class Figure
+public abstract class Figure implements Movable, Rotatable, Scalable
 {
     public    static final double DEFAULT_X_COORD = 0;
     public    static final double DEFAULT_Y_COORD = 0;
@@ -49,6 +49,7 @@ public abstract class Figure
      * @param dx    the distance to move along the X-axis
      * @param dy    the distance to move along the Y-axis
      */
+    @Override
     public void moveBy(double dx, double dy)
     {
         for (int i = 0; i < vertices.size(); i++) {
@@ -68,6 +69,7 @@ public abstract class Figure
      * Rotate the Figure by 'angle' degrees clockwise from a reference point.
      * @param angle         rotate clockwise by this angle in degrees
      */
+    @Override
     public void rotate(double angle)
     {
         for (int i = 0; i < vertices.size(); i++) {
@@ -120,11 +122,32 @@ public abstract class Figure
         }
     }
 
-    public abstract void scale(double xFactor, double yFactor);
+//    public abstract void scale(double xFactor, double yFactor);
 
     @Override
     public String toString()
     {
         return "center: (" + getCenter().getX() + ", " + getCenter().getY() + ")";
+    }
+
+    /**
+     * Scale by 'xFactor' and 'yFactor'.
+     * @param xFactor       amount to scale in the X-axis
+     * @param yFactor       amount to scale in the Y-axis
+     */
+    @Override
+    public void scale(double xFactor, double yFactor)
+    {
+        for (int i = 0; i < vertices.size(); i++) {
+            if (vertices.get(i) == null) {
+                DebugLogger.log.warning("Got null value!");
+                continue;
+            }
+
+            Vertex2D temp = getVertex(i).scale(center, xFactor, yFactor);
+            vertices.set(i, temp);
+        }
+
+        center = center.scale(center, xFactor, yFactor);
     }
 }

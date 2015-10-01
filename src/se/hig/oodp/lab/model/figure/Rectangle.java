@@ -4,7 +4,7 @@
  * Högskolan i Gävle
  * tel12jsg@student.hig.se
  *
- * Lab #1    Uppgift 2
+ * Lab #1    Uppgift 3
  */
 package se.hig.oodp.lab.model.figure;
 
@@ -82,27 +82,6 @@ public class Rectangle extends Figure
         v1 = new Vertex2D(xCenter + halfWidth, yCenter - halfHeight);
         v2 = new Vertex2D(xCenter + halfWidth, yCenter + halfHeight);
         v3 = new Vertex2D(xCenter - halfWidth, yCenter + halfHeight);
-    }
-
-    /**
-     * Scale the Rectangle by 'xFactor' and 'yFactor' from a reference point.
-     * @param xFactor       amount to scale in the X-axis
-     * @param yFactor       amount to scale in the Y-axis
-     */
-    public void scale(double xFactor, double yFactor)
-    {
-        for (int i = 0; i < vertices.size(); i++) {
-            if (vertices.get(i) == null) {
-                DebugLogger.log.warning("Got null value!");
-                continue;
-            }
-
-            Vertex2D temp = getVertex(i).scale(center, xFactor, yFactor);
-            vertices.set(i, temp);
-        }
-
-//        updateCenterPoint();
-        center = center.scale(center, xFactor, yFactor);
     }
 
     /**
