@@ -23,14 +23,14 @@ public class Square extends Figure
     private double sideLength;
 
     /**
-     * Creates a new instance of a 'Square' with a center point,
+     * Creates a new instance of a 'Square' with a position point,
      * with the sides at the specified length.
-     * @param center     center point of the square
+     * @param position     position point of the square
      * @param sideLength length of this squares sides
      */
-    public Square(Vertex2D center, double sideLength)
+    public Square(Vertex2D position, double sideLength)
     {
-        super(center);
+        super(position);
 
         this.sideLength = sideLength;
 
@@ -39,7 +39,7 @@ public class Square extends Figure
     }
 
     /**
-     * Calculates positions for vertices v0, v1, v2 and v3 from a center point
+     * Calculates positions for vertices v0, v1, v2 and v3 from a position point
      * and a sideLength. The vertices are then moved to these new positions.
      */
     private void calculateVerticesFromCenter()
@@ -54,8 +54,8 @@ public class Square extends Figure
          */
 
         double halfSideLength = sideLength / 2;
-        double xCenter = center.getX();
-        double yCenter = center.getY();
+        double xCenter = position.getX();
+        double yCenter = position.getY();
         v0 = new Vertex2D(xCenter - halfSideLength, yCenter - halfSideLength);
         v1 = new Vertex2D(xCenter + halfSideLength, yCenter - halfSideLength);
         v2 = new Vertex2D(xCenter + halfSideLength, yCenter + halfSideLength);
@@ -86,25 +86,13 @@ public class Square extends Figure
     }
 
     /**
-     * Calculate the center point of this Square using the bounding box
+     *
+     * Calculate the position point of this Square using the bounding box
      * method outlined in the lab instructions (oodp_instruktioner_ht15v4.pdf, page 5)
      */
-    private void updateCenterPoint()
+    @Override
+    public void updateCenterPoint(double xFactor, double yFactor)
     {
-        double xMin, yMin, xMax, yMax;
-        xMin = yMin = xMax = yMax = Double.MIN_VALUE;
-
-        for (Vertex2D v : vertices) {
-            xMin = Math.min(xMin, v.getX());
-            yMin = Math.min(yMin, v.getY());
-            xMax = Math.max(xMax, v.getX());
-            yMax = Math.max(yMax, v.getY());
-        }
-
-        double xMid = xMin + xMax / 2;
-        double yMid = yMin + yMax / 2;
-        DebugLogger.log.finer("calculated midpoint (" + xMid + ", " + yMid + ")");
-
-        center = new Vertex2D(xMid, yMid);
+        position = position.scale(getPosition(), xFactor, yFactor);
     }
 }

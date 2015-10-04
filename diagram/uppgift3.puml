@@ -70,6 +70,7 @@ skinparam packageStyle folder
         +Ellipse(position:Vertex2D, width:double, height:double)
         ..
         +scale(xFactor:double, yFactor:double)
+        +rotate(angle:double)
         +getWidth():double
         +getHeight():double
         +toString():String
@@ -92,14 +93,14 @@ skinparam packageStyle folder
     abstract class Figure {
         +DEFAULT_X_COORD:double
         +DEFAULT_Y_COORD:double
-        #center:Vertex2D
-        #vertices:ArrayList<Vertex2D>
+'       #vertices:ArrayList<Vertex2D>
         --
         +Figure(center:Vertex2D)
         ..
-        -addVerticesToList(newVertices:Vertex2D...)
+        #addVerticesToList(newVertices:Vertex2D...)
         +rotate(angle:double)
-        {abstract} +scale(xFactor:double, yFactor:double)
+        +scale(xFactor:double, yFactor:double)
+        {abstract} +updateCenterPoint(xFactor:double, yFactor:double)
         +moveBy(dx:double, dy:double)
         +getCenter():Vertex2D
         +getVertex(n:int):Vertex2D
@@ -112,7 +113,6 @@ skinparam packageStyle folder
         +Line(v0:Vertex2D, v1:Vertex2D)
         ..
         -updateCenterPoint()
-        +scale(xFactor:double, yFactor:double)
         +toString():String
     }
 
@@ -132,6 +132,13 @@ skinparam packageStyle folder
         +toString():String
     }
 
+    class Polygon {
+        +Polygon(center:Vertex2D, vertices:Vertex2D...)
+        ..
+        +scale(Factor:double, yFactor:double)
+        +toString():String
+    }
+
     class Rectangle {
         -v0:Vertex2D
         -v1:Vertex2D
@@ -144,10 +151,9 @@ skinparam packageStyle folder
         +Rectangle(v0:Vertex2D, v1:Vertex2D, v2:Vertex2D, v3:Vertex2D)
         ..
         -calculateVerticesFromCenter()
-        -updateCenterPoint()
+        -updateCenterPoint(xFactor:double, yFactor:double)
         -calculateWidth()
         -calculateHeight()
-        +scale(xFactor:double, yFactor:double)
         +toString():String
     }
 
@@ -161,7 +167,7 @@ skinparam packageStyle folder
         +Square(center:Vertex2D, side:double)
         ..
         -updateCenterPoint()
-        +scale(xFactor:double, yFactor:double)
+        -calculateVerticesFromCenter()
         +toString():String
     }
 '}
@@ -169,8 +175,8 @@ skinparam packageStyle folder
 
 ' ____________________________________________________________________________
 ' ____ PACKAGE HIERARCHY _____________________________________________________
-se.hig.oodp.lab.model +-- se.hig.oodp.lab.model.figure
-se.hig.oodp.lab.model +-- se.hig.oodp.lab.model.simplefigure
+'se.hig.oodp.lab.model +-- se.hig.oodp.lab.model.figure
+'se.hig.oodp.lab.model +-- se.hig.oodp.lab.model.simplefigure
 
 
 ' ____________________________________________________________________________
@@ -179,32 +185,51 @@ se.hig.oodp.lab.model +-- se.hig.oodp.lab.model.simplefigure
 ' *--       composition
 ' o--       aggregation
 
+
 ' COMPOSITION
-' Figure <.. Vertex2D
-' SimpleFigure <.. Vertex2D
+' ~~~~~~~~~~~
 Figure       "1" *-- "many" Vertex2D : contains
 SimpleFigure "1" *-- "1"    Vertex2D : contains
 
+
 ' INHERITANCE
+' ~~~~~~~~~~~
+SimpleFigure <|-- Figure
+
 SimpleFigure <|-- Point
 SimpleFigure <|-- Circle
 SimpleFigure <|-- Ellipse
 
-' IMPLEMENT INTERFACES
-Movable <.. Figure
-Rotatable <.. Figure
-Scalable <.. Figure
-
-Movable <.. SimpleFigure
-Scalable <.. SimpleFigure
-
-' INHERITANCE
 Figure <|-- Line
 Figure <|-- Triangle
+Figure <|-- Polygon
 Figure <|-- Rectangle
 Figure <|-- Square
 
 
+' IMPLEMENT INTERFACES
+' ~~~~~~~~~~~~~~~~~~~~
+Movable <.. Figure
+Movable <.. SimpleFigure
+
+Rotatable <.. Figure
+
+Scalable <.. Figure
+Scalable <.. Circle
+Scalable <.. Ellipse
+
+
+' NOTES
+' ~~~~~
+note top of SimpleFigure
+Simpler figure consists of just
+one single point, the center.
+end note
+
+note left of Figure
+Figure consists of
+any number of points.
+end note
 
 
 @enduml

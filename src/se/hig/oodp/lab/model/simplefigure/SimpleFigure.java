@@ -18,7 +18,7 @@ import se.hig.oodp.lab.model.figure.Scalable;
  *		    tel12jsg@student.hig.se
  * @date    Oct 1, 2015
  */
-public abstract class SimpleFigure implements Movable, Scalable
+public abstract class SimpleFigure implements Movable
 {
     protected Vertex2D position;
 

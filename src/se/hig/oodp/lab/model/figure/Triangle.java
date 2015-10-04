@@ -23,15 +23,15 @@ public class Triangle extends Figure
     private double   width, height;
 
     /**
-     * Creates a new instance of a 'Triangle' from a center point,
+     * Creates a new instance of a 'Triangle' from a position point,
      * width and height.
      * @param v0    triangle point 0
      * @param v1    triangle point 1
      * @param v2    triangle point 2
      */
-    public Triangle(Vertex2D center, double width , double height)
+    public Triangle(Vertex2D position, double width , double height)
     {
-        super(center);
+        super(position);
 
         this.width = width;
         this.height = height;
@@ -55,11 +55,11 @@ public class Triangle extends Figure
         this.v2 = v2;
 
         addVerticesToList(v0, v1, v2);
-        updateCenterPoint();
+        updateCenterPoint(0, 0);
     }
 
     /**
-     * Calculates positions for vertices v0, v1 and v2 from a center point,
+     * Calculates positions for vertices v0, v1 and v2 from a position point,
      * a width and a height. The vertices are then moved to these new positions.
      */
     private void calculateVerticesFromCenter()
@@ -70,31 +70,32 @@ public class Triangle extends Figure
          *            | /   \
          * -----------+/-----\-----
          *            /   X   \
-         *           /| center \
+         *           /| position \
          *          / |         \
          *      v0 o~~~~~~~~~~~~~o v1
          *            |
          */
 
-        double x = center.getX();
-        double y = center.getY();
+        double x = position.getX();
+        double y = position.getY();
         v0 = new Vertex2D(x - width, y - height);
         v1 = new Vertex2D(x + width, y - height);
         v2 = new Vertex2D(x, y + height);
     }
 
     /**
-     * Calculate the center point of this Rectangle using the bounding box
+     * Calculate the position point of this Rectangle using the bounding box
      * method outlined in the lab instructions (oodp_instruktioner_ht15v4.pdf, page 5)
      */
-    private void updateCenterPoint()
+    @Override
+    public void updateCenterPoint(double xFactor, double yFactor)
     {
         double xMin, yMin, xMax, yMax;
         xMin = yMin = xMax = yMax = Double.MIN_VALUE;
 
-        if (center == null) {
-            center = new Vertex2D(DEFAULT_X_COORD, DEFAULT_Y_COORD);
-            DebugLogger.log.fine("Created new 'center' (was null) ..");
+        if (position == null) {
+            position = new Vertex2D(DEFAULT_X_COORD, DEFAULT_Y_COORD);
+            DebugLogger.log.fine("Created new 'position' (was null) ..");
         }
 
         for (Vertex2D v : vertices) {
@@ -106,30 +107,8 @@ public class Triangle extends Figure
 
         double xMid = (xMin + xMax) / 2;
         double yMid = (yMin + yMax) / 2;
-        DebugLogger.log.finer("calculated midpoint (" + xMid + ", " + yMid
-                              + ")");
-        // System.out.println("calculated midpoint (" + xMid + ", " + yMid + ")");
-        center = center.moveTo(xMid, yMid);
-    }
-
-    /**
-     * Scale the Triangle by 'xFactor' and 'yFactor' from a reference point.
-     * @param xFactor       amount to scale in the X-axis
-     * @param yFactor       amount to scale in the Y-axis
-     */
-    public void scale(double xFactor, double yFactor)
-    {
-        for (int i = 0; i < vertices.size(); i++) {
-            if (vertices.get(i) == null) {
-                DebugLogger.log.warning("Got null value!");
-                continue;
-            }
-
-            Vertex2D temp = getVertex(i).scale(center, xFactor, yFactor);
-            vertices.set(i, temp);
-        }
-
-        updateCenterPoint();
+        DebugLogger.log.finer("calculated midpoint (" + xMid + ", " + yMid + ")");
+        position = position.moveTo(xMid, yMid);
     }
 
     /**
@@ -147,7 +126,7 @@ public class Triangle extends Figure
 
         /* Utöka sedan med 'Point'-objektets data. */
         str.append("Triangle:  " + this.hashCode() + NEWLINE);
-        str.append("  center: (" + getCenter().getX() + ", " + getCenter().getY() + ")" + NEWLINE);
+        str.append("position: (" + getCenter().getX() + ", " + getCenter().getY() + ")" + NEWLINE);
         str.append("      v0: (" + v0.getX() + ", " + v0.getY() + ")" + NEWLINE);
         str.append("      v1: (" + v1.getX() + ", " + v1.getY() + ")" + NEWLINE);
         str.append("      v2: (" + v2.getX() + ", " + v2.getY() + ")" + NEWLINE);

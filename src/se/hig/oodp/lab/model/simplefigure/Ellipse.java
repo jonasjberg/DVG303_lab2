@@ -10,6 +10,8 @@
 package se.hig.oodp.lab.model.simplefigure;
 
 import se.hig.oodp.lab.model.Vertex2D;
+import se.hig.oodp.lab.model.figure.Rotatable;
+import se.hig.oodp.lab.model.figure.Scalable;
 import se.hig.oodp.lab.model.simplefigure.SimpleFigure;
 import se.hig.oodp.lab.model.utility.DebugLogger;
 
@@ -18,9 +20,9 @@ import se.hig.oodp.lab.model.utility.DebugLogger;
  *		    tel12jsg@student.hig.se
  * @date	Sep 27, 2015
  */
-public class Ellipse extends SimpleFigure
+public class Ellipse extends SimpleFigure implements Scalable, Rotatable
 {
-    private double width, height;
+    private double width, height, angle;
 
     /**
      * Creates a new instance of a 'Ellipse'.
@@ -33,13 +35,15 @@ public class Ellipse extends SimpleFigure
 
         this.width = width;
         this.height = height;
+//        calculateAngle();
     }
 
     /**
-     * Scale the Circle by 'xFactor' and 'yFactor' from a reference point.
+     * Scale the Ellipse by 'xFactor' and 'yFactor' from a reference point.
      * @param xFactor       amount to scale in the X-axis
      * @param yFactor       amount to scale in the Y-axis
      */
+    @Override
     public void scale(double xFactor, double yFactor)
     {
         if (xFactor == 0 || yFactor == 0) {
@@ -66,5 +70,16 @@ public class Ellipse extends SimpleFigure
     public double getHeight()
     {
         return height;
+    }
+
+    /**
+     * Rotate the Rectangle by 'angle' degrees clockwise the center point.
+     * @param angle         rotate clockwise by this angle in degrees
+     */
+    @Override
+    public void rotate(double angle)
+    {
+        angle %= 360;
+        this.angle += angle;
     }
 }

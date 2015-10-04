@@ -33,34 +33,13 @@ public class Line extends Figure
         this.v1 = v1;
 
         addVerticesToList(v0, v1);
-        updateCenterPoint();
+        updateCenterPoint(0, 0);
     }
 
     /**
-     * Scale the Line by 'xFactor' and 'yFactor' from a reference point.
-     * @param xFactor       amount to scale in the X-axis
-     * @param yFactor       amount to scale in the Y-axis
+     * Calculate the position point of this Line using the "distance formula".
      */
-    @Override
-    public void scale(double xFactor, double yFactor)
-    {
-        for (int i = 0; i < vertices.size(); i++) {
-            if (vertices.get(i) == null) {
-                DebugLogger.log.warning("Got null value!");
-                continue;
-            }
-
-            Vertex2D temp = getVertex(i).scale(center, xFactor, yFactor);
-            vertices.set(i, temp);
-        }
-
-        updateCenterPoint();
-    }
-
-    /**
-     * Calculate the center point of this Line using the "distance formula".
-     */
-    private void updateCenterPoint()
+    public void updateCenterPoint(double xFactor, double yFactor)
     {
         double v0X, v0Y, v1X, v1Y;
         v0X = getVertex(0).getX();
@@ -73,12 +52,12 @@ public class Line extends Figure
 
         DebugLogger.log.finer("calculated midpoint (" + xMid + ", " + yMid + ")");
 
-        if (center == null) {
-            center = new Vertex2D(DEFAULT_X_COORD, DEFAULT_Y_COORD);
-            DebugLogger.log.fine("Created new 'center' (was null) ..");
+        if (position == null) {
+            position = new Vertex2D(DEFAULT_X_COORD, DEFAULT_Y_COORD);
+            DebugLogger.log.fine("Created new 'position' (was null) ..");
         }
 
-        center = center.moveTo(xMid, yMid);
+        position = position.moveTo(xMid, yMid);
     }
 
     @Override
@@ -92,7 +71,7 @@ public class Line extends Figure
 
         /* Utöka sedan med 'Point'-objektets data. */
         str.append("Line:  " + this.hashCode() + NEWLINE);
-        str.append("center: (" + getCenter().getX() + ", " + getCenter().getY() + ")" + NEWLINE);
+        str.append("position: (" + getCenter().getX() + ", " + getCenter().getY() + ")" + NEWLINE);
         str.append("    v0: (" + v0.getX() + ", " + v0.getY() + ")" + NEWLINE);
         str.append("    v1: (" + v1.getX() + ", " + v1.getY() + ")" + NEWLINE);
         str.append(NEWLINE);

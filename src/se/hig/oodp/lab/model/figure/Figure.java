@@ -10,6 +10,7 @@
 package se.hig.oodp.lab.model.figure;
 
 import se.hig.oodp.lab.model.Vertex2D;
+import se.hig.oodp.lab.model.simplefigure.SimpleFigure;
 import se.hig.oodp.lab.model.utility.DebugLogger;
 
 import java.util.ArrayList;
@@ -19,25 +20,25 @@ import java.util.ArrayList;
  *		    tel12jsg@student.hig.se
  * @date	Sep 27, 2015
  */
-public abstract class Figure implements Movable, Rotatable, Scalable
+public abstract class Figure extends SimpleFigure implements Movable, Rotatable, Scalable
 {
     public    static final double DEFAULT_X_COORD = 0;
     public    static final double DEFAULT_Y_COORD = 0;
-    protected Vertex2D            center;
     protected ArrayList<Vertex2D> vertices;
 
     /**
      * Constructor for a abstract 'Figure'
-     * @param center    center position of this figure
+     * @param position    position position of this figure
      */
-    public Figure(Vertex2D center)
+    public Figure(Vertex2D position)
     {
-        this.center = center;
+        super(position);
+
         vertices = new ArrayList<Vertex2D>();
     }
 
     /**
-     * Constructor for a abstract 'Figure' with a "default" center position.
+     * Constructor for a abstract 'Figure' with a "default" position position.
      */
     public Figure()
     {
@@ -62,7 +63,7 @@ public abstract class Figure implements Movable, Rotatable, Scalable
             vertices.set(i, temp);
         }
 
-        center = center.moveBy(dx, dy);
+        position = position.moveBy(dx, dy);
     }
 
     /**
@@ -78,18 +79,18 @@ public abstract class Figure implements Movable, Rotatable, Scalable
                 continue;
             }
 
-            Vertex2D temp = getVertex(i).rotate(center, angle);
+            Vertex2D temp = getVertex(i).rotate(position, angle);
             vertices.set(i, temp);
         }
     }
 
     /**
-     * Calculates and returns the center point of this Figure.
-     * @return      the center point of this Figure
+     * Calculates and returns the position point of this Figure.
+     * @return      the position point of this Figure
      */
     public Vertex2D getCenter()
     {
-        return center;
+        return position;
     }
 
     /**
@@ -111,7 +112,7 @@ public abstract class Figure implements Movable, Rotatable, Scalable
      * Convenience-method for adding a bunch of vertices to list 'vertices'.
      * @param vertices      Vertex2D vertices to add to the list 'vertices'
      */
-    public void addVerticesToList(Vertex2D... newVertices)
+    protected void addVerticesToList(Vertex2D... newVertices)
     {
         for (int i = 0; i < newVertices.length; i++) {
             if (newVertices[i] == null)
@@ -127,7 +128,7 @@ public abstract class Figure implements Movable, Rotatable, Scalable
     @Override
     public String toString()
     {
-        return "center: (" + getCenter().getX() + ", " + getCenter().getY() + ")";
+        return "position: (" + getCenter().getX() + ", " + getCenter().getY() + ")";
     }
 
     /**
@@ -144,10 +145,13 @@ public abstract class Figure implements Movable, Rotatable, Scalable
                 continue;
             }
 
-            Vertex2D temp = getVertex(i).scale(center, xFactor, yFactor);
+            Vertex2D temp = getVertex(i).scale(position, xFactor, yFactor);
             vertices.set(i, temp);
         }
 
-        center = center.scale(center, xFactor, yFactor);
+//        position = position.scale(position, xFactor, yFactor);
+        updateCenterPoint(xFactor, yFactor);
     }
+
+    public abstract void updateCenterPoint(double xFactor, double yFactor);
 }

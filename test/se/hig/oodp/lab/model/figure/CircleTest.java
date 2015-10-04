@@ -60,7 +60,7 @@ public class CircleTest
     @Test
     public void testScale() throws Exception
     {
-        circle.scale(1.21);
+        circle.scale(1.21, 1.21);
 
         assertEquals("Wrong X-position!", 2.0, circle.getPosition().getX(), PRECISION);
         assertEquals("Wrong Y-position!", 1.0, circle.getPosition().getY(), PRECISION);

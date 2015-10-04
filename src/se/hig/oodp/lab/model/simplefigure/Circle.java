@@ -11,6 +11,7 @@ package se.hig.oodp.lab.model.simplefigure;
 
 import se.hig.oodp.lab.model.Vertex2D;
 import se.hig.oodp.lab.model.figure.Constants;
+import se.hig.oodp.lab.model.figure.Scalable;
 import se.hig.oodp.lab.model.utility.DebugLogger;
 
 /**
@@ -18,7 +19,7 @@ import se.hig.oodp.lab.model.utility.DebugLogger;
  *		    tel12jsg@student.hig.se
  * @date	Sep 27, 2015
  */
-public class Circle extends SimpleFigure
+public class Circle extends SimpleFigure implements Scalable
 {
     private double radius;
 
@@ -35,15 +36,23 @@ public class Circle extends SimpleFigure
     }
 
     /**
-     * scale the circle by 'factor' from a reference point.
-     * @param factor    scaling factor
+     * Scale circle by a factor.
+     * @param xFactor       amount to scale in the X-axis
+     * @param yFactor       amount to scale in the Y-axis
      */
-    public void scale(double factor)
-    {
-        if (factor == 0) {
-            DebugLogger.log.warning("scaling factor is 0");
-        }
-        radius = radius * factor;
+    @Override
+    public void scale(double xFactor, double yFactor) {
+        /* Create a temporary point at the radius of the circle. */
+        double x = getPosition().getX() + radius;
+        double y = getPosition().getY();
+        Vertex2D radiusPoint = new Vertex2D(x, y);
+
+        /* Scale the temporary point by the supplied parameters.
+         * Calculate the new radius from the distance between circle center
+         * (position) and the temporary point. */
+        radiusPoint = radiusPoint.scale(getPosition(), xFactor, yFactor);
+        radius = getPosition().dist(radiusPoint);
+        radius = Math.abs(radius);
     }
 
     /**
@@ -76,21 +85,4 @@ public class Circle extends SimpleFigure
         return str.toString();
     }
 
-    /**
-     * Scale circle by a factor. Demonstrates the 'circle/ellipse'-problem.
-     * @param xFactor       amount to scale in the X-axis
-     * @param yFactor       amount to scale in the Y-axis
-     */
-    @Override
-    public void scale(double xFactor, double yFactor) {
-        if (xFactor != yFactor) {
-            DebugLogger.log.warning("Circle can't be scaled in two dimensions");
-        }
-
-        if (xFactor * radius <= 0 || yFactor * radius <= 0) {
-            DebugLogger.log.warning("Scaling operation results in a negative radius");
-        }
-
-        radius *= xFactor;
-    }
 }

@@ -22,15 +22,15 @@ public class Rectangle extends Figure
     private double   width, height;
 
     /**
-     * Creates a new instance of a 'Rectangle' with a center point,
+     * Creates a new instance of a 'Rectangle' with a position point,
      * with the specified width and height.
-     * @param center    center point of Rectangle
+     * @param position    position point of Rectangle
      * @param width     width of the Rectangle
      * @param height    height of the Rectangle
      */
-    public Rectangle(Vertex2D center, double width, double height)
+    public Rectangle(Vertex2D position, double width, double height)
     {
-        super(center);
+        super(position);
 
         this.width = width;
         this.height = height;
@@ -61,7 +61,7 @@ public class Rectangle extends Figure
     }
 
     /**
-     * Calculates positions for vertices v0, v1, v2 and v3 from a center point,
+     * Calculates positions for vertices v0, v1, v2 and v3 from a position point,
      * a width and a height. The vertices are then moved to these new positions.
      */
     private void calculateVerticesFromCenter()
@@ -76,8 +76,8 @@ public class Rectangle extends Figure
 
         double halfHeight = height / 2;
         double halfWidth = width / 2;
-        double xCenter = center.getX();
-        double yCenter = center.getY();
+        double xCenter = position.getX();
+        double yCenter = position.getY();
         v0 = new Vertex2D(xCenter - halfWidth, yCenter - halfHeight);
         v1 = new Vertex2D(xCenter + halfWidth, yCenter - halfHeight);
         v2 = new Vertex2D(xCenter + halfWidth, yCenter + halfHeight);
@@ -99,7 +99,7 @@ public class Rectangle extends Figure
 
         /* Utöka sedan med 'Point'-objektets data. */
         str.append("Rectangle:  " + this.hashCode() + NEWLINE);
-        str.append("   center: (" + getCenter().getX() + ", " + getCenter().getY() + ")" + NEWLINE);
+        str.append("   position: (" + getCenter().getX() + ", " + getCenter().getY() + ")" + NEWLINE);
         str.append("       v0: (" + v0.getX() + ", " + v0.getY() + ")" + NEWLINE);
         str.append("       v1: (" + v1.getX() + ", " + v1.getY() + ")" + NEWLINE);
         str.append("       v2: (" + v2.getX() + ", " + v2.getY() + ")" + NEWLINE);
@@ -109,26 +109,28 @@ public class Rectangle extends Figure
     }
 
     /**
-     * Calculate the center point of this Rectangle using the bounding box
+     * Calculate the position point of this Rectangle using the bounding box
      * method outlined in the lab instructions (oodp_instruktioner_ht15v4.pdf, page 5)
      */
-    private void updateCenterPoint()
+    @Override
+    public void updateCenterPoint(double xFactor, double yFactor)
     {
-        double xMin, yMin, xMax, yMax;
-        xMin = yMin = xMax = yMax = Double.MIN_VALUE;
-
-        for (Vertex2D v : vertices) {
-            xMin = Math.min(xMin, v.getX());
-            yMin = Math.min(yMin, v.getY());
-            xMax = Math.max(xMax, v.getX());
-            yMax = Math.max(yMax, v.getY());
-        }
-
-        double xMid = xMin + xMax / 2;
-        double yMid = yMin + yMax / 2;
-        DebugLogger.log.finer("calculated midpoint (" + xMid + ", " + yMid + ")");
-
-        center = new Vertex2D(xMid, yMid);
+//        double xMin, yMin, xMax, yMax;
+//        xMin = yMin = xMax = yMax = Double.MIN_VALUE;
+//
+//        for (Vertex2D v : vertices) {
+//            xMin = Math.min(xMin, v.getX());
+//            yMin = Math.min(yMin, v.getY());
+//            xMax = Math.max(xMax, v.getX());
+//            yMax = Math.max(yMax, v.getY());
+//        }
+//
+//        double xMid = xMin + xMax / 2;
+//        double yMid = yMin + yMax / 2;
+//        DebugLogger.log.finer("calculated midpoint (" + xMid + ", " + yMid + ")");
+//
+//        position = new Vertex2D(xMid, yMid);
+        position = position.scale(getPosition(), xFactor, yFactor);
     }
 
     /**
