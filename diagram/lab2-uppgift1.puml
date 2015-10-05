@@ -19,7 +19,7 @@ skinparam packageStyle folder
 ' appearance
 skinparam monochrome true
 skinparam backgroundColor transparent
-skinparam classBackgroundColor transparent
+skinparam classBackgroundColor white
 'skinparam style strictuml
 
 
@@ -232,6 +232,8 @@ package se.hig.oodp.lab.control {
             -movableFigures:List<Movable>
             -rotatableFigures:List<Rotatable>
             -scalableFigures:List<Scalable>
+            --
+            ++FigureHandlerImpl()
         }
 
         class FigureMoverImpl {
@@ -241,6 +243,14 @@ package se.hig.oodp.lab.control {
             FigureMoverImpl(movableFigures:ArrayList<Movable>)
             ..
             +moveAll(dx:double, dy:double)
+        }
+
+        class FigurePrinterImpl {
+            -figures:List<Figure>
+            --
+            FigurePrinterImpl(figures:ArrayList<Figure>)
+            ..
+            +printAll()
         }
 
         class FigureRotorImpl {
@@ -259,14 +269,6 @@ package se.hig.oodp.lab.control {
             FigureScalorImpl(scalableFigures:ArrayList<Scalable>)
             ..
             +scaleAll(factor_x:double, factor_y:double)
-        }
-
-        class FigurePrinterImpl {
-            -figures:List<Figure>
-            --
-            FigurePrinterImpl(figures:ArrayList<Figure>)
-            ..
-            +printAll()
         }
     }
 }
@@ -289,7 +291,7 @@ package se.hig.oodp.lab.control {
 
 ' INHERITANCE
 ' ~~~~~~~~~~~
-Figure  --|> SimpleFigure
+Figure  --|> SimpleFigure : extends
 Point   --|> SimpleFigure
 Circle  --|> SimpleFigure
 Ellipse --|> SimpleFigure
