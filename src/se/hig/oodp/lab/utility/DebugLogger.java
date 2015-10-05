@@ -5,7 +5,7 @@
  * tel12jsg@student.hig.se
  */
 
-package se.hig.oodp.lab.model.utility;
+package se.hig.oodp.lab.utility;
 
 import java.util.logging.ConsoleHandler;
 import java.util.logging.Level;
