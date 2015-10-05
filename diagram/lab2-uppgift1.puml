@@ -179,7 +179,7 @@ package se.hig.oodp.lab.model {
 
         ' NOTES
         ' ~~~~~
-        note right of Figure
+        note left of Figure
         Figure consists of
         any number of points.
         end note
@@ -217,30 +217,49 @@ package se.hig.oodp.lab.control {
         +scaleAll(factor_x:double, factor_y:double)
     }
 
-package se.hig.oodp.lab.control.implementation {
-    class FigureHandlerImpl {
-        -allFigures:List<Figure>
-        -movableFigures:List<Movable>
-        -rotatableFigures:List<Rotatable>
-        -scalableFigures:List<Scalable>
-    }
+    package se.hig.oodp.lab.control.implementation {
+        class FigureHandlerImpl {
+            -allFigures:List<Figure>
+            -movableFigures:List<Movable>
+            -rotatableFigures:List<Rotatable>
+            -scalableFigures:List<Scalable>
+        }
 
-    class FigureMoverImpl {
-        -figures:List<SimpleFigure>
-        --
-        FigureMoverImpl()
-        ..
-        +moveAll(dx:double, dy:double)
-    }
+        class FigureMoverImpl {
+            -movableFigures:List<Movable>
+            --
+            FigureMoverImpl()
+            FigureMoverImpl(movableFigures:ArrayList<Movable>)
+            ..
+            +moveAll(dx:double, dy:double)
+        }
 
-    class FigureMoverImpl {
-        -figures:List<SimpleFigure>
-        --
-        FigureMoverImpl()
-        ..
-        +moveAll(dx:double, dy:double)
+        class FigureRotorImpl {
+            -rotatableFigures:List<Rotatable>
+            --
+            FigureRotorImpl()
+            FigureRotorImpl(rotatableFigures:ArrayList<Rotatable>)
+            ..
+            +rotateAll(angle:double)
+        }
+
+        class FigureScalorImpl {
+            -scalableFigures:List<Scalable>
+            --
+            FigureScalorImpl()
+            FigureScalorImpl(scalableFigures:ArrayList<Scalable>)
+            ..
+            +scaleAll(factor_x:double, factor_y:double)
+        }
+
+        class FigurePrinterImpl {
+            -figures:List<Figure>
+            --
+            FigurePrinterImpl(figures:ArrayList<Figure>)
+            ..
+            +printAll()
+        }
     }
-}
 }
 
 
@@ -313,6 +332,12 @@ Polygon   --|> Figure
 Rectangle --|> Figure
 Square    --|> Figure
 Triangle  --|> Figure
+
+FigureHandlerImpl --|> FigureHandler
+FigureMoverImpl   --|> FigureMover
+FigurePrinterImpl --|> FigurePrinter
+FigureRotorImpl   --|> FigureRotor
+FigureScalorImpl  --|> FigureScalor
 
 'Figure       ..> Vertex2D
 'SimpleFigure ..> Vertex2D
