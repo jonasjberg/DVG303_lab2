@@ -1,0 +1,124 @@
+@startuml
+
+Figure --|> se.hig.oodp.lab.model.simplefigure.SimpleFigure
+Figure ..> se.hig.oodp.lab.model.Vertex2D
+Figure --|> se.hig.oodp.lab.model.figure.Movable
+Figure --|> se.hig.oodp.lab.model.figure.Rotatable
+Figure --|> se.hig.oodp.lab.model.figure.Scalable
+SimpleFigure ..> se.hig.oodp.lab.model.Vertex2D
+SimpleFigure --|> se.hig.oodp.lab.model.figure.Movable
+SimpleFigure ..> se.hig.oodp.lab.model.figure.Scalable
+Line --|> se.hig.oodp.lab.model.figure.Figure
+Line ..> se.hig.oodp.lab.model.Vertex2D
+Polygon --|> se.hig.oodp.lab.model.figure.Figure
+Rectangle --|> se.hig.oodp.lab.model.figure.Figure
+Rectangle ..> se.hig.oodp.lab.model.Vertex2D
+Square --|> se.hig.oodp.lab.model.figure.Figure
+Square ..> se.hig.oodp.lab.model.Vertex2D
+Triangle --|> se.hig.oodp.lab.model.figure.Figure
+Triangle ..> se.hig.oodp.lab.model.Vertex2D
+Circle --|> se.hig.oodp.lab.model.simplefigure.SimpleFigure
+Circle ..> se.hig.oodp.lab.model.Vertex2D
+Circle ..> se.hig.oodp.lab.model.figure.Constants
+Circle --|> se.hig.oodp.lab.model.figure.Scalable
+Ellipse --|> se.hig.oodp.lab.model.simplefigure.SimpleFigure
+Ellipse ..> se.hig.oodp.lab.model.Vertex2D
+Ellipse --|> se.hig.oodp.lab.model.figure.Rotatable
+Ellipse --|> se.hig.oodp.lab.model.figure.Scalable
+Point --|> se.hig.oodp.lab.model.simplefigure.SimpleFigure
+Point ..> se.hig.oodp.lab.model.Vertex2D
+Point ..> se.hig.oodp.lab.model.figure.Constants
+
+    interface Movable {
+        +moveBy(dx:double, dy:double)
+    }
+
+    interface Rotatable {
+        +rotate(angle:double)
+    }
+
+    interface Scalable {
+        +scale(xFactor:double, yFactor:double)
+    }
+
+    abstract class Figure {
+        +DEFAULT_X_COORD:double
+        +DEFAULT_Y_COORD:double
+'       #vertices:ArrayList<Vertex2D>
+        --
+        +Figure(center:Vertex2D)
+        ..
+        #addVerticesToList(newVertices:Vertex2D...)
+        +rotate(angle:double)
+        +scale(xFactor:double, yFactor:double)
+        {abstract} +updateCenterPoint(xFactor:double, yFactor:double)
+        +moveBy(dx:double, dy:double)
+        +getCenter():Vertex2D
+        +getVertex(n:int):Vertex2D
+    }
+
+    class Line {
+        -v0:Vertex2D
+        -v1:Vertex2D
+        --
+        +Line(v0:Vertex2D, v1:Vertex2D)
+        ..
+        -updateCenterPoint()
+        +toString():String
+    }
+
+    class Triangle {
+        -v0:Vertex2D
+        -v1:Vertex2D
+        -v2:Vertex2D
+        -width:double
+        -height:double
+        --
+        +Triangle(center:Vertex2D, width:double, height:double)
+        +Triangle(v0:Vertex2D, v1:Vertex2D, v2:Vertex2D)
+        ..
+        -calculateVerticesFromCenter()
+        +calculateCenterPoint(xFactor:double, yFactor:double)
+        +toString():String
+        +updateCenterPoint(xFactor:double, yFactor:double)
+    }
+
+    class Polygon {
+        +Polygon(center:Vertex2D, vertices:Vertex2D...)
+        ..
+        +scale(Factor:double, yFactor:double)
+        +toString():String
+    }
+
+    class Rectangle {
+        -v0:Vertex2D
+        -v1:Vertex2D
+        -v3:Vertex2D
+        -v3:Vertex2D
+        -width:double
+        -height:double
+        --
+        +Rectangle(center:Vertex2D, width:double, height:double)
+        +Rectangle(v0:Vertex2D, v1:Vertex2D, v2:Vertex2D, v3:Vertex2D)
+        ..
+        -calculateVerticesFromCenter()
+        -updateCenterPoint(xFactor:double, yFactor:double)
+        -calculateWidth()
+        -calculateHeight()
+        +toString():String
+    }
+
+    class Square {
+        -v0:Vertex2D
+        -v1:Vertex2D
+        -v3:Vertex2D
+        -v3:Vertex2D
+        -sideLength:double
+        --
+        +Square(center:Vertex2D, side:double)
+        ..
+        -updateCenterPoint()
+        -calculateVerticesFromCenter()
+        +toString():String
+    }
+@enduml

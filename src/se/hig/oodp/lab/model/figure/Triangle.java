@@ -55,7 +55,7 @@ public class Triangle extends Figure
         this.v2 = v2;
 
         addVerticesToList(v0, v1, v2);
-        updateCenterPoint(0, 0);
+        calculateCenterPoint();
     }
 
     /**
@@ -87,8 +87,7 @@ public class Triangle extends Figure
      * Calculate the position point of this Rectangle using the bounding box
      * method outlined in the lab instructions (oodp_instruktioner_ht15v4.pdf, page 5)
      */
-    @Override
-    public void updateCenterPoint(double xFactor, double yFactor)
+    public void calculateCenterPoint()
     {
         double xMin, yMin, xMax, yMax;
         xMin = yMin = xMax = yMax = Double.MIN_VALUE;
@@ -132,5 +131,11 @@ public class Triangle extends Figure
         str.append("      v2: (" + v2.getX() + ", " + v2.getY() + ")" + NEWLINE);
         str.append(NEWLINE);
         return str.toString();
+    }
+
+    @Override
+    public void updateCenterPoint(double xFactor, double yFactor)
+    {
+        position = position.scale(getPosition(), xFactor, yFactor);
     }
 }
