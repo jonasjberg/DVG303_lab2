@@ -186,6 +186,38 @@ package se.hig.oodp.lab.model.figure {
     end note
 }
 
+package se.hig.oodp.lab.control {
+
+    interface FigureHandler {
+        +Figure(center:Vertex2D)
+        +createCircle(x:double, y:double, r:double);
+        +createEllipse(x:double, y:double, a:double, b:double);
+        +createLine(x0:double , y0:double , x1:double , y1:double );
+        +createPoint(x:double, y:double);
+        +createRectangle(x:double, y:double, a:double, b:double);
+        +createSquare(x:double, y:double, a:double, b:double);
+        +createTriangle(vx0:double, vy0:double, vx1:double,
+                        vy1:double, vx2:double, vy2:double);
+        +removeAll();
+    }
+
+    interface FigureMover {
+        +moveAll(dx:double, dy:double)
+    }
+
+    interface FigurePrinter {
+        +printAll()
+    }
+
+    interface FigureRotor {
+        +rotateAll(angle:double)
+    }
+
+    interface FigureScalor {
+        +scaleAll(factor_x:double, factor_y:double)
+    }
+}
+
 
 '' ____________________________________________________________________________
 '' ____ PACKAGE HIERARCHY _____________________________________________________
