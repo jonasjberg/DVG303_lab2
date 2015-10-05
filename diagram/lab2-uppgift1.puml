@@ -16,6 +16,15 @@ skinparam packageStyle folder
 ' don't use symbols to indicate visibility
 ' skinparam classAttributeIconsize 0
 
+' appearance
+skinparam monochrome true
+skinparam backgroundColor transparent
+skinparam classBackgroundColor transparent
+'skinparam style strictuml
+
+
+
+title DVG303 :: Objektorienterad design och programmering
 
 ' ____________________________________________________________________________
 ' ____ CLASS DEFINITIONS ______________________________________________________
@@ -179,7 +188,7 @@ package se.hig.oodp.lab.model {
 
         ' NOTES
         ' ~~~~~
-        note left of Figure
+        note right of Figure
         Figure consists of
         any number of points.
         end note
@@ -286,10 +295,10 @@ Circle  --|> SimpleFigure
 Ellipse --|> SimpleFigure
 
 Line      --|> Figure
-Polygon   --|> Figure
+Triangle  --|> Figure
 Rectangle --|> Figure
 Square    --|> Figure
-Triangle  --|> Figure
+Polygon   --|> Figure
 
 FigureHandlerImpl --|> FigureHandler
 FigureMoverImpl   --|> FigureMover
