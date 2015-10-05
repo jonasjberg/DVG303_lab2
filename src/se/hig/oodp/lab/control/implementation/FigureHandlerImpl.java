@@ -9,10 +9,13 @@
 package se.hig.oodp.lab.control.implementation;
 
 import se.hig.oodp.lab.control.FigureHandler;
+import se.hig.oodp.lab.model.Vertex2D;
 import se.hig.oodp.lab.model.component.Movable;
 import se.hig.oodp.lab.model.component.Rotatable;
 import se.hig.oodp.lab.model.component.Scalable;
-import se.hig.oodp.lab.model.figure.Figure;
+import se.hig.oodp.lab.model.figure.Rectangle;
+import se.hig.oodp.lab.model.simplefigure.Circle;
+import se.hig.oodp.lab.model.simplefigure.SimpleFigure;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -24,23 +27,26 @@ import java.util.List;
  */
 public class FigureHandlerImpl implements FigureHandler
 {
-    private List<Figure>    allFigures;
-    private List<Movable>   movableFigures;
-    private List<Rotatable> rotatableFigures;
-    private List<Scalable>  scalableFigures;
+    private List<SimpleFigure> allFigures;
+    private List<Movable>      movableFigures;
+    private List<Rotatable>    rotatableFigures;
+    private List<Scalable>     scalableFigures;
 
     public FigureHandlerImpl()
     {
-        allFigures       = new ArrayList<>();
-        movableFigures   = new ArrayList<>();
+        allFigures = new ArrayList<>();
+        movableFigures = new ArrayList<>();
         rotatableFigures = new ArrayList<>();
-        scalableFigures  = new ArrayList<>();
+        scalableFigures = new ArrayList<>();
     }
 
     @Override
     public void createCircle(double x, double y, double r)
     {
-
+        Circle c = new Circle(new Vertex2D(x, y), r);
+        allFigures.add(c);
+        movableFigures.add(c);
+        scalableFigures.add(c);
     }
 
     @Override
@@ -62,10 +68,10 @@ public class FigureHandlerImpl implements FigureHandler
     }
 
     @Override
-
     public void createRectangle(double x, double y, double a, double b)
     {
-
+        Rectangle r = new Rectangle(new Vertex2D(x, y), a, b);
+        allFigures.add(r);
     }
 
     @Override

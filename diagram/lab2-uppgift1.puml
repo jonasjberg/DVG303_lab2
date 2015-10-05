@@ -224,6 +224,22 @@ package se.hig.oodp.lab.control.implementation {
         -rotatableFigures:List<Rotatable>
         -scalableFigures:List<Scalable>
     }
+
+    class FigureMoverImpl {
+        -figures:List<SimpleFigure>
+        --
+        FigureMoverImpl()
+        ..
+        +moveAll(dx:double, dy:double)
+    }
+
+    class FigureMoverImpl {
+        -figures:List<SimpleFigure>
+        --
+        FigureMoverImpl()
+        ..
+        +moveAll(dx:double, dy:double)
+    }
 }
 }
 
