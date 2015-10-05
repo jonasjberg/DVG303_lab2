@@ -33,157 +33,157 @@ package se.hig.oodp.lab.model {
         +scale(ref:Vertex2D, x_factor:double, y_factor:double):Vertex2D
         +toString():String
     }
-}
 
-package se.hig.oodp.lab.model.component {
-    interface Movable {
-        +moveBy(dx:double, dy:double)
+    package se.hig.oodp.lab.model.component {
+        interface Movable {
+            +moveBy(dx:double, dy:double)
+        }
+
+        interface Rotatable {
+            +rotate(angle:double)
+        }
+
+        interface Scalable {
+            +scale(xFactor:double, yFactor:double)
+        }
     }
 
-    interface Rotatable {
-        +rotate(angle:double)
+    package se.hig.oodp.lab.model.simplefigure {
+        abstract class SimpleFigure {
+            #position:Vertex2D
+            --
+            SimpleFigure(position:Vertex2D)
+            ..
+            +moveBy(dx:double, dy:double)
+            +getPosition():Vertex2D
+        }
+
+        class Point {
+            Point(position:Vertex2D)
+            ..
+            +toString():String
+        }
+
+        class Circle {
+            -radius:double
+            --
+            +Circle(position:Vertex2D, radius:double)
+            ..
+            +scale(factor:double)
+            +getRadius():double
+            +toString():String
+        }
+
+        class Ellipse {
+            -width:double
+            -height:double
+            --
+            +Ellipse(position:Vertex2D, width:double, height:double)
+            ..
+            +scale(xFactor:double, yFactor:double)
+            +rotate(angle:double)
+            +getWidth():double
+            +getHeight():double
+            +toString():String
+        }
+
+        ' NOTES
+        ' ~~~~~
+        note left of SimpleFigure
+        Simpler figure consists of just
+        one single point, the center.
+        end note
     }
 
-    interface Scalable {
-        +scale(xFactor:double, yFactor:double)
+    package se.hig.oodp.lab.model.figure {
+        abstract class Figure {
+            +DEFAULT_X_COORD:double
+            +DEFAULT_Y_COORD:double
+    '       #vertices:ArrayList<Vertex2D>
+            --
+            +Figure(center:Vertex2D)
+            ..
+            #addVerticesToList(newVertices:Vertex2D...)
+            +rotate(angle:double)
+            +scale(xFactor:double, yFactor:double)
+            {abstract} +updateCenterPoint(xFactor:double, yFactor:double)
+            +moveBy(dx:double, dy:double)
+            +getCenter():Vertex2D
+            +getVertex(n:int):Vertex2D
+        }
+
+        class Line {
+            -v0:Vertex2D
+            -v1:Vertex2D
+            --
+            +Line(v0:Vertex2D, v1:Vertex2D)
+            ..
+            -updateCenterPoint()
+            +toString():String
+        }
+
+        class Triangle {
+            -v0:Vertex2D
+            -v1:Vertex2D
+            -v2:Vertex2D
+            -width:double
+            -height:double
+            --
+            +Triangle(center:Vertex2D, width:double, height:double)
+            +Triangle(v0:Vertex2D, v1:Vertex2D, v2:Vertex2D)
+            ..
+            -calculateVerticesFromCenter()
+            +calculateCenterPoint(xFactor:double, yFactor:double)
+            +toString():String
+            +updateCenterPoint(xFactor:double, yFactor:double)
+        }
+
+        class Polygon {
+            +Polygon(center:Vertex2D, vertices:Vertex2D...)
+            ..
+            +scale(Factor:double, yFactor:double)
+            +toString():String
+        }
+
+        class Rectangle {
+            -v0:Vertex2D
+            -v1:Vertex2D
+            -v3:Vertex2D
+            -v3:Vertex2D
+            -width:double
+            -height:double
+            --
+            +Rectangle(center:Vertex2D, width:double, height:double)
+            +Rectangle(v0:Vertex2D, v1:Vertex2D, v2:Vertex2D, v3:Vertex2D)
+            ..
+            -calculateVerticesFromCenter()
+            -updateCenterPoint(xFactor:double, yFactor:double)
+            -calculateWidth()
+            -calculateHeight()
+            +toString():String
+        }
+
+        class Square {
+            -v0:Vertex2D
+            -v1:Vertex2D
+            -v3:Vertex2D
+            -v3:Vertex2D
+            -sideLength:double
+            --
+            +Square(center:Vertex2D, side:double)
+            ..
+            -updateCenterPoint()
+            -calculateVerticesFromCenter()
+            +toString():String
+        }
+
+        ' NOTES
+        ' ~~~~~
+        note right of Figure
+        Figure consists of
+        any number of points.
+        end note
     }
-}
-
-package se.hig.oodp.lab.model.simplefigure {
-    abstract class SimpleFigure {
-        #position:Vertex2D
-        --
-        SimpleFigure(position:Vertex2D)
-        ..
-        +moveBy(dx:double, dy:double)
-        +getPosition():Vertex2D
-    }
-
-    class Point {
-        Point(position:Vertex2D)
-        ..
-        +toString():String
-    }
-
-    class Circle {
-        -radius:double
-        --
-        +Circle(position:Vertex2D, radius:double)
-        ..
-        +scale(factor:double)
-        +getRadius():double
-        +toString():String
-    }
-
-    class Ellipse {
-        -width:double
-        -height:double
-        --
-        +Ellipse(position:Vertex2D, width:double, height:double)
-        ..
-        +scale(xFactor:double, yFactor:double)
-        +rotate(angle:double)
-        +getWidth():double
-        +getHeight():double
-        +toString():String
-    }
-
-    ' NOTES
-    ' ~~~~~
-    note left of SimpleFigure
-    Simpler figure consists of just
-    one single point, the center.
-    end note
-}
-
-package se.hig.oodp.lab.model.figure {
-    abstract class Figure {
-        +DEFAULT_X_COORD:double
-        +DEFAULT_Y_COORD:double
-'       #vertices:ArrayList<Vertex2D>
-        --
-        +Figure(center:Vertex2D)
-        ..
-        #addVerticesToList(newVertices:Vertex2D...)
-        +rotate(angle:double)
-        +scale(xFactor:double, yFactor:double)
-        {abstract} +updateCenterPoint(xFactor:double, yFactor:double)
-        +moveBy(dx:double, dy:double)
-        +getCenter():Vertex2D
-        +getVertex(n:int):Vertex2D
-    }
-
-    class Line {
-        -v0:Vertex2D
-        -v1:Vertex2D
-        --
-        +Line(v0:Vertex2D, v1:Vertex2D)
-        ..
-        -updateCenterPoint()
-        +toString():String
-    }
-
-    class Triangle {
-        -v0:Vertex2D
-        -v1:Vertex2D
-        -v2:Vertex2D
-        -width:double
-        -height:double
-        --
-        +Triangle(center:Vertex2D, width:double, height:double)
-        +Triangle(v0:Vertex2D, v1:Vertex2D, v2:Vertex2D)
-        ..
-        -calculateVerticesFromCenter()
-        +calculateCenterPoint(xFactor:double, yFactor:double)
-        +toString():String
-        +updateCenterPoint(xFactor:double, yFactor:double)
-    }
-
-    class Polygon {
-        +Polygon(center:Vertex2D, vertices:Vertex2D...)
-        ..
-        +scale(Factor:double, yFactor:double)
-        +toString():String
-    }
-
-    class Rectangle {
-        -v0:Vertex2D
-        -v1:Vertex2D
-        -v3:Vertex2D
-        -v3:Vertex2D
-        -width:double
-        -height:double
-        --
-        +Rectangle(center:Vertex2D, width:double, height:double)
-        +Rectangle(v0:Vertex2D, v1:Vertex2D, v2:Vertex2D, v3:Vertex2D)
-        ..
-        -calculateVerticesFromCenter()
-        -updateCenterPoint(xFactor:double, yFactor:double)
-        -calculateWidth()
-        -calculateHeight()
-        +toString():String
-    }
-
-    class Square {
-        -v0:Vertex2D
-        -v1:Vertex2D
-        -v3:Vertex2D
-        -v3:Vertex2D
-        -sideLength:double
-        --
-        +Square(center:Vertex2D, side:double)
-        ..
-        -updateCenterPoint()
-        -calculateVerticesFromCenter()
-        +toString():String
-    }
-
-    ' NOTES
-    ' ~~~~~
-    note right of Figure
-    Figure consists of
-    any number of points.
-    end note
 }
 
 package se.hig.oodp.lab.control {
@@ -216,6 +216,15 @@ package se.hig.oodp.lab.control {
     interface FigureScalor {
         +scaleAll(factor_x:double, factor_y:double)
     }
+
+package se.hig.oodp.lab.control.implementation {
+    class FigureHandlerImpl {
+        -allFigures:List<Figure>
+        -movableFigures:List<Movable>
+        -rotatableFigures:List<Rotatable>
+        -scalableFigures:List<Scalable>
+    }
+}
 }
 
 
