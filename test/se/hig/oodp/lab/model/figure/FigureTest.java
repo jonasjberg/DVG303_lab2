@@ -9,9 +9,6 @@
 
 package se.hig.oodp.lab.model.figure;
 
-import se.hig.oodp.lab.model.Vertex2D;
-import sun.security.provider.certpath.Vertex;
-
 import static org.junit.Assert.assertEquals;
 
 /**
