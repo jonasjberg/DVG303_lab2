@@ -17,14 +17,42 @@ skinparam packageStyle folder
 ' skinparam classAttributeIconsize 0
 
 ' appearance
-skinparam monochrome true
-skinparam backgroundColor transparent
-skinparam classBackgroundColor white
-'skinparam style strictuml
+skinparam {
+    monochrome true
+    backgroundColor transparent
+    classBackgroundColor white
+    style strictuml
+}
 
 
 
-title DVG303 :: Objektorienterad design och programmering
+title DVG303\n<b>Objektorienterad design och programmering</b>\nLaboration #2\Jonas Sjöberg 860224\nHögskolan i Gävle\n""tel12jsg@student.hig.se""
+
+header
+DVG303 :: Objektorienterad design och programmering
+Laboration #2
+Jonas Sjöberg 860224
+Högskolan i Gävle
+""tel12jsg@student.hig.se""
+""https://github.com/jonasjberg""
+end header
+
+footer
+Jonas Sjöberg 860224
+Högskolan i Gävle
+""tel12jsg@student.hig.se""
+""https://github.com/jonasjberg""
+end footer
+
+legend right
+== Note on the model
+Created with PlantUML. Generated from text source, rendered by Graphviz.
+== Conventions
+* green: required (+ prefix)
+* all others: optional
+endlegend
+
+
 
 ' ____________________________________________________________________________
 ' ____ CLASS DEFINITIONS ______________________________________________________
@@ -233,42 +261,34 @@ package se.hig.oodp.lab.control {
             -rotatableFigures:List<Rotatable>
             -scalableFigures:List<Scalable>
             --
-            ++FigureHandlerImpl()
+            +FigureHandlerImpl()
         }
 
         class FigureMoverImpl {
             -movableFigures:List<Movable>
             --
-            FigureMoverImpl()
-            FigureMoverImpl(movableFigures:ArrayList<Movable>)
-            ..
-            +moveAll(dx:double, dy:double)
+            +FigureMoverImpl()
+            +FigureMoverImpl(movableFigures:ArrayList<Movable>)
         }
 
         class FigurePrinterImpl {
             -figures:List<Figure>
             --
-            FigurePrinterImpl(figures:ArrayList<Figure>)
-            ..
-            +printAll()
+            +FigurePrinterImpl(figures:ArrayList<Figure>)
         }
 
         class FigureRotorImpl {
             -rotatableFigures:List<Rotatable>
             --
-            FigureRotorImpl()
-            FigureRotorImpl(rotatableFigures:ArrayList<Rotatable>)
-            ..
-            +rotateAll(angle:double)
+            +FigureRotorImpl()
+            +FigureRotorImpl(rotatableFigures:ArrayList<Rotatable>)
         }
 
         class FigureScalorImpl {
             -scalableFigures:List<Scalable>
             --
-            FigureScalorImpl()
-            FigureScalorImpl(scalableFigures:ArrayList<Scalable>)
-            ..
-            +scaleAll(factor_x:double, factor_y:double)
+            +FigureScalorImpl()
+            +FigureScalorImpl(scalableFigures:ArrayList<Scalable>)
         }
     }
 }
@@ -324,8 +344,8 @@ Ellipse      ..|> Rotatable
 
 ' COMPOSITION
 ' ~~~~~~~~~~~
-'Figure       "1" *-- "many" Vertex2D : contains
-'SimpleFigure "1" *-- "1"    Vertex2D : contains
+Figure       "1" *-- "many" Vertex2D : contains
+SimpleFigure "1" *-- "1"    Vertex2D : contains
 'Figure       ..> Vertex2D
 'SimpleFigure ..> Vertex2D
 'Line         ..> Vertex2D
