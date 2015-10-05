@@ -1,10 +1,8 @@
 ' DVG303 :: Objektorienterad design och programmering
+' Laboration #2
 ' 860224 Jonas Sjöberg
 ' Högskolan i Gävle
 ' tel12jsg@student.hig.se
-'
-' Lab #1    Uppgift 2
-
 
 @startuml
 ' ____________________________________________________________________________
@@ -34,6 +32,20 @@ package se.hig.oodp.lab.model {
         +rotate(ref:Vertex2D, angle:double):Vertex2D
         +scale(ref:Vertex2D, x_factor:double, y_factor:double):Vertex2D
         +toString():String
+    }
+}
+
+package se.hig.oodp.lab.model.component {
+    interface Movable {
+        +moveBy(dx:double, dy:double)
+    }
+
+    interface Rotatable {
+        +rotate(angle:double)
+    }
+
+    interface Scalable {
+        +scale(xFactor:double, yFactor:double)
     }
 }
 
@@ -67,27 +79,35 @@ package se.hig.oodp.lab.model.simplefigure {
         -width:double
         -height:double
         --
-        +Ellipse(position:Vertex2D, radius:double)
+        +Ellipse(position:Vertex2D, width:double, height:double)
         ..
         +scale(xFactor:double, yFactor:double)
+        +rotate(angle:double)
         +getWidth():double
         +getHeight():double
         +toString():String
     }
+
+    ' NOTES
+    ' ~~~~~
+    note left of SimpleFigure
+    Simpler figure consists of just
+    one single point, the center.
+    end note
 }
 
 package se.hig.oodp.lab.model.figure {
     abstract class Figure {
         +DEFAULT_X_COORD:double
         +DEFAULT_Y_COORD:double
-        #center:Vertex2D
-        #vertices:ArrayList<Vertex2D>
+'       #vertices:ArrayList<Vertex2D>
         --
         +Figure(center:Vertex2D)
         ..
-        -addVerticesToList(newVertices:Vertex2D...)
+        #addVerticesToList(newVertices:Vertex2D...)
         +rotate(angle:double)
-        {abstract} +scale(xFactor:double, yFactor:double)
+        +scale(xFactor:double, yFactor:double)
+        {abstract} +updateCenterPoint(xFactor:double, yFactor:double)
         +moveBy(dx:double, dy:double)
         +getCenter():Vertex2D
         +getVertex(n:int):Vertex2D
@@ -100,7 +120,6 @@ package se.hig.oodp.lab.model.figure {
         +Line(v0:Vertex2D, v1:Vertex2D)
         ..
         -updateCenterPoint()
-        +scale(xFactor:double, yFactor:double)
         +toString():String
     }
 
@@ -115,8 +134,15 @@ package se.hig.oodp.lab.model.figure {
         +Triangle(v0:Vertex2D, v1:Vertex2D, v2:Vertex2D)
         ..
         -calculateVerticesFromCenter()
-        -updateCenterPoint()
-        +scale(xFactor:double, yFactor:double)
+        +calculateCenterPoint(xFactor:double, yFactor:double)
+        +toString():String
+        +updateCenterPoint(xFactor:double, yFactor:double)
+    }
+
+    class Polygon {
+        +Polygon(center:Vertex2D, vertices:Vertex2D...)
+        ..
+        +scale(Factor:double, yFactor:double)
         +toString():String
     }
 
@@ -132,10 +158,9 @@ package se.hig.oodp.lab.model.figure {
         +Rectangle(v0:Vertex2D, v1:Vertex2D, v2:Vertex2D, v3:Vertex2D)
         ..
         -calculateVerticesFromCenter()
-        -updateCenterPoint()
+        -updateCenterPoint(xFactor:double, yFactor:double)
         -calculateWidth()
         -calculateHeight()
-        +scale(xFactor:double, yFactor:double)
         +toString():String
     }
 
@@ -149,37 +174,96 @@ package se.hig.oodp.lab.model.figure {
         +Square(center:Vertex2D, side:double)
         ..
         -updateCenterPoint()
-        +scale(xFactor:double, yFactor:double)
+        -calculateVerticesFromCenter()
         +toString():String
     }
+
+    ' NOTES
+    ' ~~~~~
+    note right of Figure
+    Figure consists of
+    any number of points.
+    end note
 }
 
 
-' ____________________________________________________________________________
-' ____ PACKAGE HIERARCHY _____________________________________________________
-se.hig.oodp.lab.model +-- se.hig.oodp.lab.model.figure
-se.hig.oodp.lab.model +-- se.hig.oodp.lab.model.simplefigure
+'' ____________________________________________________________________________
+'' ____ PACKAGE HIERARCHY _____________________________________________________
+''+-- figure
+''+-- simplefigure
+'
+'
+'' ____________________________________________________________________________
+'' ____ RELATIONS BETWEEN CLASSES _____________________________________________
+'' <|--      extension
+'' *--       composition
+'' o--       aggregation
+'
+'
+'' COMPOSITION
+'' ~~~~~~~~~~~
+'Figure       "1" *-- "many" Vertex2D : contains
+'SimpleFigure "1" *-- "1"    Vertex2D : contains
+'
+'
+'' INHERITANCE
+'' ~~~~~~~~~~~
+'SimpleFigure <|-- Figure
+'
+'SimpleFigure <|-- Point
+'SimpleFigure <|-- Circle
+'SimpleFigure <|-- Ellipse
+'
+'Figure <|-- Line
+'Figure <|-- Triangle
+'Figure <|-- Polygon
+'Figure <|-- Rectangle
+'Figure <|-- Square
 
 
-' ____________________________________________________________________________
-' ____ RELATIONS BETWEEN CLASSES _____________________________________________
-' <|--      extension
-' *--       composition
-' o--       aggregation
-
-Figure <.. Vertex2D
-SimpleFigure <.. Vertex2D
-
-SimpleFigure <|-- Point
-SimpleFigure <|-- Circle
-SimpleFigure <|-- Ellipse
-
-Figure <|-- Line
-Figure <|-- Triangle
-Figure <|-- Rectangle
-Figure <|-- Square
+'' IMPLEMENT INTERFACES
+'' ~~~~~~~~~~~~~~~~~~~~
+'Movable <.. Figure
+'Movable <.. SimpleFigure
+'
+'Rotatable <.. Figure
+'
+'Scalable <.. Figure
+'Scalable <.. Circle
+'Scalable <.. Ellipse
 
 
 
+' BELOW GENERATED BY "plantuml-dependency-cli-1.4.0-jar-with-dependencies.jar"
 
+Figure  --|> SimpleFigure
+Point   --|> SimpleFigure
+Circle  --|> SimpleFigure
+Ellipse --|> SimpleFigure
+
+Figure       ..|> Movable
+SimpleFigure ..|> Movable
+
+Figure  ..|> Rotatable
+Ellipse ..|> Rotatable
+
+Figure       ..|> Scalable
+Circle       ..|> Scalable
+Ellipse      ..|> Scalable
+
+Line      --|> Figure
+Polygon   --|> Figure
+Rectangle --|> Figure
+Square    --|> Figure
+Triangle  --|> Figure
+
+'Figure       ..> Vertex2D
+'SimpleFigure ..> Vertex2D
+'Line         ..> Vertex2D
+'Rectangle    ..> Vertex2D
+'Square       ..> Vertex2D
+'Triangle     ..> Vertex2D
+'Circle       ..> Vertex2D
+'Ellipse      ..> Vertex2D
+'Point        ..> Vertex2D
 @enduml

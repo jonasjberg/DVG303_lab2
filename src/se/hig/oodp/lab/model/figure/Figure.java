@@ -1,17 +1,19 @@
 /**
  * DVG303 :: Objektorienterad design och programmering
+ * Laboration #2
  * 860224 Jonas Sjöberg
  * Högskolan i Gävle
  * tel12jsg@student.hig.se
- *
- * Lab #1    Uppgift 3
  */
 
 package se.hig.oodp.lab.model.figure;
 
 import se.hig.oodp.lab.model.Vertex2D;
+import se.hig.oodp.lab.model.component.Movable;
+import se.hig.oodp.lab.model.component.Rotatable;
+import se.hig.oodp.lab.model.component.Scalable;
 import se.hig.oodp.lab.model.simplefigure.SimpleFigure;
-import se.hig.oodp.lab.model.utility.DebugLogger;
+import se.hig.oodp.lab.utility.DebugLogger;
 
 import java.util.ArrayList;
 
@@ -20,7 +22,8 @@ import java.util.ArrayList;
  *		    tel12jsg@student.hig.se
  * @date	Sep 27, 2015
  */
-public abstract class Figure extends SimpleFigure implements Movable, Rotatable, Scalable
+public abstract class Figure extends SimpleFigure implements Movable, Rotatable,
+        Scalable
 {
     public    static final double DEFAULT_X_COORD = 0;
     public    static final double DEFAULT_Y_COORD = 0;

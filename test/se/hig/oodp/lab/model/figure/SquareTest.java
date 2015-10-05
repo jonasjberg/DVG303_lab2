@@ -11,10 +11,9 @@ package se.hig.oodp.lab.model.figure;
 
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import se.hig.oodp.lab.model.Vertex2D;
-import se.hig.oodp.lab.model.utility.DebugLogger;
+import se.hig.oodp.lab.utility.DebugLogger;
 
 import static org.junit.Assert.*;
 

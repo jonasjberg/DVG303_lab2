@@ -14,7 +14,7 @@ import org.junit.Before;
 import org.junit.Test;
 import se.hig.oodp.lab.model.Vertex2D;
 import se.hig.oodp.lab.model.figure.TestConstants;
-import se.hig.oodp.lab.model.utility.DebugLogger;
+import se.hig.oodp.lab.utility.DebugLogger;
 
 import static org.junit.Assert.*;
 

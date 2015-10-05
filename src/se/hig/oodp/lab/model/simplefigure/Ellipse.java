@@ -1,19 +1,17 @@
 /**
  * DVG303 :: Objektorienterad design och programmering
+ * Laboration #2
  * 860224 Jonas Sjöberg
  * Högskolan i Gävle
  * tel12jsg@student.hig.se
- *
- * Lab #1    Uppgift 3
  */
 
 package se.hig.oodp.lab.model.simplefigure;
 
 import se.hig.oodp.lab.model.Vertex2D;
-import se.hig.oodp.lab.model.figure.Rotatable;
-import se.hig.oodp.lab.model.figure.Scalable;
-import se.hig.oodp.lab.model.simplefigure.SimpleFigure;
-import se.hig.oodp.lab.model.utility.DebugLogger;
+import se.hig.oodp.lab.model.component.Rotatable;
+import se.hig.oodp.lab.model.component.Scalable;
+import se.hig.oodp.lab.utility.DebugLogger;
 
 /**
  * @author  Jonas Sjöberg
