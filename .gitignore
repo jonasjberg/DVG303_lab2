@@ -121,7 +121,6 @@ crashlytics-build.properties
 # Minted TeX source highlighting
 _minted*
 *.pyg
-/tex/
 
 # Metadata
 /docs/
