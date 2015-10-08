@@ -16,39 +16,53 @@ skinparam {
 '    backgroundColor transparent
     classBackgroundColor white
     style strictuml
-'}
-
-
+}
 
 title DVG303\n<b>Objektorienterad design och programmering</b>\nLaboration #2\Jonas Sjöberg 860224\nHögskolan i Gävle\n""tel12jsg@student.hig.se""
 
-header
-DVG303 :: Objektorienterad design och programmering
-Laboration #2
-Jonas Sjöberg 860224
-Högskolan i Gävle
-""tel12jsg@student.hig.se""
-""https://github.com/jonasjberg""
-end header
+'header
+'DVG303 :: Objektorienterad design och programmering
+'Laboration #2
+'Jonas Sjöberg 860224
+'Högskolan i Gävle
+'""tel12jsg@student.hig.se""
+'""https://github.com/jonasjberg""
+'end header
+'
+'footer
+'Jonas Sjöberg 860224
+'Högskolan i Gävle
+'""tel12jsg@student.hig.se""
+'""https://github.com/jonasjberg""
+'end footer
+'
+'legend right
+'== Note on the model
+'Created with PlantUML. Generated from text source, rendered by Graphviz.
+'== Conventions
+'TODO: conventions ..
+'endlegend
 
-footer
-Jonas Sjöberg 860224
-Högskolan i Gävle
-""tel12jsg@student.hig.se""
-""https://github.com/jonasjberg""
-end footer
 
-legend right
-== Note on the model
-Created with PlantUML. Generated from text source, rendered by Graphviz.
-== Conventions
-TODO: conventions ..
-endlegend
+'Alice -> Bob: Authentication Request
+'Bob --> Alice: Authentication Response
+'
+'Alice -> Bob: Another authentication Request
+'Alice <-- Bob: another authentication Response
 
+activate FigureHandlerImpl
+FigureHandlerTest -> FigureHandlerImpl: createPoint
+FigureHandlerImpl -> Point: new Point
+FigureHandlerImpl -> allFigures: add Point
+activate Point
+Point -> Vertex2D: new Vertex2D
+activate Vertex2D
+Vertex2D --> Point: WorkDone
+'destroy Vertex2D
+Point --> FigureHandlerImpl: RequestCreated
+deactivate Point
+'FigureHandlerImpl -> User: Done
+deactivate FigureHandlerImpl
+@enduml
 
-Alice -> Bob: Authentication Request
-Bob --> Alice: Authentication Response
-
-Alice -> Bob: Another authentication Request
-Alice <-- Bob: another authentication Response
 @enduml

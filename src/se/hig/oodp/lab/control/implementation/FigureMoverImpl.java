@@ -8,11 +8,10 @@
 
 package se.hig.oodp.lab.control.implementation;
 
+import java.util.ArrayList;
+
 import se.hig.oodp.lab.control.FigureMover;
 import se.hig.oodp.lab.model.component.Movable;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author  Jonas Sjöberg

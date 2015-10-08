@@ -8,6 +8,10 @@
 
 package se.hig.oodp.lab.control.implementation;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
 import se.hig.oodp.lab.control.FigureHandler;
 import se.hig.oodp.lab.model.Vertex2D;
 import se.hig.oodp.lab.model.component.Movable;
@@ -22,9 +26,6 @@ import se.hig.oodp.lab.model.simplefigure.Ellipse;
 import se.hig.oodp.lab.model.simplefigure.Point;
 import se.hig.oodp.lab.model.simplefigure.SimpleFigure;
 import se.hig.oodp.lab.utility.DebugLogger;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author  Jonas Sjöberg
