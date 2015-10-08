@@ -24,16 +24,16 @@ public class FigureHandlerTest
     public static void main(String[] args)
     {
         FigureHandlerImpl figureHandlerImpl = new FigureHandlerImpl();
-        figureHandlerImpl.createPoint(XCOORDS[0], YCOORDS[0]);
-        figureHandlerImpl.createLine(XCOORDS[0], YCOORDS[0], XCOORDS[1],
-                                     YCOORDS[1]);
+//        figureHandlerImpl.createPoint(XCOORDS[0], YCOORDS[0]);
+//        figureHandlerImpl.createLine(XCOORDS[0], YCOORDS[0], XCOORDS[1],
+//                                     YCOORDS[1]);
         figureHandlerImpl.createRectangle(XCOORDS[0], YCOORDS[0], XCOORDS[1],
                                           YCOORDS[1]);
-        figureHandlerImpl.createSquare(XCOORDS[0], YCOORDS[0], XCOORDS[1],
-                                       YCOORDS[1]);
-        figureHandlerImpl.createTriangle(XCOORDS[0], YCOORDS[0], XCOORDS[1],
-                                         YCOORDS[1], XCOORDS[2], YCOORDS[2]);
-        figureHandlerImpl.createCircle(XCOORDS[0], YCOORDS[0], RADIUS);
-        figureHandlerImpl.createEllipse(XCOORDS[0], YCOORDS[0], 10, 5);
+//        figureHandlerImpl.createSquare(XCOORDS[0], YCOORDS[0], XCOORDS[1],
+//                                       YCOORDS[1]);
+//        figureHandlerImpl.createTriangle(XCOORDS[0], YCOORDS[0], XCOORDS[1],
+//                                         YCOORDS[1], XCOORDS[2], YCOORDS[2]);
+//        figureHandlerImpl.createCircle(XCOORDS[0], YCOORDS[0], RADIUS);
+//        figureHandlerImpl.createEllipse(XCOORDS[0], YCOORDS[0], 10, 5);
     }
 }
