@@ -1,0 +1,104 @@
+% ==============================================================================
+%
+%                                    DVG303
+%                  Objektorienterad design och programmering
+%                                Laboration #2
+%
+% Author:   Jonas Sjöberg
+%           Högskolan i Gävle
+%           tel12jsg@student.hig.se
+%           https://github.com/jonasjberg
+%
+% License:  Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+%           International.  See LICENSE.md for full licensing information.
+% ==============================================================================
+
+\documentclass[11pt,a4paper]{article}
+\usepackage[utf8]{inputenc}
+\inputencoding{utf8}
+\usepackage[swedish]{babel}
+\usepackage[swedish]{isodate}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{fullpage}
+
+\usepackage{textcomp}
+\usepackage{url}
+\usepackage{graphicx}
+
+\usepackage{minted}
+\usemintedstyle{bw}
+
+\usepackage{verbatim}
+\usepackage{fancyvrb}
+\usepackage{listings}
+
+\usepackage[pdfusetitle,bookmarks=true,
+ bookmarksnumbered=true,bookmarksopen=false,
+ breaklinks=false,pdfborder={0 0 0},backref=false,
+ colorlinks=false]{hyperref}
+
+\newmintedfile[javacode]{java}{
+%bgcolor=mintedbackground,
+%fontfamily=tt,
+fontsize=\footnotesize,
+linenos=true,
+numberblanklines=true,
+numbersep=12pt,
+numbersep=5pt,
+frame=lines,
+framesep=2mm,
+funcnamehighlighting=true,
+tabsize=4,
+obeytabs=false,
+mathescape=false
+samepage=false,
+showspaces=false,
+showtabs =false,
+texcl=false,
+}
+
+\title{DVG303 \\ Objektorienterad design och programmering \\ Laboration 2}
+
+\author{\\
+  Jonas Sjöberg\\
+  860224\\
+  Högskolan i Gävle\\
+  \texttt{tel12jsg@tudent.hig.se}\\
+  \texttt{https://github.com/jonasjberg}\\
+}
+
+
+\date{}
+
+\begin{document}
+    \maketitle
+
+    \begin{center}
+    \begin{tabular}{l r}
+        Datum: & \isodate \today \par \\
+        Kursansvarig lärare: & Atique Ullah
+    \end{tabular}
+    \end{center}
+
+    \medskip
+
+    \begin{abstract}
+        Laborationsrapport för
+        \emph{DVG303 -- Objektorienterad design och programmering},
+        Högskolan i Gävle, Höstterminen 2015.
+    \end{abstract}
+
+    \newpage
+    \setcounter{tocdepth}{3}
+    \tableofcontents
+    \listoffigures
+    \newpage
+
+    %\input{tex/intro}
+    \input{tex/uppg01}
+    \input{tex/uppg02}
+    \input{tex/uppg03}
+
+\end{document}
+
