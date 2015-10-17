@@ -58,6 +58,9 @@ showtabs =false,
 texcl=false,
 }
 
+%\renewcommand{\thesubsection}{\thesection(\alph{subsection})}
+\renewcommand{\thesubsection}{(\alph{subsection})}
+
 \title{DVG303 \\ Objektorienterad design och programmering \\ Laboration 2}
 
 \author{\\
@@ -77,7 +80,7 @@ texcl=false,
     \begin{center}
     \begin{tabular}{l r}
         Datum: & \isodate \today \par \\
-        Kursansvarig lärare: & Atique Ullah
+        Kursansvarig lärare: & 
     \end{tabular}
     \end{center}
 
@@ -86,7 +89,8 @@ texcl=false,
     \begin{abstract}
         Laborationsrapport för
         \emph{DVG303 -- Objektorienterad design och programmering},
-        Högskolan i Gävle, Höstterminen 2015.
+        Högskolan i Gävle, Höstterminen 2015. Innehåller programstyrning och
+        logik, "model"-delen av "model-view-controller"-arkitekturen.
     \end{abstract}
 
     \newpage
@@ -97,8 +101,8 @@ texcl=false,
 
     %\input{tex/intro}
     \input{tex/uppg01}
-    \input{tex/uppg02}
-    \input{tex/uppg03}
+    %\input{tex/uppg02}
+    %\input{tex/uppg03}
 
 \end{document}
 
