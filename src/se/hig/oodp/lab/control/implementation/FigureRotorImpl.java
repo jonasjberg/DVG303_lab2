@@ -21,7 +21,7 @@ import java.util.List;
  */
 public class FigureRotorImpl implements FigureRotor
 {
-    private ArrayList<Rotatable> rotatableFigures;
+    private List<Rotatable> rotatableFigures;
 
     public FigureRotorImpl()
     {

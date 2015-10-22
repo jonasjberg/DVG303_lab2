@@ -12,6 +12,7 @@ import se.hig.oodp.lab.control.FigureScalor;
 import se.hig.oodp.lab.model.component.Scalable;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author  Jonas Sjöberg
@@ -20,7 +21,7 @@ import java.util.ArrayList;
  */
 public class FigureScalorImpl implements FigureScalor
 {
-    private ArrayList<Scalable> scalableFigures;
+    private List<Scalable> scalableFigures;
 
     public FigureScalorImpl()
     {
@@ -32,8 +33,7 @@ public class FigureScalorImpl implements FigureScalor
         this.scalableFigures = scalableFigures;
     }
 
-    @Override
-    public void scaleAll(double factor_x, double factor_y)
+    @Override public void scaleAll(double factor_x, double factor_y)
     {
         for (Scalable f : scalableFigures) {
             if (f == null)

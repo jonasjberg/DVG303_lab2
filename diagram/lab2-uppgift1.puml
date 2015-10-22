@@ -20,38 +20,22 @@ skinparam packageStyle folder
 skinparam {
     monochrome true
     backgroundColor transparent
-    classBackgroundColor white
+    classBackgroundColor transparent
     style strictuml
 }
 
+' split into (horizontal)x(vertical) pages
+' page 1x2
 
 
-title DVG303\n<b>Objektorienterad design och programmering</b>\nLaboration #2\Jonas Sjöberg 860224\nHögskolan i Gävle\n""tel12jsg@student.hig.se""
+'title DVG303\n<b>Objektorienterad design och programmering</b>\nLaboration #2\Jonas Sjöberg 860224\nHögskolan i Gävle\n""tel12jsg@student.hig.se""
 
 header
-DVG303 :: Objektorienterad design och programmering
-Laboration #2
 Jonas Sjöberg 860224
 Högskolan i Gävle
 ""tel12jsg@student.hig.se""
 ""https://github.com/jonasjberg""
 end header
-
-footer
-Jonas Sjöberg 860224
-Högskolan i Gävle
-""tel12jsg@student.hig.se""
-""https://github.com/jonasjberg""
-end footer
-
-legend right
-== Note on the model
-Created with PlantUML. Generated from text source, rendered by Graphviz.
-== Conventions
-* green: required (+ prefix)
-* all others: optional
-endlegend
-
 
 
 ' ____________________________________________________________________________
@@ -224,7 +208,6 @@ package se.hig.oodp.lab.model {
 }
 
 package se.hig.oodp.lab.control {
-
     interface FigureHandler {
         +Figure(center:Vertex2D)
         +createCircle(x:double, y:double, r:double);
@@ -262,6 +245,15 @@ package se.hig.oodp.lab.control {
             -scalableFigures:List<Scalable>
             --
             +FigureHandlerImpl()
+            ..
+            +createCircle(x:double, y:double, r:double)
+            +createEllipse(x:double, y:double, a:double, b:double)
+            +createLine(x0:double, y0:double, x1:double, y1:double)
+            +createPoint(x:double, y:double)
+            +createRectangle(x:double, y:double, a:double, b:double)
+            +createSquare(x:double, y:double, a:double, b:double)
+            +createTriangle(vx0:double, vy0:double, vx1:double, vy1:double, vx2:double, vy2:double)
+            +removeAll()
         }
 
         class FigureMoverImpl {
@@ -269,12 +261,16 @@ package se.hig.oodp.lab.control {
             --
             +FigureMoverImpl()
             +FigureMoverImpl(movableFigures:ArrayList<Movable>)
+            ..
+            +moveAll(dx:double, dy:double)
         }
 
         class FigurePrinterImpl {
             -figures:List<Figure>
             --
             +FigurePrinterImpl(figures:ArrayList<Figure>)
+            ..
+            +printAll()
         }
 
         class FigureRotorImpl {
@@ -282,6 +278,8 @@ package se.hig.oodp.lab.control {
             --
             +FigureRotorImpl()
             +FigureRotorImpl(rotatableFigures:ArrayList<Rotatable>)
+            ..
+            +rotateAll(angle:double)
         }
 
         class FigureScalorImpl {
@@ -289,6 +287,8 @@ package se.hig.oodp.lab.control {
             --
             +FigureScalorImpl()
             +FigureScalorImpl(scalableFigures:ArrayList<Scalable>)
+            ..
+            scaleAll(factor_x:double, factor_y:double)
         }
     }
 }
@@ -322,11 +322,11 @@ Rectangle --|> Figure
 Square    --|> Figure
 Polygon   --|> Figure
 
-FigureHandlerImpl --|> FigureHandler
-FigureMoverImpl   --|> FigureMover
-FigurePrinterImpl --|> FigurePrinter
-FigureRotorImpl   --|> FigureRotor
-FigureScalorImpl  --|> FigureScalor
+FigureHandlerImpl --|> FigureHandler : implements
+FigureMoverImpl   --|> FigureMover : implements
+FigurePrinterImpl --|> FigurePrinter : implements
+FigureRotorImpl   --|> FigureRotor : implements
+FigureScalorImpl  --|> FigureScalor : implements
 
 
 ' IMPLEMENT INTERFACES

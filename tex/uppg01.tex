@@ -12,24 +12,45 @@
 %           International.  See LICENSE.md for full licensing information.
 % ==============================================================================
 
-\section{Uppgift 1}\label{sec:uppg01}
+\section{Uppgift 1}\label{sec:uppg1}
 
-\subsection{}\label{uppg1a}
+\subsection{}\label{sec:uppg1a}
 \subsubsection*{Frågeställning}
-Kontrollera om interfacet passar in i mönstret ..
-(a) I laboration 1 definierade ni redan ett interface. Kontrollera om interfacet
-passar in i mönstret som beskrevs ovan och gör ändringar ifall interfacet måste
-anpassas.
+\item I laboration 1 definierade ni redan emph{ett} interface. Kontrollera om
+interfacet passar in i mönstret som beskrevs ovan och gör ändringar ifall
+interfacet måste anpassas.
+
 \subsubsection*{Lösning}
-Interfacet från den förra laborationen har utökats.
+Ett nytt paket \texttt{component} (\texttt{se.hig.oodp.lab.model.component})
+innehåller de tre interface som ska användas för att manipulera alla typer av
+figurer; \texttt{Movable}, \texttt{Rotatable} och \texttt{Scalable}.
+Dessa tre interface skapades i den förra laborationen och har inte ändrats.
 
 
-\subsection{}\label{uppg1b}
+\subsection{}\label{sec:uppg1b}
 \subsubsection*{}
-Modellera alla interfacen som behövs utöver interfacet från Uppgift~\ref{uppg1a}
-(beskrivning och UML-diagram; uppdatera klassdiagrammet).
+Modellera alla interfacen som behövs utöver interfacet från
+Uppgift~\ref{uppg1a} (beskrivning och UML-diagram; uppdatera klassdiagrammet).
 
-\subsubsection*{}
+\subsubsection*{Lösning}
+Uppdaterade UML-diagram återfinns i Figur~\ref{uppg1b1} samt
+Figur~\ref{uppg1b2}.
+
+\begin{sidewaysfigure}[ht]
+\centering
+\includegraphics[width=\linewidth]{diagram/lab2-uppgift1-001.eps}
+\caption{Uppgift~1\ref{sec:uppg1b}: Uppdaterat UML-diagram, sida 1 av 2.
+(\texttt{diagram/lab2-uppgift1-001.eps})}
+\label{fig:uppg1b1}
+\end{sidewaysfigure}
+
+\begin{sidewaysfigure}[ht]
+\centering
+\includegraphics[width=\linewidth]{diagram/lab2-uppgift1-002.eps}
+\caption{Uppgift~1\ref{sec:uppg1b}: Uppdaterat UML-diagram, sida 2 av 2.
+(\texttt{diagram/lab2-uppgift1-002.eps})}
+\label{fig:uppg1b2}
+\end{sidewaysfigure}
 
 
 \subsection{}
@@ -38,20 +59,20 @@ Skriv interfacen från Uppgift~\ref{uppg1b} i Java.
 \subsubsection*{svar}
 % Se bifogad källkod.
 
-\subsubsubsection{Movable.java}
-\javacode{src/se/hig/oodp/lab/model/component/Movable.java}
-\caption{Interfacet Movable}
-\label{src:movable}
+%\subsubsubsection{Movable.java}
+%\javacode{src/se/hig/oodp/lab/model/component/Movable.java}
+%\caption{Interfacet Movable}
+%\label{src:movable}
 
-\subsubsubsection{Rotatable.java}
-\javacode{src/se/hig/oodp/lab/model/component/Rotatable.java}
-\caption{Interfacet Rotatable}
-\label{src:rotatable}
+%\subsubsubsection{Rotatable.java}
+%\javacode{src/se/hig/oodp/lab/model/component/Rotatable.java}
+%\caption{Interfacet Rotatable}
+%\label{src:rotatable}
 
-\subsubsubsection{Scalable.java}
-\javacode{src/se/hig/oodp/lab/model/component/Scalable.java}
-\caption{Interfacet Scalable}
-\label{src:scalable}
+%\subsubsubsection{Scalable.java}
+%\javacode{src/se/hig/oodp/lab/model/component/Scalable.java}
+%\caption{Interfacet Scalable}
+%\label{src:scalable}
 
 
 

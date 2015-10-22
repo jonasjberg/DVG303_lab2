@@ -9,6 +9,7 @@
 package se.hig.oodp.lab.control.implementation;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import se.hig.oodp.lab.control.FigureMover;
 import se.hig.oodp.lab.model.component.Movable;
@@ -20,7 +21,7 @@ import se.hig.oodp.lab.model.component.Movable;
  */
 public class FigureMoverImpl implements FigureMover
 {
-    private ArrayList<Movable> movableFigures;
+    private List<Movable> movableFigures;
 
     public FigureMoverImpl()
     {
@@ -32,8 +33,7 @@ public class FigureMoverImpl implements FigureMover
         this.movableFigures = movableFigures;
     }
 
-    @Override
-    public void moveAll(double dx, double dy)
+    @Override public void moveAll(double dx, double dy)
     {
         for (Movable f : movableFigures) {
             if (f == null)
