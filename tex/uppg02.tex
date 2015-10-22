@@ -20,6 +20,26 @@
 ifall det passar.
 
 \subsubsection*{Lösning}
+Den enklaste figur-klassen \texttt{Figure} implementerar interfacet
+\texttt{Movable}.  Underklasserna \texttt{Point}, \texttt{Circle} och
+\texttt{Ellipse} implementerar sedan \texttt{Scalable} och \texttt{Rotatable}
+beroende på vad som är lämpligt för respektive klass.
+
+\begin{itemize}
+\item \texttt{Point} behöver varken roteras eller skalas och implementerar
+      indirekt \texttt{Movable} genom superklassen \texttt{Figure}.
+\item \texttt{Circle} kan skalas men behöver inte roteras och implementerar
+      följdaktligen \texttt{Movable} (ärvs från superklassen) och 
+      \texttt{Scalable}.
+\item \texttt{Ellipse} kan både skalas och roteras och implementerar
+      \texttt{Movable} (ärvs från superklassen), \texttt{Rotatable} och 
+      \texttt{Scalable}.
+\end{itemize}
+
+Jag inser nu att arvshierarkin är onödigt komplex, det finns ingen större vits
+med att ha två separata arvsträd av figurtyper, \texttt{SimpleFigure} och
+\texttt{Figure}. Men vid det här laget finns inte tid för någon
+omstrukturering.
 
 
 \subsection{}\label{sec:uppg2b}
