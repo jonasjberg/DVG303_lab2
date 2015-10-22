@@ -22,8 +22,7 @@ import java.util.ArrayList;
  *		    tel12jsg@student.hig.se
  * @date	Sep 27, 2015
  */
-public abstract class Figure extends SimpleFigure implements Movable, Rotatable,
-        Scalable
+public abstract class Figure extends SimpleFigure implements Rotatable, Scalable
 {
     public    static final double DEFAULT_X_COORD = 0;
     public    static final double DEFAULT_Y_COORD = 0;
@@ -126,8 +125,6 @@ public abstract class Figure extends SimpleFigure implements Movable, Rotatable,
         }
     }
 
-//    public abstract void scale(double xFactor, double yFactor);
-
     @Override
     public String toString()
     {
@@ -152,7 +149,6 @@ public abstract class Figure extends SimpleFigure implements Movable, Rotatable,
             vertices.set(i, temp);
         }
 
-//        position = position.scale(position, xFactor, yFactor);
         updateCenterPoint(xFactor, yFactor);
     }
 

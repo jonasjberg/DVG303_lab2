@@ -120,7 +120,7 @@ public class Triangle extends Figure
         StringBuilder str = new StringBuilder();
 
         /* Anropa först superklassens 'toString()'-metod. */
-        // str.append(super.toString());
+        str.append(super.toString());
 
         /* Utöka sedan med 'Point'-objektets data. */
         str.append("Triangle:  " + this.hashCode() + NEWLINE);

@@ -11,6 +11,7 @@ package se.hig.oodp.lab.model.simplefigure;
 import se.hig.oodp.lab.model.Vertex2D;
 import se.hig.oodp.lab.model.component.Rotatable;
 import se.hig.oodp.lab.model.component.Scalable;
+import se.hig.oodp.lab.model.figure.Constants;
 import se.hig.oodp.lab.utility.DebugLogger;
 
 /**
@@ -33,7 +34,6 @@ public class Ellipse extends SimpleFigure implements Scalable, Rotatable
 
         this.width = width;
         this.height = height;
-//        calculateAngle();
     }
 
     /**
@@ -79,5 +79,22 @@ public class Ellipse extends SimpleFigure implements Scalable, Rotatable
     {
         angle %= 360;
         this.angle += angle;
+    }
+
+    public String toString()
+    {
+        final String NEWLINE = Constants.NEWLINE;
+        StringBuilder str = new StringBuilder();
+
+        /* Anropa först superklassens 'toString()'-metod. */
+        str.append(super.toString());
+
+        /* Utöka sedan med 'Ellipse'-objektets data. */
+        str.append("Ellipse:  " + this.hashCode() + NEWLINE);
+        str.append(" center: (" + getPosition().getX() + ", " + getPosition().getY() + ")" + NEWLINE);
+        str.append("  width:  " + getWidth() + NEWLINE);
+        str.append(" height:  " + getHeight() + NEWLINE);
+        str.append(NEWLINE);
+        return str.toString();
     }
 }

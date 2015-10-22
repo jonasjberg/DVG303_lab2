@@ -19,7 +19,7 @@ import se.hig.oodp.lab.utility.DebugLogger;
  *		    tel12jsg@student.hig.se
  * @date	Oct 4, 2015
  */
-public class Polygon extends Figure implements Movable, Rotatable, Scalable
+public class Polygon extends Figure
 {
     /**
      * Creates a new instance of a 'Polygon' consisting of an arbitrary number

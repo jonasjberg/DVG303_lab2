@@ -95,7 +95,7 @@ public class Rectangle extends Figure
         StringBuilder str = new StringBuilder();
 
         /* Anropa först superklassens 'toString()'-metod. */
-        // str.append(super.toString());
+        str.append(super.toString());
 
         /* Utöka sedan med 'Point'-objektets data. */
         str.append("Rectangle:  " + this.hashCode() + NEWLINE);
@@ -115,21 +115,6 @@ public class Rectangle extends Figure
     @Override
     public void updateCenterPoint(double xFactor, double yFactor)
     {
-//        double xMin, yMin, xMax, yMax;
-//        xMin = yMin = xMax = yMax = Double.MIN_VALUE;
-//
-//        for (Vertex2D v : vertices) {
-//            xMin = Math.min(xMin, v.getX());
-//            yMin = Math.min(yMin, v.getY());
-//            xMax = Math.max(xMax, v.getX());
-//            yMax = Math.max(yMax, v.getY());
-//        }
-//
-//        double xMid = xMin + xMax / 2;
-//        double yMid = yMin + yMax / 2;
-//        DebugLogger.log.finer("calculated midpoint (" + xMid + ", " + yMid + ")");
-//
-//        position = new Vertex2D(xMid, yMid);
         position = position.scale(getPosition(), xFactor, yFactor);
     }
 
