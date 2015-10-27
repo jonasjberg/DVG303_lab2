@@ -27,6 +27,7 @@ Visualization Environment. \footnote{\url{http://www.cse.buffalo.edu/jive/}}
 \texttt{JIVE} installeras som en plugin i \texttt{Eclipse Mars} version 4.5.0
 och körs i ett interaktivt debug-``perspective''. Programmet kan generera olika
 modeller av ett exekverande program;
+\footnote{\url{http://www.cse.buffalo.edu/jive/presentations/cse505-10-12-01.pdf}}
 
 \begin{enumerate}
 \item Contour Model.
@@ -58,79 +59,59 @@ Resultatet av testerna är finns också bifogade i katalogen \texttt{diagram}.
 % Demian Lessa <dlessa@buffalo.edu>
 % http://www.cse.buffalo.edu/jive/presentations/cse605-10-04-07a.pdf
 
-%\begin{sidewaysfigure}[ht]
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.9\linewidth]{diagram/figureHandlerTest_All_Sequence-Diagram.png}
-\caption{Sekvensdiagram för test av alla figurer. 
-%{\tiny(\texttt{diagram/figureHandlerTest\_All\_Sequence-Diagram.png})}
-}
+\caption{Sekvensdiagram för test av alla figurer.}
 \label{fig:sekv-all}
-%\end{sidewaysfigure}
 \end{figure}
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\linewidth]{diagram/figureHandlerTest_Point_Sequence-Diagram.png}
-\caption{Sekvensdiagram för \texttt{Point}.
-%{\tiny(\texttt{diagram/figureHandlerTest\_Point\_Sequence-Diagram.png})}
-}
+\caption{Sekvensdiagram för \texttt{Point}.}
 \label{fig:sekv-point}
 \end{figure}
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=0.8\linewidth]{diagram/figureHandlerTest_Line_Sequence-Diagram.png}
-\caption{Sekvensdiagram för \texttt{Line}.
-%{\tiny(\texttt{diagram/figureHandlerTest\_Line\_Sequence-Diagram.png})}
-}
+\caption{Sekvensdiagram för \texttt{Line}.}
 \label{fig:sekv-line}
 \end{figure}
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\linewidth]{diagram/figureHandlerTest_Rectangle_Sequence-Diagram.png}
-\caption{Sekvensdiagram för \texttt{Rectangle}.
-%{\tiny(\texttt{diagram/figureHandlerTest\_Rectangle\_Sequence-Diagram.png})}
-}
+\caption{Sekvensdiagram för \texttt{Rectangle}.}
 \label{fig:sekv-rect}
 \end{figure}
 
 \begin{sidewaysfigure}
-%\begin{figure}[ht]
 \centering
 \includegraphics[width=\linewidth]{diagram/figureHandlerTest_All_Object-Diagram.png}
-\caption{Objektdiagram för test av alla figurer.
-%{\tiny(\texttt{diagram/figureHandlerTest\_All\_Object-Diagram.png})}
-}
+\caption{Objektdiagram för test av alla figurer.}
 \label{fig:obj-all}
-%\end{figure}
 \end{sidewaysfigure}
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\linewidth]{diagram/figureHandlerTest_Point_Object-Diagram.png}
-\caption{Objektdiagram för \texttt{Point}.  
-%{\tiny(\texttt{diagram/figureHandlerTest\_Point\_Object-Diagram.png})}
-}
+\caption{Objektdiagram för \texttt{Point}.}
 \label{fig:obj-point}
 \end{figure}
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\linewidth]{diagram/figureHandlerTest_Line_Object-Diagram.png}
-\caption{Objektdiagram för \texttt{Line}.  
-%{\tiny(\texttt{diagram/figureHandlerTest\_Line\_Object-Diagram.png})}
-}
+\caption{Objektdiagram för \texttt{Line}.}
 \label{fig:obj-line}
 \end{figure}
 
 \begin{figure}[ht]
 \centering
 \includegraphics[width=\linewidth]{diagram/figureHandlerTest_Rectangle_Object-Diagram.png}
-\caption{Objektdiagram för \texttt{Rectangle}.
-%{\tiny(\texttt{diagram/figureHandlerTest\_Rectangle\_Object-Diagram.png})}
-}
+\caption{Objektdiagram för \texttt{Rectangle}.}
 \label{fig:obj-rect}
 \end{figure}
 
@@ -153,10 +134,29 @@ Kan man inte använda bara List? Eller en array?
 \subsubsection*{Lösning}
 Användningen av en \texttt{List} framför en vanlig array motiveras med att en
 array inte kan ändra storlek dynamiskt. Storleken definieras vid skapande av
-arrayen och är därefter fixerad. En \texttt{List} har flera användbara
-funktioner som saknas för arrays. Genom att skriva något i stil med
-\texttt{List<Figure>} specifieras vilken typ av objekt listan kan innehålla.
-Det fungerar som en slags felkontroll där kompilatorn ger varningar om ett
-inkompatibelt objekt stoppas in.
+arrayen och är därefter fixerad. För det här användningsområdet är en
+datastruktur med flexibla metoder för att ``sätta in'' och ``ta ut'' enskilda
+element att föredra. En \texttt{List} har flera användbara funktioner som man
+ofta måste skriva själv vid användning av arrays, ofta relaterade till sökning
+och åtkomst.
+
+Java version 1.5 introducerade ``typparametrisering''.
+Det löser ett återkommande problem med listor och objekts typer. För en lista
+som klarar av att lagra objekt av generell typ förlorar objekten sin specifika
+typinformation då de stoppas in i listan. Då objektet ska plockas ut ur listan
+måste de ``castas'' för att återfå sin ursprungliga typ. Ofta behövs särskilda
+lösningar för att lagra objekt av olika typer, typparametriseringen erbjuder en
+generell lösning genom att direkt i språket definera listor som lagrar en viss
+typ av objekt.
+Genom att skriva något i stil med \texttt{List<Figure>} specifieras vilken typ
+av objekt listan kan innehålla.  Det fungerar även som en slags felkontroll där
+kompilatorn ger varningar om ett inkompatibelt objekt stoppas in.
+
+
+\javacode{tex/Generics.java}
+\caption{Java SE Tutorials -- Learning the Java Language > Generics
+\footnote{\url{https://docs.oracle.com/javase/tutorial/java/generics/why.html}}
+}
+\label{src:generics}
 
 
