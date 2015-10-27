@@ -36,7 +36,6 @@
 \usepackage{wrapfig}
 \usepackage{lscape}
 
-
 \usepackage[pdfusetitle,
             bookmarks=true,
             bookmarksnumbered=true,
@@ -85,25 +84,28 @@
     \maketitle
 
     \begin{center}
-    \begin{tabular}{l r}
-        Datum:               & \isodate \today \par \\
-        Kursansvarig lärare: & Peter Jenke
-    \end{tabular}
+        \begin{tabular}{l r}
+            Datum:               & \isodate \today \par \\
+            Kursansvarig lärare: & Peter Jenke
+        \end{tabular}
     \end{center}
 
     \medskip
 
     \begin{abstract}
-        Laborationsrapport för
-        \emph{DVG303 -- Objektorienterad design och programmering}.
+        \begin{center}
+            Laborationsrapport för
+            \emph{DVG303 -- Objektorienterad design och programmering},
+            \\ Högskolan i Gävle, Höstterminen 2015.
+        \end{center}
     \end{abstract}
 
     \newpage
     \setcounter{tocdepth}{3}
     \tableofcontents
     \listoffigures
-    \newpage
 
+    \newpage
     \input{tex/intro}
     \input{tex/uppg01}
     \input{tex/uppg02}
