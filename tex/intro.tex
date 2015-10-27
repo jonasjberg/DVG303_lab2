@@ -1,0 +1,78 @@
+% ==============================================================================
+%                                    DVG303
+%                  Objektorienterad Design och Programmering
+%                                Laboration #2
+%
+% Author:   Jonas Sjöberg
+%           Högskolan i Gävle
+%           tel12jsg@student.hig.se
+%           https://github.com/jonasjberg
+%
+% License:  Creative Commons Attribution-NonCommercial-ShareAlike 4.0
+%           International.  See LICENSE.md for full licensing information.
+% ==============================================================================
+
+\section*{Introduktion}\label{sec:intro}
+\addcontentsline{toc}{section}{Introduktion}
+
+\subsection*{Övergripande beskrivning}\label{sec:beskrivning}
+\addcontentsline{toc}{subsection}{Övergripande beskrivning}
+Det här är den andra av tre laborationer i objektorienterad design och
+programmering. Ett fullständigt program kommer att utvecklas under
+laborationerna. Processen kommer att innehålla många element av professionell
+mjukvaruutveckling; design, dokumentation, revisionskontroll, etc., och syftar
+till att utveckla praktiska färdigheter i mjukvaruutveckling.
+
+\subsection*{Uppgifter}
+\addcontentsline{toc}{subsection}{Uppgifter}
+Instruktionerna är till viss del kopierade från källfilen
+\texttt{oodp\_lab\_instruktioner\_ht15v4.pdf}.
+
+\subsection*{Arbetsmetod}
+\addcontentsline{toc}{subsection}{Arbetsmetod}
+\begin{itemize}
+    \item Koden skrivs i utvecklingsmiljön \texttt{Intellij IDEA} under
+          \texttt{Linux 3.19.0-28-generic} och kompileras samt exekveras med 
+          följande \texttt{Java}-version:
+\begin{verbatim}
+> $ java -version
+java version "1.7.0_79"
+OpenJDK Runtime Environment (IcedTea 2.5.6) (7u79-2.5.6-0ubuntu1.15.04.1)
+OpenJDK Server VM (build 24.79-b02, mixed mode)
+\end{verbatim}
+
+    \item Rapporten skrivs i \LaTeX\ med texteditorn \texttt{Vim} och kompileras
+          till pdf med \texttt{latexmk}.  \par Diagram och figurer skrivs i
+          \texttt{PlantUML}-format och renderas med \texttt{Graphviz}. 
+          Resultatet förhandsgranskas i realtid med hjälp av plugins i 
+          \texttt{Intellij IDEA}.
+
+    \item För revisionskontroll används \texttt{Git}.
+
+    \item Analys av program under exekvering sker med hjälp av 
+          \texttt{JIVE} -- Java Interactive Visualization Environment.
+          \footnote{\url{http://www.cse.buffalo.edu/jive/}}
+
+\end{itemize}
+
+UML-diagram och dokumentation uppdateras löpande parallellt med källkoden.
+Förändringar i källkoden har kommit att följa uppdaterade diagram likväl som
+diagrammen har behövt uppdateras för att reflektera förändrad källkod eller
+funktionalitet.
+\par Varje uppgift finns representerad som en separat utvecklingsgren
+(\emph{branch}) i \texttt{Git}. På så vis kan varje uppgift utvecklas oberoende
+utan redundans och filduplicering. Det är också mycket enkelt att propagera
+förändringar mellan grenar och individuella \emph{commits} med hjälp av
+ändamålsriktiga ``diff''-verktyg. Ett sådant ingår i standarddistributioner av
+\texttt{Git}, ett annant exempel är \texttt{Meld}.
+
+
+\subsection*{Källkod}
+\addcontentsline{toc}{subsection}{Källkod}
+\par Källkod till programmet och rapporten finns att hämta på
+\url{https://github.com/jonasjberg/DVG303_lab2}.
+Hämta hem repon genom att exekvera följande från kommandoraden:
+\begin{verbatim}
+> $ git clone git@github.com:jonasjberg/DVG303_lab2.git
+\end{verbatim}
+
